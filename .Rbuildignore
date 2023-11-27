@@ -2,3 +2,4 @@
 ^LICENSE\.md$
 ^tiltWorkflows\.Rproj$
 ^\.Rproj\.user$
+^\.github$
