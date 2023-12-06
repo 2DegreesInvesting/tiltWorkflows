@@ -49,7 +49,8 @@ mapper_ep_ei <- read_csv("/path/mapper_ep_ei.csv")
 
 # ecoinvent_inputs
 ei_input <- read_csv("/path/ei_input_data.csv") |>
-  select("input_activity_uuid_product_uuid", "exchange_name", "exchange_unit_name") |> distinct()
+  select("input_activity_uuid_product_uuid", "exchange_name", "exchange_unit_name") |>
+  distinct()
 
 # isic_4digit_name
 isic_4digit_name <- read_csv("/path/isic_4digit_name.csv")
@@ -77,13 +78,14 @@ tiltIndicatorAfter package.
 
 ```{r}
 emissions_profile <- profile_emissions(ep_company,
-                              ep_product,
-                              europages_companies = europages_campanies,
-                              ecoinvent_activities = ei_activities_ov,
-                              ecoinvent_europages = mapper_ep_ei,
-                              isic_tilt = isic_4digit_name,
-                              low_threshold = 1 / 3,
-                              high_threshold = 2 / 3)
+  ep_product,
+  europages_companies = europages_campanies,
+  ecoinvent_activities = ei_activities_ov,
+  ecoinvent_europages = mapper_ep_ei,
+  isic_tilt = isic_4digit_name,
+  low_threshold = 1 / 3,
+  high_threshold = 2 / 3
+)
 
 emissions_profile_at_product_level <- emissions_profile |> unnest_product()
 emissions_profile_at_company_level <- emissions_profile |> unnest_company()
@@ -119,14 +121,15 @@ tiltIndicatorAfter package.
 
 ```{r}
 emissions_profile_upstream <- profile_emissions_upstream(epu_company,
-                              epu_product,
-                              europages_companies = europages_campanies,
-                              ecoinvent_activities = ei_activities_ov,
-                              ecoinvent_inputs = ei_input,
-                              ecoinvent_europages = mapper_ep_ei,
-                              isic_tilt = isic_4digit_name,
-                              low_threshold = 1 / 3,
-                              high_threshold = 2 / 3)
+  epu_product,
+  europages_companies = europages_campanies,
+  ecoinvent_activities = ei_activities_ov,
+  ecoinvent_inputs = ei_input,
+  ecoinvent_europages = mapper_ep_ei,
+  isic_tilt = isic_4digit_name,
+  low_threshold = 1 / 3,
+  high_threshold = 2 / 3
+)
 
 emissions_profile_upstream_at_product_level <- emissions_profile_upstream |> unnest_product()
 emissions_profile_upstream_at_company_level <- emissions_profile_upstream |> unnest_company()
@@ -162,13 +165,14 @@ tiltIndicatorAfter package.
 
 ```{r}
 sector_profile <- profile_sector(sp_company,
-                              sp_scenarios,
-                              europages_companies = europages_campanies,
-                              ecoinvent_activities = ei_activities_ov,
-                              ecoinvent_europages = mapper_ep_ei,
-                              isic_tilt = isic_4digit_name,
-                              low_threshold = 1 / 3,
-                              high_threshold = 2 / 3)
+  sp_scenarios,
+  europages_companies = europages_campanies,
+  ecoinvent_activities = ei_activities_ov,
+  ecoinvent_europages = mapper_ep_ei,
+  isic_tilt = isic_4digit_name,
+  low_threshold = 1 / 3,
+  high_threshold = 2 / 3
+)
 
 sector_profile_at_product_level <- sector_profile |> unnest_product()
 sector_profile_at_company_level <- sector_profile |> unnest_company()
@@ -206,15 +210,16 @@ tiltIndicatorAfter package.
 
 ```{r}
 sector_profile_upstream <- profile_sector_upstream(spu_company,
-                              spu_scenarios,
-                              spu_product,
-                              europages_companies = europages_campanies,
-                              ecoinvent_activities = ei_activities_ov,
-                              ecoinvent_inputs = ei_input,
-                              ecoinvent_europages = mapper_ep_ei,
-                              isic_tilt = isic_4digit_name,
-                              low_threshold = 1 / 3,
-                              high_threshold = 2 / 3)
+  spu_scenarios,
+  spu_product,
+  europages_companies = europages_campanies,
+  ecoinvent_activities = ei_activities_ov,
+  ecoinvent_inputs = ei_input,
+  ecoinvent_europages = mapper_ep_ei,
+  isic_tilt = isic_4digit_name,
+  low_threshold = 1 / 3,
+  high_threshold = 2 / 3
+)
 
 sector_profile_upstream_at_product_level <- sector_profile_upstream |> unnest_product()
 sector_profile_upstream_at_company_level <- sector_profile_upstream |> unnest_company()
