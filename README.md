@@ -17,6 +17,7 @@ The goal of tiltWorkflows is to make it easy to run tilt workflows.
 You can install the development version of tiltWorkflows like so:
 
 ``` r
+# install.packages("pak")
 pak::pak("2DegreesInvesting/tiltWorkflows")
 ```
 
