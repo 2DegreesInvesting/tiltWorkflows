@@ -12,10 +12,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-The tiltIndicatorAfter_runner script uses the output from the
-tiltIndicatorBefore package as the inputs to the tiltIndicator and
-tiltIndicatorAfter packages. This script uses the CSV files from the
-tiltIndicatorBefore package to create the final output of the four indicators.
+This file uses the output from the tiltIndicatorBefore package as the inputs to
+the tiltIndicator and tiltIndicatorAfter packages. This script uses the CSV
+files from the tiltIndicatorBefore package to create the final output of the
+four indicators.
 
 ## Setup
 
