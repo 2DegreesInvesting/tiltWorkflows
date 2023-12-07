@@ -25,7 +25,7 @@ tilt_path <- function(...) {
   path_home("Downloads", "tilt", ...)
 }
 
-dir_create(tilt_path())
+dir_create(tilt_path("output"))
 options(width = 500)
 ```
 
@@ -91,9 +91,9 @@ emissions_profile_at_company_level <- emissions_profile |>
 emissions_profile_at_company_level
 
 emissions_profile_at_product_level |>
-  write_csv(tilt_path("emissions_profile_at_product_level.csv"))
+  write_csv(tilt_path("output", "emissions_profile_at_product_level.csv"))
 emissions_profile_at_company_level |>
-  write_csv(tilt_path("emissions_profile_at_company_level.csv"))
+  write_csv(tilt_path("output", "emissions_profile_at_company_level.csv"))
 ```
 
 ## Emissions profile upstream
@@ -127,9 +127,9 @@ emissions_profile_upstream_at_company_level <- emissions_profile_upstream |>
 emissions_profile_upstream_at_company_level
 
 emissions_profile_upstream_at_product_level |>
-  write_csv(tilt_path("emissions_profile_upstream_at_product_level.csv"))
+  write_csv(tilt_path("output", "emissions_profile_upstream_at_product_level.csv"))
 emissions_profile_upstream_at_company_level |>
-  write_csv(tilt_path("emissions_profile_upstream_at_company_level.csv"))
+  write_csv(tilt_path("output", "emissions_profile_upstream_at_company_level.csv"))
 ```
 
 ## Sector profile
@@ -160,9 +160,9 @@ sector_profile_at_company_level <- sector_profile |>
 sector_profile_at_company_level
 
 sector_profile_at_product_level |>
-  write_csv(tilt_path("sector_profile_at_product_level.csv"))
+  write_csv(tilt_path("output", "sector_profile_at_product_level.csv"))
 sector_profile_at_company_level |>
-  write_csv(tilt_path("sector_profile_at_company_level.csv"))
+  write_csv(tilt_path("output", "sector_profile_at_company_level.csv"))
 ```
 
 ## Sector profile upstream
@@ -195,13 +195,13 @@ sector_profile_upstream_at_company_level <- sector_profile_upstream |>
 sector_profile_upstream_at_company_level
 
 sector_profile_upstream_at_product_level |>
-  write_csv(tilt_path("sector_profile_upstream_at_product_level.csv"))
+  write_csv(tilt_path("output", "sector_profile_upstream_at_product_level.csv"))
 sector_profile_upstream_at_company_level |>
-  write_csv(tilt_path("sector_profile_upstream_at_company_level.csv"))
+  write_csv(tilt_path("output", "sector_profile_upstream_at_company_level.csv"))
 ```
 
 ## Results
 
 ```{r}
-dir_tree(tilt_path())
+dir_tree(tilt_path("output"))
 ```
