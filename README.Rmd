@@ -35,5 +35,8 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 
 ```{r example}
 library(tiltWorkflows)
-## TODO
+
+if (interactive()) {
+  use_workflow()
+}
 ```
