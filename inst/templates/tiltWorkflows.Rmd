@@ -1,6 +1,19 @@
 ---
 title: "Creating outputs for all tilt indicators"
 author: "Kalash Singhal"
+params:
+  emissions_profile_any_companies: "~/Downloads/tilt/input/emissions_profile_any_companies.csv"
+  emissions_profile_products: "~/Downloads/tilt/input/emissions_profile_products.csv"
+  emissions_profile_upstream_products: "~/Downloads/tilt/input/emissions_profile_upstream_products.csv"
+  sector_profile_any_scenarios: "~/Downloads/tilt/input/sector_profile_any_scenarios.csv"
+  sector_profile_companies: "~/Downloads/tilt/input/sector_profile_companies.csv"
+  sector_profile_upstream_companies: "~/Downloads/tilt/input/sector_profile_upstream_companies.csv"
+  sector_profile_upstream_products: "~/Downloads/tilt/input/sector_profile_upstream_products.csv"
+  europages_companies: "~/Downloads/tilt/input/europages_companies.csv"
+  ecoinvent_activities: "~/Downloads/tilt/input/ecoinvent_activities.csv"
+  ecoinvent_europages: "~/Downloads/tilt/input/ecoinvent_europages.csv"
+  ecoinvent_inputs: "~/Downloads/tilt/input/ecoinvent_inputs.csv"
+  isic_tilt: "~/Downloads/tilt/input/isic_tilt.csv"
 ---
 
 ```{r, include = FALSE}
@@ -14,27 +27,44 @@ This workflow creates the output of all tilt indicators.
 
 ## Setup
 
-```{r}
+```{r global}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 library(fs)
 library(tiltWorkflows)
 
-# Helper
+# Helpers
 tilt_path <- function(...) {
   path_home("Downloads", "tilt", ...)
 }
 
+read_csv_or_fall_back_to <- function(path, alternative) {
+  if (file_exists(path)) {
+    read_csv(path)
+  } else {
+    .alternative <- deparse(substitute(alternative))
+    warning("Using ", .alternative, call. = FALSE)
+    alternative
+  }
+}
+
 dir_create(tilt_path("output"))
-options(width = 500)
+options(readr.show_col_types = FALSE, width = 500)
 ```
 
 ## Data
 
-Here we use toy datasets that you should replace with your real data.
+This file is
+[parametrized](https://docs.posit.co/connect/user/param-rmarkdown/). To use your
+own data in RStudio click on "Knit with Parameters ...":
+
+<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/afcbe4ee-4ce2-4e0a-a095-0644e915a922 width=150>
+
+Else it automatically falls back to using toy data.
 
 ```{r}
-europages_campanies <- tiltIndicatorAfter::ep_companies |>
+europages_companies <- params$europages_companies |> 
+  read_csv_or_fall_back_to(tiltIndicatorAfter::ep_companies) |>
   select(
     "company_name",
     "country",
@@ -45,11 +75,14 @@ europages_campanies <- tiltIndicatorAfter::ep_companies |>
     "companies_id"
   )
 
-ecoinvent_activities <- tiltIndicatorAfter::ecoinvent_activities
+ecoinvent_activities <- params$ecoinvent_activities |> 
+  read_csv_or_fall_back_to(tiltIndicatorAfter::ecoinvent_activities)
 
-ecoinvent_europages <- tiltIndicatorAfter::matches_mapper
+ecoinvent_europages <- params$ecoinvent_europages |> 
+  read_csv_or_fall_back_to(tiltIndicatorAfter::matches_mapper)
 
-ecoinvent_inputs <- tiltIndicatorAfter::ecoinvent_inputs |>
+ecoinvent_inputs <- params$ecoinvent_inputs |> 
+  read_csv_or_fall_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
   select(
     "input_activity_uuid_product_uuid",
     "exchange_name",
@@ -57,24 +90,28 @@ ecoinvent_inputs <- tiltIndicatorAfter::ecoinvent_inputs |>
   ) |>
   distinct()
 
-isic_tilt <- tiltIndicatorAfter::isic_tilt_mapper
+isic_tilt <- params$isic_tilt |> 
+  read_csv_or_fall_back_to(tiltIndicatorAfter::isic_tilt_mapper)
 ```
 
 ## Emissions profile
 
 ```{r}
 # Load data specific to this indicator
-emissions_profile_any_companies <- read_csv(toy_emissions_profile_any_companies())
+emissions_profile_any_companies <- params$emissions_profile_any_companies |> 
+  read_csv_or_fall_back_to(read_csv(toy_emissions_profile_any_companies()))
+
 # FIXME User toy_emissions_profile_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
-emissions_profile_products <- read_csv(toy_emissions_profile_products())
+emissions_profile_products <- params$emissions_profile_products |> 
+  read_csv_or_fall_back_to(read_csv(toy_emissions_profile_products()))
 
 # Create results at product and company level
 emissions_profile <- profile_emissions(
   emissions_profile_any_companies,
   emissions_profile_products,
-  europages_companies = europages_campanies,
+  europages_companies = europages_companies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_europages = ecoinvent_europages,
   isic_tilt = isic_tilt,
@@ -103,13 +140,14 @@ emissions_profile_at_company_level |>
 # FIXME User toy_emissions_profile_upstream_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
-emissions_profile_upstream_products <- read_csv(toy_emissions_profile_upstream_products())
+emissions_profile_upstream_products <- params$emissions_profile_upstream_products |> 
+  read_csv_or_fall_back_to(read_csv(toy_emissions_profile_upstream_products()))
 
 # Create results at product and company level
 emissions_profile_upstream <- profile_emissions_upstream(
   emissions_profile_any_companies,
   emissions_profile_upstream_products,
-  europages_companies = europages_campanies,
+  europages_companies = europages_companies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_inputs = ecoinvent_inputs,
   ecoinvent_europages = ecoinvent_europages,
@@ -136,14 +174,17 @@ emissions_profile_upstream_at_company_level |>
 
 ```{r}
 # Load data specific to this indicator
-sector_profile_companies <- read_csv(toy_sector_profile_companies())
-sector_profile_any_scenarios <- read_csv(toy_sector_profile_any_scenarios())
+sector_profile_companies <- params$sector_profile_companies |> 
+  read_csv_or_fall_back_to(read_csv(toy_sector_profile_companies()))
+
+sector_profile_any_scenarios <- params$sector_profile_any_scenarios |> 
+  read_csv_or_fall_back_to(read_csv(toy_sector_profile_any_scenarios()))
 
 # Create results at product and company level
 sector_profile <- profile_sector(
   sector_profile_companies,
   sector_profile_any_scenarios,
-  europages_companies = europages_campanies,
+  europages_companies = europages_companies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_europages = ecoinvent_europages,
   isic_tilt = isic_tilt,
@@ -169,15 +210,18 @@ sector_profile_at_company_level |>
 
 ```{r}
 # Load data specific to this indicator
-sector_profile_upstream_companies <- read_csv(toy_sector_profile_upstream_companies())
-sector_profile_upstream_products <- read_csv(toy_sector_profile_upstream_products())
+sector_profile_upstream_companies <- params$sector_profile_upstream_companies |> 
+read_csv_or_fall_back_to(read_csv(toy_sector_profile_upstream_companies()))
+
+sector_profile_upstream_products <- params$sector_profile_upstream_products |> 
+  read_csv_or_fall_back_to(read_csv(toy_sector_profile_upstream_products()))
 
 # Create results at product and company level
 sector_profile_upstream <- profile_sector_upstream(
   sector_profile_upstream_companies,
   sector_profile_any_scenarios,
   sector_profile_upstream_products,
-  europages_companies = europages_campanies,
+  europages_companies = europages_companies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_inputs = ecoinvent_inputs,
   ecoinvent_europages = ecoinvent_europages,
