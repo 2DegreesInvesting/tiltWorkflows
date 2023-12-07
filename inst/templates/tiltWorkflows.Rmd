@@ -35,7 +35,6 @@ Here we use toy datasets that you should replace with your real data.
 
 ```{r}
 europages_campanies <- tiltIndicatorAfter::ep_companies |>
-  # TODO: Ask why the toy data has more columns than we need
   select(
     "company_name",
     "country",
@@ -51,7 +50,6 @@ ecoinvent_activities <- tiltIndicatorAfter::ecoinvent_activities
 ecoinvent_europages <- tiltIndicatorAfter::matches_mapper
 
 ecoinvent_inputs <- tiltIndicatorAfter::ecoinvent_inputs |>
-  # TODO: Ask why the toy data has more columns than we need
   select(
     "input_activity_uuid_product_uuid",
     "exchange_name",
@@ -69,6 +67,7 @@ isic_tilt <- tiltIndicatorAfter::isic_tilt_mapper
 emissions_profile_any_companies <- read_csv(toy_emissions_profile_any_companies())
 # FIXME User toy_emissions_profile_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
+# https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
 emissions_profile_products <- read_csv(toy_emissions_profile_products())
 
 # Create results at product and company level
@@ -103,6 +102,7 @@ emissions_profile_at_company_level |>
 # Load data specific to this indicator
 # FIXME User toy_emissions_profile_upstream_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
+# https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
 emissions_profile_upstream_products <- read_csv(toy_emissions_profile_upstream_products())
 
 # Create results at product and company level
