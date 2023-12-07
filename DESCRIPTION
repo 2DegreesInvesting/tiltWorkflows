@@ -12,7 +12,8 @@ URL: https://2degreesinvesting.github.io/tiltWorkflows/,
     https://github.com/2DegreesInvesting/tiltWorkflows
 BugReports: https://github.com/2DegreesInvesting/tiltWorkflows/issues
 Depends: 
-    tiltIndicatorAfter
+    tiltIndicatorAfter,
+    tiltToyData (>= 0.0.0.9005)
 Imports: 
     usethis
 Suggests: 
@@ -22,7 +23,8 @@ Suggests:
     testthat (>= 3.0.0),
     withr
 Remotes: 
-    2DegreesInvesting/tiltIndicatorAfter
+    2DegreesInvesting/tiltIndicatorAfter,
+    2DegreesInvesting/tiltToyData
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
