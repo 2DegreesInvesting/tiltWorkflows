@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9003 (2023-12-07)
+
+- Same as previous version.
+
+
 # tiltWorkflows 0.0.0.9002 (2023-12-07)
 
 * New `use_workflow()` helps users create a workflow file from a template (#5).
