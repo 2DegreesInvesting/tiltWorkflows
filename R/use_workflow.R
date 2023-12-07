@@ -9,8 +9,8 @@
 #'
 #' @examples
 #' \dontrun{
-#'   # Note: running this will write `NEWS.md` to your working directory
-#'   use_workflow()
+#' # Note: running this will write `NEWS.md` to your working directory
+#' use_workflow()
 #' }
 use_workflow <- function(template = "tiltWorkflows.Rmd",
                          save_as = template,

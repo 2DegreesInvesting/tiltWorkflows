@@ -20,13 +20,12 @@ create_local_thing <- function(dir = fs::file_temp(pattern = pattern),
   thing <- match.arg(thing)
 
   old_project <- proj_get_() # this could be `NULL`, i.e. no active project
-  old_wd <- getwd()          # not necessarily same as `old_project`
+  old_wd <- getwd() # not necessarily same as `old_project`
 
   withr::defer(fs::dir_delete(dir), envir = env)
 
   usethis::ui_silence({
-    switch(
-      thing,
+    switch(thing,
       package = create_package(
         dir,
         # This is for the sake of interactive development of snapshot tests.
