@@ -91,7 +91,7 @@ final output of the four indicators.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co"># devtools::install_github("2DegreesInvesting/tiltIndicatorAfter")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">tiltIndicatorAfter</span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/" class="external-link">tiltIndicatorAfter</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="tiltindicatorafter-data-common-for-all-indicators">tiltIndicatorAfter data common for all indicators<a class="anchor" aria-label="anchor" href="#tiltindicatorafter-data-common-for-all-indicators"></a>
@@ -106,22 +106,22 @@ Emissions profile upstream, Sector profile, Sector profile
 upstream).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ep_companies</span></span>
-<span><span class="va">europages_campanies</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/ep_companies.csv"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="st">"company_name"</span>, <span class="st">"country"</span>, <span class="st">"company_city"</span>, <span class="st">"postcode"</span>, <span class="st">"address"</span>, <span class="st">"main_activity"</span>, <span class="st">"companies_id"</span><span class="op">)</span></span>
+<span><span class="va">europages_campanies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/ep_companies.csv"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"company_name"</span>, <span class="st">"country"</span>, <span class="st">"company_city"</span>, <span class="st">"postcode"</span>, <span class="st">"address"</span>, <span class="st">"main_activity"</span>, <span class="st">"companies_id"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># ecoinvent_activities</span></span>
-<span><span class="va">ei_activities_ov</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/ei_activities_overview.csv"</span><span class="op">)</span></span>
+<span><span class="va">ei_activities_ov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/ei_activities_overview.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># matches_mapper</span></span>
-<span><span class="va">mapper_ep_ei</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/mapper_ep_ei.csv"</span><span class="op">)</span></span>
+<span><span class="va">mapper_ep_ei</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/mapper_ep_ei.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># ecoinvent_inputs</span></span>
-<span><span class="va">ei_input</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/ei_input_data.csv"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="st">"input_activity_uuid_product_uuid"</span>, <span class="st">"exchange_name"</span>, <span class="st">"exchange_unit_name"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">ei_input</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/ei_input_data.csv"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"input_activity_uuid_product_uuid"</span>, <span class="st">"exchange_name"</span>, <span class="st">"exchange_unit_name"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># isic_4digit_name</span></span>
-<span><span class="va">isic_4digit_name</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/isic_4digit_name.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">isic_4digit_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/isic_4digit_name.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="emissions-profile">Emissions profile<a class="anchor" aria-label="anchor" href="#emissions-profile"></a>
@@ -134,10 +134,10 @@ tiltIndicatorBefore package becomes the input for the tiltIndicator
 package.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># emissions_profile companies</span></span>
-<span><span class="va">ep_company</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_any_companies_ecoinvent.csv"</span><span class="op">)</span></span>
+<span><span class="va">ep_company</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_any_companies_ecoinvent.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># emissions_profile products</span></span>
-<span><span class="va">ep_product</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_products_ecoinvent.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">ep_product</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_products_ecoinvent.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-emissions_profile-product-and-company-level-outputs">Create Emissions_profile product and company level outputs<a class="anchor" aria-label="anchor" href="#create-emissions_profile-product-and-company-level-outputs"></a>
@@ -145,7 +145,7 @@ package.</p>
 <p>The code takes the output of tiltIndicator and use it as an input for
 the tiltIndicatorAfter package.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">emissions_profile</span> <span class="op">&lt;-</span> <span class="fu">profile_emissions</span><span class="op">(</span><span class="va">ep_company</span>,</span>
+<code class="sourceCode R"><span><span class="va">emissions_profile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/profile_emissions_upstream.html" class="external-link">profile_emissions</a></span><span class="op">(</span><span class="va">ep_company</span>,</span>
 <span>  <span class="va">ep_product</span>,</span>
 <span>  europages_companies <span class="op">=</span> <span class="va">europages_campanies</span>,</span>
 <span>  ecoinvent_activities <span class="op">=</span> <span class="va">ei_activities_ov</span>,</span>
@@ -155,18 +155,18 @@ the tiltIndicatorAfter package.</p>
 <span>  high_threshold <span class="op">=</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">emissions_profile_at_product_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile</span> <span class="op">|&gt;</span> <span class="fu">unnest_product</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">emissions_profile_at_company_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile</span> <span class="op">|&gt;</span> <span class="fu">unnest_company</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">emissions_profile_at_product_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">emissions_profile_at_company_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="save-the-emissions-profile-final-results">Save the Emissions profile final results<a class="anchor" aria-label="anchor" href="#save-the-emissions-profile-final-results"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emissions_profile_at_product_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_at_product_level.csv"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_at_product_level.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">emissions_profile_at_company_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -179,9 +179,9 @@ the tiltIndicatorAfter package.</p>
 tiltIndicatorBefore package becomes the input for the tiltIndicator
 package.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">epu_company</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_any_companies_ecoinvent.csv"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">epu_company</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_any_companies_ecoinvent.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">epu_product</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_upstream_products_ecoinvent.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">epu_product</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_upstream_products_ecoinvent.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-emissions-profile-upstream-product-and-company-level-outputs">Create Emissions profile upstream product and company level
@@ -190,7 +190,7 @@ outputs<a class="anchor" aria-label="anchor" href="#create-emissions-profile-ups
 <p>The code takes the output of tiltIndicator and use it as an input for
 the tiltIndicatorAfter package.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">emissions_profile_upstream</span> <span class="op">&lt;-</span> <span class="fu">profile_emissions_upstream</span><span class="op">(</span><span class="va">epu_company</span>,</span>
+<code class="sourceCode R"><span><span class="va">emissions_profile_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/profile_emissions_upstream.html" class="external-link">profile_emissions_upstream</a></span><span class="op">(</span><span class="va">epu_company</span>,</span>
 <span>  <span class="va">epu_product</span>,</span>
 <span>  europages_companies <span class="op">=</span> <span class="va">europages_campanies</span>,</span>
 <span>  ecoinvent_activities <span class="op">=</span> <span class="va">ei_activities_ov</span>,</span>
@@ -201,18 +201,18 @@ the tiltIndicatorAfter package.</p>
 <span>  high_threshold <span class="op">=</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">emissions_profile_upstream_at_product_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu">unnest_product</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">emissions_profile_upstream_at_company_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu">unnest_company</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">emissions_profile_upstream_at_product_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">emissions_profile_upstream_at_company_level</span> <span class="op">&lt;-</span> <span class="va">emissions_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="save-the-emissions-profile-upstream-final-results">Save the Emissions profile upstream final results<a class="anchor" aria-label="anchor" href="#save-the-emissions-profile-upstream-final-results"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emissions_profile_upstream_at_product_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_upstream_at_product_level.csv"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_upstream_at_product_level.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">emissions_profile_upstream_at_company_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/emissions_profile_upstream_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/emissions_profile_upstream_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -224,9 +224,9 @@ the tiltIndicatorAfter package.</p>
 <p>The input data of Sector Profile which comes from tiltIndicatorBefore
 package becomes the input for the tiltIndicator package.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sp_company</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_companies.csv"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">sp_company</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_companies.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">sp_scenarios</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_any_scenarios.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">sp_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_any_scenarios.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-sector-profile-product-and-company-level-outputs">Create Sector profile product and company level outputs<a class="anchor" aria-label="anchor" href="#create-sector-profile-product-and-company-level-outputs"></a>
@@ -234,7 +234,7 @@ package becomes the input for the tiltIndicator package.</p>
 <p>The code takes the output of tiltIndicator and use it as an input for
 the tiltIndicatorAfter package.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sector_profile</span> <span class="op">&lt;-</span> <span class="fu">profile_sector</span><span class="op">(</span><span class="va">sp_company</span>,</span>
+<code class="sourceCode R"><span><span class="va">sector_profile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/profile_sector_upstream.html" class="external-link">profile_sector</a></span><span class="op">(</span><span class="va">sp_company</span>,</span>
 <span>  <span class="va">sp_scenarios</span>,</span>
 <span>  europages_companies <span class="op">=</span> <span class="va">europages_campanies</span>,</span>
 <span>  ecoinvent_activities <span class="op">=</span> <span class="va">ei_activities_ov</span>,</span>
@@ -244,18 +244,18 @@ the tiltIndicatorAfter package.</p>
 <span>  high_threshold <span class="op">=</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">sector_profile_at_product_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile</span> <span class="op">|&gt;</span> <span class="fu">unnest_product</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">sector_profile_at_company_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile</span> <span class="op">|&gt;</span> <span class="fu">unnest_company</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">sector_profile_at_product_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">sector_profile_at_company_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="save-the-sector-profile-final-results">Save the Sector profile final results<a class="anchor" aria-label="anchor" href="#save-the-sector-profile-final-results"></a>
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sector_profile_at_product_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_at_product_level.csv"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_at_product_level.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sector_profile_at_company_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -268,11 +268,11 @@ the tiltIndicatorAfter package.</p>
 tiltIndicatorBefore package becomes the input for the tiltIndicator
 package.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">spu_company</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_companies.csv"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">spu_company</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_companies.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">spu_product</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_products.csv"</span><span class="op">)</span></span>
+<span><span class="va">spu_product</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_products.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">spu_scenarios</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_any_scenarios.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">spu_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_any_scenarios.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="create-sector-profile-upstream-product-and-company-level-outputs-">Create Sector profile upstream product and company level
@@ -281,7 +281,7 @@ outputs.<a class="anchor" aria-label="anchor" href="#create-sector-profile-upstr
 <p>The code takes the output of tiltIndicator and use it as an input for
 the tiltIndicatorAfter package.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sector_profile_upstream</span> <span class="op">&lt;-</span> <span class="fu">profile_sector_upstream</span><span class="op">(</span><span class="va">spu_company</span>,</span>
+<code class="sourceCode R"><span><span class="va">sector_profile_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/profile_sector_upstream.html" class="external-link">profile_sector_upstream</a></span><span class="op">(</span><span class="va">spu_company</span>,</span>
 <span>  <span class="va">spu_scenarios</span>,</span>
 <span>  <span class="va">spu_product</span>,</span>
 <span>  europages_companies <span class="op">=</span> <span class="va">europages_campanies</span>,</span>
@@ -293,18 +293,18 @@ the tiltIndicatorAfter package.</p>
 <span>  high_threshold <span class="op">=</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">sector_profile_upstream_at_product_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu">unnest_product</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">sector_profile_upstream_at_company_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu">unnest_company</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">sector_profile_upstream_at_product_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_product</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">sector_profile_upstream_at_company_level</span> <span class="op">&lt;-</span> <span class="va">sector_profile_upstream</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_company</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="save-the-sector-profile-upstream-final-results">Save the Sector profile upstream final results<a class="anchor" aria-label="anchor" href="#save-the-sector-profile-upstream-final-results"></a>
 </h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sector_profile_upstream_at_product_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_at_product_level.csv"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_at_product_level.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sector_profile_upstream_at_company_level</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">write_csv</span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="st">"/path/sector_profile_upstream_at_company_level.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
