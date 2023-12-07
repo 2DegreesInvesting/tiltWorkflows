@@ -1,236 +1,258 @@
 ---
-title: "tilt workflow"
+title: "Creating outputs for all tilt indicators"
 author: "Kalash Singhal"
+params:
+  emissions_profile_any_companies: "~/Downloads/tilt/input/emissions_profile_any_companies.csv"
+  emissions_profile_products: "~/Downloads/tilt/input/emissions_profile_products.csv"
+  emissions_profile_upstream_products: "~/Downloads/tilt/input/emissions_profile_upstream_products.csv"
+  sector_profile_any_scenarios: "~/Downloads/tilt/input/sector_profile_any_scenarios.csv"
+  sector_profile_companies: "~/Downloads/tilt/input/sector_profile_companies.csv"
+  sector_profile_upstream_companies: "~/Downloads/tilt/input/sector_profile_upstream_companies.csv"
+  sector_profile_upstream_products: "~/Downloads/tilt/input/sector_profile_upstream_products.csv"
+  europages_companies: "~/Downloads/tilt/input/europages_companies.csv"
+  ecoinvent_activities: "~/Downloads/tilt/input/ecoinvent_activities.csv"
+  ecoinvent_europages: "~/Downloads/tilt/input/ecoinvent_europages.csv"
+  ecoinvent_inputs: "~/Downloads/tilt/input/ecoinvent_inputs.csv"
+  isic_tilt: "~/Downloads/tilt/input/isic_tilt.csv"
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  # FIXME when this file become reproducible
-  eval = FALSE
+  comment = "#>"
 )
 ```
 
-This file uses the output from the tiltIndicatorBefore package as the inputs to
-the tiltIndicator and tiltIndicatorAfter packages. This script uses the CSV
-files from the tiltIndicatorBefore package to create the final output of the
-four indicators.
+This workflow creates the output of all tilt indicators.
 
 ## Setup
 
-```{r}
+```{r global}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
-library(tidyr, warn.conflicts = FALSE)
-# devtools::install_github("2DegreesInvesting/tiltIndicatorAfter")
-library(tiltIndicatorAfter)
+library(fs)
+library(tiltWorkflows)
+
+# Helpers
+# Create a path under ~/Downloads/tilt/
+tilt_path <- function(...) {
+  path_home("Downloads", "tilt", ...)
+}
+# Read a .csv specified in an rmarkdown parameter or fall back to a data frame
+read_csv_from_params_or_fall_back_to <- function(param, alternative) {
+  if (exists("params") && file_exists(params[[param]])) {
+    read_csv(params[[param]])
+  } else {
+    warning("Using ", deparse(substitute(alternative)), call. = FALSE)
+    alternative
+  }
+}
+
+# Create a folder to save results
+dir_create(tilt_path("output"))
+# Read data quietly and extend the width of printed datasets
+options(readr.show_col_types = FALSE, width = 500)
 ```
 
-## tiltIndicatorAfter data common for all indicators
+## Data
 
-`ep_companies`, `ei_activities_overview`, `mapper_ep_ei`, `ei_input_data`, and
-`isic_4digit_name` are the five datasets which are used as the input for the
-tiltIndicatorAfter package. They all are the output from tiltIndicatorBefore
-package. These five datasets are used for adding additional data to all the four
-indicators (Emissions profile, Emissions profile upstream, Sector profile,
-Sector profile upstream).
+This file is
+[parametrized](https://docs.posit.co/connect/user/param-rmarkdown/). To use your
+own data in RStudio click on "Knit with Parameters ...":
+
+<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/afcbe4ee-4ce2-4e0a-a095-0644e915a922 width=150>
+
+You'll see an interface pre-populated with sensible defaults:
+
+<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/e517fba1-b22e-4eff-88d2-e700048cc184 width=500>
+
+Any file that doesn't exist is automatically replaced with a toy dataset so you
+can at least see an example.
 
 ```{r}
-# ep_companies
-europages_campanies <- read_csv("/path/ep_companies.csv") |>
-  select("company_name", "country", "company_city", "postcode", "address", "main_activity", "companies_id")
+europages_companies <- "europages_companies" |> 
+  read_csv_from_params_or_fall_back_to(tiltIndicatorAfter::ep_companies) |>
+  select(
+    "company_name",
+    "country",
+    "company_city",
+    "postcode",
+    "address",
+    "main_activity",
+    "companies_id"
+  )
 
-# ecoinvent_activities
-ei_activities_ov <- read_csv("/path/ei_activities_overview.csv")
+ecoinvent_activities <- "ecoinvent_activities" |> 
+  read_csv_from_params_or_fall_back_to(tiltIndicatorAfter::ecoinvent_activities)
 
-# matches_mapper
-mapper_ep_ei <- read_csv("/path/mapper_ep_ei.csv")
+ecoinvent_europages <- "ecoinvent_europages" |> 
+  read_csv_from_params_or_fall_back_to(tiltIndicatorAfter::matches_mapper)
 
-# ecoinvent_inputs
-ei_input <- read_csv("/path/ei_input_data.csv") |>
-  select("input_activity_uuid_product_uuid", "exchange_name", "exchange_unit_name") |>
+ecoinvent_inputs <- "ecoinvent_inputs" |> 
+  read_csv_from_params_or_fall_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
+  select(
+    "input_activity_uuid_product_uuid",
+    "exchange_name",
+    "exchange_unit_name"
+  ) |>
   distinct()
 
-# isic_4digit_name
-isic_4digit_name <- read_csv("/path/isic_4digit_name.csv")
+isic_tilt <- "isic_tilt" |> 
+  read_csv_from_params_or_fall_back_to(tiltIndicatorAfter::isic_tilt_mapper)
 ```
 
 ## Emissions profile
 
-### Load Data
-
-The input data of Emissions_profile which comes from tiltIndicatorBefore package
-becomes the input for the tiltIndicator package.
-
 ```{r}
-# emissions_profile companies
-ep_company <- read_csv("/path/emissions_profile_any_companies_ecoinvent.csv")
+# Load data specific to this indicator
+emissions_profile_any_companies <- "emissions_profile_any_companies" |> 
+  read_csv_from_params_or_fall_back_to(read_csv(toy_emissions_profile_any_companies()))
 
-# emissions_profile products
-ep_product <- read_csv("/path/emissions_profile_products_ecoinvent.csv")
-```
+# FIXME User toy_emissions_profile_products_ecoinvent()
+# See https://github.com/2DegreesInvesting/tiltToyData/pull/12
+# https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
+emissions_profile_products <- "emissions_profile_products" |> 
+  read_csv_from_params_or_fall_back_to(read_csv(toy_emissions_profile_products()))
 
-### Create Emissions_profile product and company level outputs
-
-The code takes the output of tiltIndicator and use it as an input for the
-tiltIndicatorAfter package.
-
-```{r}
-emissions_profile <- profile_emissions(ep_company,
-  ep_product,
-  europages_companies = europages_campanies,
-  ecoinvent_activities = ei_activities_ov,
-  ecoinvent_europages = mapper_ep_ei,
-  isic_tilt = isic_4digit_name,
+# Create results at product and company level
+emissions_profile <- profile_emissions(
+  emissions_profile_any_companies,
+  emissions_profile_products,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_europages = ecoinvent_europages,
+  isic_tilt = isic_tilt,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
 
-emissions_profile_at_product_level <- emissions_profile |> unnest_product()
-emissions_profile_at_company_level <- emissions_profile |> unnest_company()
-```
+emissions_profile_at_product_level <- emissions_profile |> 
+  unnest_product()
+emissions_profile_at_product_level
 
-### Save the Emissions profile final results
+emissions_profile_at_company_level <- emissions_profile |> 
+  unnest_company()
+emissions_profile_at_company_level
 
-```{r}
 emissions_profile_at_product_level |>
-  write_csv("/path/emissions_profile_at_product_level.csv")
-
+  write_csv(tilt_path("output", "emissions_profile_at_product_level.csv"))
 emissions_profile_at_company_level |>
-  write_csv("/path/emissions_profile_at_company_level.csv")
+  write_csv(tilt_path("output", "emissions_profile_at_company_level.csv"))
 ```
 
-## Emissions Profile Upstream
-
-### Load Data
-
-The input data of Emissions Profile Upstream which comes from
-tiltIndicatorBefore package becomes the input for the tiltIndicator package.
+## Emissions profile upstream
 
 ```{r}
-epu_company <- read_csv("/path/emissions_profile_any_companies_ecoinvent.csv")
+# Load data specific to this indicator
+# FIXME User toy_emissions_profile_upstream_products_ecoinvent()
+# See https://github.com/2DegreesInvesting/tiltToyData/pull/12
+# https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
+emissions_profile_upstream_products <- "emissions_profile_upstream_products" |> 
+  read_csv_from_params_or_fall_back_to(read_csv(toy_emissions_profile_upstream_products()))
 
-epu_product <- read_csv("/path/emissions_profile_upstream_products_ecoinvent.csv")
-```
-
-### Create Emissions profile upstream product and company level outputs
-
-The code takes the output of tiltIndicator and use it as an input for the
-tiltIndicatorAfter package.
-
-```{r}
-emissions_profile_upstream <- profile_emissions_upstream(epu_company,
-  epu_product,
-  europages_companies = europages_campanies,
-  ecoinvent_activities = ei_activities_ov,
-  ecoinvent_inputs = ei_input,
-  ecoinvent_europages = mapper_ep_ei,
-  isic_tilt = isic_4digit_name,
+# Create results at product and company level
+emissions_profile_upstream <- profile_emissions_upstream(
+  emissions_profile_any_companies,
+  emissions_profile_upstream_products,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_inputs = ecoinvent_inputs,
+  ecoinvent_europages = ecoinvent_europages,
+  isic_tilt = isic_tilt,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
 
-emissions_profile_upstream_at_product_level <- emissions_profile_upstream |> unnest_product()
-emissions_profile_upstream_at_company_level <- emissions_profile_upstream |> unnest_company()
-```
+emissions_profile_upstream_at_product_level <- emissions_profile_upstream |> 
+  unnest_product()
+emissions_profile_upstream_at_product_level
 
-### Save the Emissions profile upstream final results
+emissions_profile_upstream_at_company_level <- emissions_profile_upstream |> 
+  unnest_company()
+emissions_profile_upstream_at_company_level
 
-```{r}
 emissions_profile_upstream_at_product_level |>
-  write_csv("/path/emissions_profile_upstream_at_product_level.csv")
-
+  write_csv(tilt_path("output", "emissions_profile_upstream_at_product_level.csv"))
 emissions_profile_upstream_at_company_level |>
-  write_csv("/path/emissions_profile_upstream_at_company_level.csv")
+  write_csv(tilt_path("output", "emissions_profile_upstream_at_company_level.csv"))
 ```
 
-## Sector Profile
-
-### Load Data
-
-The input data of Sector Profile which comes from tiltIndicatorBefore package
-becomes the input for the tiltIndicator package.
+## Sector profile
 
 ```{r}
-sp_company <- read_csv("/path/sector_profile_companies.csv")
+# Load data specific to this indicator
+sector_profile_companies <- "sector_profile_companies" |> 
+  read_csv_from_params_or_fall_back_to(read_csv(toy_sector_profile_companies()))
 
-sp_scenarios <- read_csv("/path/sector_profile_any_scenarios.csv")
-```
+sector_profile_any_scenarios <- "sector_profile_any_scenarios" |> 
+  read_csv_from_params_or_fall_back_to(read_csv(toy_sector_profile_any_scenarios()))
 
-### Create Sector profile product and company level outputs
-
-The code takes the output of tiltIndicator and use it as an input for the
-tiltIndicatorAfter package.
-
-```{r}
-sector_profile <- profile_sector(sp_company,
-  sp_scenarios,
-  europages_companies = europages_campanies,
-  ecoinvent_activities = ei_activities_ov,
-  ecoinvent_europages = mapper_ep_ei,
-  isic_tilt = isic_4digit_name,
+# Create results at product and company level
+sector_profile <- profile_sector(
+  sector_profile_companies,
+  sector_profile_any_scenarios,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_europages = ecoinvent_europages,
+  isic_tilt = isic_tilt,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
 
-sector_profile_at_product_level <- sector_profile |> unnest_product()
-sector_profile_at_company_level <- sector_profile |> unnest_company()
-```
+sector_profile_at_product_level <- sector_profile |> 
+  unnest_product()
+sector_profile_at_product_level
 
-### Save the Sector profile final results
+sector_profile_at_company_level <- sector_profile |> 
+  unnest_company()
+sector_profile_at_company_level
 
-```{r}
 sector_profile_at_product_level |>
-  write_csv("/path/sector_profile_at_product_level.csv")
-
+  write_csv(tilt_path("output", "sector_profile_at_product_level.csv"))
 sector_profile_at_company_level |>
-  write_csv("/path/sector_profile_at_company_level.csv")
+  write_csv(tilt_path("output", "sector_profile_at_company_level.csv"))
 ```
 
 ## Sector profile upstream
 
-### Load Data
-
-The input data of Sector profile upstream which comes from tiltIndicatorBefore
-package becomes the input for the tiltIndicator package.
-
 ```{r}
-spu_company <- read_csv("/path/sector_profile_upstream_companies.csv")
+# Load data specific to this indicator
+sector_profile_upstream_companies <- "sector_profile_upstream_companies" |> 
+read_csv_from_params_or_fall_back_to(read_csv(toy_sector_profile_upstream_companies()))
 
-spu_product <- read_csv("/path/sector_profile_upstream_products.csv")
+sector_profile_upstream_products <- "sector_profile_upstream_products" |> 
+  read_csv_from_params_or_fall_back_to(read_csv(toy_sector_profile_upstream_products()))
 
-spu_scenarios <- read_csv("/path/sector_profile_any_scenarios.csv")
-```
-
-### Create Sector profile upstream product and company level outputs.
-
-The code takes the output of tiltIndicator and use it as an input for the
-tiltIndicatorAfter package.
-
-```{r}
-sector_profile_upstream <- profile_sector_upstream(spu_company,
-  spu_scenarios,
-  spu_product,
-  europages_companies = europages_campanies,
-  ecoinvent_activities = ei_activities_ov,
-  ecoinvent_inputs = ei_input,
-  ecoinvent_europages = mapper_ep_ei,
-  isic_tilt = isic_4digit_name,
+# Create results at product and company level
+sector_profile_upstream <- profile_sector_upstream(
+  sector_profile_upstream_companies,
+  sector_profile_any_scenarios,
+  sector_profile_upstream_products,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_inputs = ecoinvent_inputs,
+  ecoinvent_europages = ecoinvent_europages,
+  isic_tilt = isic_tilt,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
 
-sector_profile_upstream_at_product_level <- sector_profile_upstream |> unnest_product()
-sector_profile_upstream_at_company_level <- sector_profile_upstream |> unnest_company()
+sector_profile_upstream_at_product_level <- sector_profile_upstream |> 
+  unnest_product()
+sector_profile_upstream_at_product_level
+
+sector_profile_upstream_at_company_level <- sector_profile_upstream |> 
+  unnest_company()
+sector_profile_upstream_at_company_level
+
+sector_profile_upstream_at_product_level |>
+  write_csv(tilt_path("output", "sector_profile_upstream_at_product_level.csv"))
+sector_profile_upstream_at_company_level |>
+  write_csv(tilt_path("output", "sector_profile_upstream_at_company_level.csv"))
 ```
 
-### Save the Sector profile upstream final results
+## Results
 
 ```{r}
-sector_profile_upstream_at_product_level |>
-  write_csv("/path/sector_profile_upstream_at_product_level.csv")
-
-sector_profile_upstream_at_company_level |>
-  write_csv("/path/sector_profile_upstream_at_company_level.csv")
+dir_tree(tilt_path("output"))
 ```
