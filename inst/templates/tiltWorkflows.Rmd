@@ -203,5 +203,5 @@ sector_profile_upstream_at_company_level |>
 ## Results
 
 ```{r}
-dir_tree(tilt_path("output"))
+dir_tree(tilt_path())
 ```
