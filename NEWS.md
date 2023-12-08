@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9005 (2023-12-08)
+
+* New article: Use parameters (#12).
+
 # tiltWorkflows 0.0.0.9004 (2023-12-07)
 
 * Depend on tiltToyData (#8). This makes toy datasets available to the user
