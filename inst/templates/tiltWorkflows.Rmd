@@ -26,8 +26,8 @@ tilt_path <- function(...) {
 }
 # Create a folder to save results
 dir_create(tilt_path("output"))
-# Read data quietly and print wider data frames
-options(readr.show_col_types = FALSE, width = 500)
+# Print wider data frames
+options(width = 500)
 ```
 
 ## Data
