@@ -3,6 +3,6 @@ title: "Creating outputs for all tilt indicators"
 author: "Kalash Singhal"
 ---
 
-```{r child=system.file(package = "tiltWorkflows", "templates", "tiltWorkflows.Rmd")}
+```{r child=system.file(package = "tiltWorkflows", "templates", "tilt-profiles.Rmd")}
 ```
 
