@@ -58,7 +58,7 @@ ecoinvent_inputs <- tiltIndicatorAfter::ecoinvent_inputs |>
   ) |>
   distinct()
 
-isic_tilt <- tiltIndicatorAfter::isic_tilt_mapper
+isic <- tiltIndicatorAfter::isic_tilt_mapper
 ```
 
 ## Emissions profile
@@ -78,7 +78,7 @@ emissions_profile <- profile_emissions(
   europages_companies = europages_campanies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_europages = ecoinvent_europages,
-  isic_tilt = isic_tilt,
+  isic = isic,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
@@ -114,7 +114,7 @@ emissions_profile_upstream <- profile_emissions_upstream(
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_inputs = ecoinvent_inputs,
   ecoinvent_europages = ecoinvent_europages,
-  isic_tilt = isic_tilt,
+  isic = isic,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
@@ -147,7 +147,7 @@ sector_profile <- profile_sector(
   europages_companies = europages_campanies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_europages = ecoinvent_europages,
-  isic_tilt = isic_tilt,
+  isic = isic,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
@@ -182,7 +182,7 @@ sector_profile_upstream <- profile_sector_upstream(
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_inputs = ecoinvent_inputs,
   ecoinvent_europages = ecoinvent_europages,
-  isic_tilt = isic_tilt,
+  isic = isic,
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
