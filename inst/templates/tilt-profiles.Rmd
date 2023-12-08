@@ -1,5 +1,5 @@
 ---
-title: "Creating outputs for all tilt indicators"
+title: "Running tilt profiles"
 params:
   input: "~/Downloads/tilt/input"
   output: "~/Downloads/tilt/output"
@@ -15,6 +15,8 @@ params:
   ecoinvent_europages: "ecoinvent_europages.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
   isic: "isic.csv"
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -24,22 +26,22 @@ knitr::opts_chunk$set(
 )
 ```
 
-This workflow creates the output of all tilt indicators.
+This workflow creates the output of for all `profile*()` functions.
 
 ## Setup
 
 ```{r global}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
+library(future)
 library(fs)
 library(tiltWorkflows)
 
-# Helpers
-# Creates a path under ~/Downloads/tilt/
+# Create a path under ~/Downwloads/tilt/
 tilt_path <- function(...) {
   path_home("Downloads", "tilt", ...)
 }
-# Tries to read a .csv, but if it doesn't exist it returns another dataset
+# Read a .csv but if it doesnt' exist fall back to another dataset
 read_csv_falling_back_to <- function(path, data) {
   if (file_exists(path)) {
     read_csv(path)
@@ -49,10 +51,12 @@ read_csv_falling_back_to <- function(path, data) {
   }
 }
 
+# Enable computing over multiple workers in parallel
+plan(multisession)
+# Read data quietly, extend the width of printed datasets
+options(readr.show_col_types = FALSE, width = 500)
 # Create a folder to save results
 dir_create(tilt_path("output"))
-# Read data quietly, and extend the width of printed datasets
-options(readr.show_col_types = FALSE, width = 500)
 ```
 
 ## Data
@@ -99,30 +103,27 @@ isic <- path(params$input, params$isic) |>
 # Load data specific to this indicator
 emissions_profile_any_companies <- path(params$input, params$emissions_profile_any_companies) |> 
   read_csv_falling_back_to(read_csv(toy_emissions_profile_any_companies()))
-
 # FIXME User toy_emissions_profile_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
 emissions_profile_products <- path(params$input, params$emissions_profile_products) |> 
   read_csv_falling_back_to(read_csv(toy_emissions_profile_products()))
 
-# Create results at product and company level
-emissions_profile <- profile_emissions(
-  emissions_profile_any_companies,
-  emissions_profile_products,
-  europages_companies = europages_companies,
-  ecoinvent_activities = ecoinvent_activities,
-  ecoinvent_europages = ecoinvent_europages,
-  isic = isic,
-  low_threshold = 1 / 3,
-  high_threshold = 2 / 3
-)
+emissions_profile <- emissions_profile_any_companies |> 
+  profile_with(profile_emissions,
+    co2 = emissions_profile_products,
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic,
+    low_threshold = 1 / 3,
+    high_threshold = 2 / 3
+  )
 
 emissions_profile |> 
   unnest_product() |> 
   write_csv(path(params$output, "emissions_profile_at_product_level.csv")) |> 
   print()
-  
 
 emissions_profile |> 
   unnest_company() |> 
@@ -141,9 +142,9 @@ emissions_profile_upstream_products <- path(params$input, params$emissions_profi
   read_csv_falling_back_to(read_csv(toy_emissions_profile_upstream_products()))
 
 # Create results at product and company level
-emissions_profile_upstream <- profile_emissions_upstream(
-  emissions_profile_any_companies,
-  emissions_profile_upstream_products,
+emissions_profile_upstream <- emissions_profile_any_companies |> 
+  profile_with(profile_emissions_upstream,
+  co2 = emissions_profile_upstream_products,
   europages_companies = europages_companies,
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_inputs = ecoinvent_inputs,
@@ -175,16 +176,16 @@ sector_profile_any_scenarios <- path(params$input, params$sector_profile_any_sce
   read_csv_falling_back_to(read_csv(toy_sector_profile_any_scenarios()))
 
 # Create results at product and company level
-sector_profile <- profile_sector(
-  sector_profile_companies,
-  sector_profile_any_scenarios,
-  europages_companies = europages_companies,
-  ecoinvent_activities = ecoinvent_activities,
-  ecoinvent_europages = ecoinvent_europages,
-  isic = isic,
-  low_threshold = 1 / 3,
-  high_threshold = 2 / 3
-)
+sector_profile <- sector_profile_companies |> 
+  profile_with(profile_sector,
+    sector_profile_any_scenarios,
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic,
+    low_threshold = 1 / 3,
+    high_threshold = 2 / 3
+  )
 
 sector_profile |> 
   unnest_product() |> 
@@ -208,18 +209,31 @@ sector_profile_upstream_products <- path(params$input, params$sector_profile_ups
   read_csv_falling_back_to(read_csv(toy_sector_profile_upstream_products()))
 
 # Create results at product and company level
-sector_profile_upstream <- profile_sector_upstream(
-  sector_profile_upstream_companies,
-  sector_profile_any_scenarios,
-  sector_profile_upstream_products,
-  europages_companies = europages_companies,
-  ecoinvent_activities = ecoinvent_activities,
-  ecoinvent_inputs = ecoinvent_inputs,
-  ecoinvent_europages = ecoinvent_europages,
-  isic = isic,
-  low_threshold = 1 / 3,
-  high_threshold = 2 / 3
+sector_profile_upstream <- sector_profile_upstream_companies |> 
+  profile_with(profile_sector_upstream,
+    sector_profile_any_scenarios,
+    sector_profile_upstream_products,
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_inputs = ecoinvent_inputs,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic,
+    low_threshold = 1 / 3,
+    high_threshold = 2 / 3
 )
+
+emissions_profile <- emissions_profile_any_companies |> 
+  profile_with(profile_emissions,
+    co2 = emissions_profile_products,
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic,
+    low_threshold = 1 / 3,
+    high_threshold = 2 / 3
+  )
+
+
 
 sector_profile_upstream |> 
   unnest_product() |> 
