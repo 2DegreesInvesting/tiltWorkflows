@@ -24,7 +24,9 @@ Creates a workflow file from a template in the tiltWorkflows package.
 }
 \examples{
 \dontrun{
-# Note: running this will write `NEWS.md` to your working directory
+# Note: Running this will write `tiltWorkflows.Rmd` to your working directory
 use_workflow()
+# Same
+use_workflow("tiltWorkflows.Rmd")
 }
 }
