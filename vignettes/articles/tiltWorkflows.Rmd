@@ -18,7 +18,7 @@ params:
   isic: "isic.csv"
 ---
 
-<!-- Don't edit by hand. vignettes/articles/tiltWorkflows.Rmd is generated with `reuse_template()`. -->
+<!-- Don't edit by hand. This file is generated with `reuse_template()`. -->
 
 ```{r child = system.file(package = 'tiltWorkflows', 'templates', 'tilt-profiles.Rmd')}
 ```

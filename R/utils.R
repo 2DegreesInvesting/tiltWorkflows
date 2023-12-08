@@ -7,11 +7,6 @@
 reuse_template <- function(from, to) {
   header <- header(readLines(from))
 
-  comment <- sprintf(
-    "<!-- Don't edit by hand. %s is generated with `reuse_template()`. -->",
-    to
-  )
-
   child_name <- fs::path_file(from)
   ops <- sprintf(
     "child = system.file(package = 'tiltWorkflows', 'templates', '%s')",
@@ -23,7 +18,7 @@ reuse_template <- function(from, to) {
     c(
       header,
       "",
-      comment,
+      "<!-- Don't edit by hand. This file is generated with `reuse_template()`. -->",
       "",
       chunk
     ),
