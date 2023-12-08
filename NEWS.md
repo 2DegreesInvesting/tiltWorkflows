@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9006 (2023-12-08)
+
+* The workflow "tilt profiles" is now reproducible with toy data (#6).
+
 # tiltWorkflows 0.0.0.9005 (2023-12-08)
 
 * New article: Use parameters (#12).
