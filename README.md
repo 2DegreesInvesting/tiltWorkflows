@@ -23,10 +23,20 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 
 ## Example
 
+Run
+[`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
+to create a workflow file.
+
 ``` r
 library(tiltWorkflows)
 
-if (interactive()) {
-  use_workflow()
-}
+use_workflow()
 ```
+
+*Knit* the workflow file to render an example with toy data, or *Knit
+with Parameters* to use your own data.
+
+<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/21464b5a-cd5d-4189-9f92-7978acc13c1a width=150>
+
+Learn more about [using
+parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/using-parameters.html).
