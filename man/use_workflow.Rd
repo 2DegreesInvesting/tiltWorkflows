@@ -4,7 +4,7 @@
 \alias{use_workflow}
 \title{Use a workflow file}
 \usage{
-use_workflow(template = "tiltWorkflows.Rmd", save_as = template, open = FALSE)
+use_workflow(template = "tilt-profiles.Rmd", save_as = template, open = FALSE)
 }
 \arguments{
 \item{template}{Path to template file relative to \verb{templates/} directory
@@ -27,6 +27,6 @@ Creates a workflow file from a template in the tiltWorkflows package.
 # Note: Running this will write `tiltWorkflows.Rmd` to your working directory
 use_workflow()
 # Same
-use_workflow("tiltWorkflows.Rmd")
+use_workflow("tilt-profiles.Rmd")
 }
 }
