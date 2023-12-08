@@ -1,8 +1,24 @@
 ---
 title: "Creating outputs for all tilt indicators"
 author: "Kalash Singhal"
+params:
+  input: "~/Downloads/tilt/input"
+  output: "~/Downloads/tilt/output"
+  emissions_profile_any_companies: "emissions_profile_any_companies.csv"
+  emissions_profile_products: "emissions_profile_products.csv"
+  emissions_profile_upstream_products: "emissions_profile_upstream_products.csv"
+  sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
+  sector_profile_companies: "sector_profile_companies.csv"
+  sector_profile_upstream_companies: "sector_profile_upstream_companies.csv"
+  sector_profile_upstream_products: "sector_profile_upstream_products.csv"
+  europages_companies: "europages_companies.csv"
+  ecoinvent_activities: "ecoinvent_activities.csv"
+  ecoinvent_europages: "ecoinvent_europages.csv"
+  ecoinvent_inputs: "ecoinvent_inputs.csv"
+  isic: "isic.csv"
 ---
 
-```{r child=system.file(package = "tiltWorkflows", "templates", "tilt-profiles.Rmd")}
-```
+<!-- Don't edit by hand. This file is generated with `reuse_template()`. -->
 
+```{r child = system.file(package = 'tiltWorkflows', 'templates', 'tilt-profiles.Rmd')}
+```
