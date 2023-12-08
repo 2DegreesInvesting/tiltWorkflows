@@ -1,6 +1,5 @@
 ---
 title: "Creating outputs for all tilt indicators"
-author: "Kalash Singhal"
 params:
   input: "~/Downloads/tilt/input"
   output: "~/Downloads/tilt/output"
