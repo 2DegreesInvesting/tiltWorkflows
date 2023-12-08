@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9007 (2023-12-08)
+
+* Parametrize the workflow tilt-profiles.Rmd (#14). This helps users pass their
+own data via a graphical user interface, without changing the code.
+
 # tiltWorkflows 0.0.0.9006 (2023-12-08)
 
 * The workflow "tilt profiles" is now reproducible with toy data (#6).
