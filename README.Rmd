@@ -35,9 +35,9 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 
 Run
 [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-to create a workflow file.
+to create a workflow file into your working directory.
 
-```r
+```{r}
 library(tiltWorkflows)
 
 use_workflow()
@@ -49,3 +49,8 @@ Parameters* to use your own data.
 <img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/21464b5a-cd5d-4189-9f92-7978acc13c1a width=150>
 
 Learn more about [using parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/using-parameters.html).
+
+```{r cleanup, echo=FALSE}
+unlink("tilt-profiles.Rmd")
+```
+

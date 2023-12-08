@@ -25,12 +25,16 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 
 Run
 [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-to create a workflow file.
+to create a workflow file into your working directory.
 
 ``` r
 library(tiltWorkflows)
+#> Loading required package: tiltIndicatorAfter
+#> Loading required package: tiltToyData
 
 use_workflow()
+#> ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'
+#> ✔ Writing 'tilt-profiles.Rmd'
 ```
 
 *Knit* the workflow file to render an example with toy data, or *Knit
