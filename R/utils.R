@@ -5,11 +5,30 @@
 #'   "vignettes/articles/tiltWorkflows.Rmd"
 #' )
 reuse_template <- function(from, to) {
-  child_name <- fs::path_file(from)
-  ops <- sprintf("child = system.file(package = 'tiltWorkflows', 'templates', '%s')", child_name)
-  chunk <- c(sprintf("```{r %s}", ops), "```")
   header <- header(readLines(from))
-  writeLines(c(header, "", chunk), to)
+
+  comment <- sprintf(
+    "<!-- Don't edit by hand. %s is generated with `reuse_template()`. -->",
+    to
+  )
+
+  child_name <- fs::path_file(from)
+  ops <- sprintf(
+    "child = system.file(package = 'tiltWorkflows', 'templates', '%s')",
+    child_name
+  )
+  chunk <- c(sprintf("```{r %s}", ops), "```")
+
+  writeLines(
+    c(
+      header,
+      "",
+      comment,
+      "",
+      chunk
+    ),
+    to
+  )
 }
 
 header <- function(x) {
