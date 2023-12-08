@@ -15,7 +15,7 @@ params:
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
-  isic_tilt: "isic_tilt.csv"
+  isic: "isic.csv"
 ---
 
 ```{r, include = FALSE}
@@ -90,7 +90,7 @@ ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
   ) |>
   distinct()
 
-isic_tilt <- path(params$input, params$isic_tilt) |> 
+isic_tilt <- path(params$input, params$isic) |> 
   read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
 ```
 
