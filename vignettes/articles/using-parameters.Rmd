@@ -1,0 +1,48 @@
+---
+title: "Using parameters"
+params: 
+  output: "~/Downloads/tilt/output"
+  file: "example.csv"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Computational documents may have parameters in their header that allow you to
+change the behavior of the document without changing its code.
+
+For example, consider this header:
+
+
+```{r echo=FALSE, comment=""}
+this_file <- fs::path(getwd(), "using-parameters.Rmd")
+writeLines(head(readLines(this_file), 6))
+```
+
+Each parameter is an element of the `params` list:
+
+```{r}
+params
+```
+
+Computational documents can use those parameters in many ways, for example, to
+create paths:
+
+```{r}
+file.path(params$output, params$file)
+```
+
+You can set your own parameters in RStudio. Open the document and click on "Knit
+with Parameters ...":
+
+<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/afcbe4ee-4ce2-4e0a-a095-0644e915a922 width=150>
+
+Change the defaults as you need then click on "Kint".
+
+<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/7255838b-f410-4c07-9938-2b94c15b18e3 width=500>
+
+Learn more about [parametrized computational documents](https://docs.posit.co/connect/user/param-rmarkdown/).
