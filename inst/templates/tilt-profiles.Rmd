@@ -52,7 +52,7 @@ read_csv_falling_back_to <- function(path, data) {
 
 # Create a folder to save results
 dir_create(tilt_path("output"))
-# Read data quietly and extend the width of printed datasets
+# Read data quietly, and extend the width of printed datasets
 options(readr.show_col_types = FALSE, width = 500)
 ```
 
