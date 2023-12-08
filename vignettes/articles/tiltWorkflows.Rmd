@@ -15,7 +15,7 @@ params:
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
-  isic_tilt: "isic_tilt.csv"
+  isic: "isic.csv"
 ---
 
 ```{r child = system.file(package = 'tiltWorkflows', 'templates', 'tilt-profiles.Rmd')}
