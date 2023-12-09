@@ -1,4 +1,4 @@
-#' Read a .csv but if it doesnt' exist fall back to another dataset
+#' Read a .csv but if it doesn't exist fall back to another dataset
 #'
 #' @param path Character. Path to a .csv file.
 #' @param data Data frame. An alternative dataset to fall back to if the `path`

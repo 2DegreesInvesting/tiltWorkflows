@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{read_csv_falling_back_to}
 \alias{read_csv_falling_back_to}
-\title{Read a .csv but if it doesnt' exist fall back to another dataset}
+\title{Read a .csv but if it doesn't exist fall back to another dataset}
 \usage{
 read_csv_falling_back_to(path, data)
 }
@@ -16,7 +16,7 @@ points to a file that doesn't exist.}
 A data frame.
 }
 \description{
-Read a .csv but if it doesnt' exist fall back to another dataset
+Read a .csv but if it doesn't exist fall back to another dataset
 }
 \examples{
 read_csv_falling_back_to("/inexistent/file.csv", head(cars))
