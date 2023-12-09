@@ -1,16 +1,3 @@
-#' Create a path under ~/Downwloads/tilt/
-#'
-#' @inherit fs::path_home
-#'
-#' @return Character. A path.
-#' @export
-#'
-#' @examples
-#' tilt_path()
-tilt_path <- function(...) {
-  path_home("Downloads", "tilt", ...)
-}
-
 #' Read a .csv but if it doesnt' exist fall back to another dataset
 #'
 #' @param path Character. Path to a .csv file.

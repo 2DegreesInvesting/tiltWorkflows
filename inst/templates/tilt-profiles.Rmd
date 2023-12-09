@@ -42,7 +42,7 @@ plan(multisession)
 # Read data quietly, extend the width of printed datasets
 options(readr.show_col_types = FALSE, width = 500)
 # Create a folder to save results
-dir_create(tilt_path("output"))
+dir_create(params$output)
 ```
 
 ## Data
@@ -236,7 +236,7 @@ sector_profile_upstream |>
 ## Results
 
 ```{r}
-dir_tree(tilt_path("output"))
+dir_tree(params$output)
 ```
 
 ## Cleanup
