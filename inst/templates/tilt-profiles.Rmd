@@ -177,7 +177,7 @@ sector_profile_any_scenarios <- path(params$input, params$sector_profile_any_sce
 
 # Create results at product and company level
 sector_profile <- sector_profile_companies |> 
-  profile_with(profile_sector,
+  profile_sector(
     sector_profile_any_scenarios,
     europages_companies = europages_companies,
     ecoinvent_activities = ecoinvent_activities,
