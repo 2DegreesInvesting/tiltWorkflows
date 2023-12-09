@@ -110,7 +110,7 @@ emissions_profile_products <- path(params$input, params$emissions_profile_produc
   read_csv_falling_back_to(read_csv(toy_emissions_profile_products()))
 
 emissions_profile <- emissions_profile_any_companies |> 
-  profile_with(profile_emissions,
+  profile_emissions(
     co2 = emissions_profile_products,
     europages_companies = europages_companies,
     ecoinvent_activities = ecoinvent_activities,
