@@ -197,7 +197,7 @@ sector_profile_upstream_products <- path(params$input, params$sector_profile_ups
 
 # Create results at product and company level
 sector_profile_upstream <- sector_profile_upstream_companies |>
-  profile_with(profile_sector_upstream,
+  partial_pmap_by_chunks(profile_sector_upstream,
     sector_profile_any_scenarios,
     sector_profile_upstream_products,
     europages_companies = europages_companies,

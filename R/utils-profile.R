@@ -1,47 +1,13 @@
-profile <- function(companies, .f, ..., .by, chunks) {
-  job <- companies |>
+pmap_by_chunks <- function(data, .f, ..., .by, chunks) {
+  job <- data |>
     nest_chunk(.by = .by, chunks = chunks) |>
     add_file(parent = cache_path(deparse(substitute(.f))))
 
   job |>
     job_pmap(\(data, file) .f(data, ...) |> write_rds(file))
 }
-#' Run a `profile*()` function by chunks
-#'
-#' @param companies Data frame.
-#' @param .f A `profile*()` function from tiltIndicatorAfter.
-#' @param ... Arguments passed to `.f`.
-#' @param .by Character. Columns to chunk by.
-#' @param chunks Integer. Number of chunks to split the data by.
-#'
-#' @return A nested data frame with results at product and company level.
-#' @export
-#' @keywords internal
-#'
-#' @examples
-#' library(tiltToyData)
-#' library(readr, warn.conflicts = FALSE)
-#'
-#' options(readr.show_col_types = FALSE)
-#'
-#' companies <- read_csv(toy_emissions_profile_any_companies())
-#' products <- read_csv(toy_emissions_profile_products())
-#'
-#' result <- companies |>
-#'   profile_with(profile_emissions,
-#'     products,
-#'     # TODO: Move to tiltToyData
-#'     europages_companies = tiltIndicatorAfter::ep_companies,
-#'     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-#'     ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-#'     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-#'   )
-#'
-#' result |> unnest_product()
-#'
-#' result |> unnest_company()
-profile_with <- purrr::partial(
-  profile,
+partial_pmap_by_chunks <- purrr::partial(
+  pmap_by_chunks,
   .by = "companies_id",
   chunks = getOption("tiltWorkflow.chunks", default = length(availableWorkers()))
 )

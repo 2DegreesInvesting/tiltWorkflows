@@ -10,7 +10,7 @@ profile_emissions <- function(companies,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
   companies |>
-    profile_with(tiltIndicatorAfter::profile_emissions,
+    partial_pmap_by_chunks(tiltIndicatorAfter::profile_emissions,
       co2 = co2,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
@@ -34,7 +34,7 @@ profile_emissions_upstream <- function(companies,
                                        low_threshold = 1 / 3,
                                        high_threshold = 2 / 3) {
   companies |>
-    profile_with(tiltIndicatorAfter::profile_emissions_upstream,
+    partial_pmap_by_chunks(tiltIndicatorAfter::profile_emissions_upstream,
       co2 = co2,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
@@ -58,7 +58,7 @@ profile_sector <- function(companies,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   companies |>
-    profile_with(tiltIndicatorAfter::profile_sector,
+    partial_pmap_by_chunks(tiltIndicatorAfter::profile_sector,
       scenarios = scenarios,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
@@ -83,7 +83,7 @@ profile_sector_upstream <- function(companies,
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   companies |>
-    profile_with(tiltIndicatorAfter::profile_sector_upstream,
+    partial_pmap_by_chunks(tiltIndicatorAfter::profile_sector_upstream,
       scenarios = scenarios,
       inputs = inputs,
       europages_companies = europages_companies,
