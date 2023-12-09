@@ -2,7 +2,7 @@
 % Please edit documentation in R/profile.R
 \name{profile_sector}
 \alias{profile_sector}
-\title{Profile emissions and upstream emissions}
+\title{Profile sector and upstream sector}
 \usage{
 profile_sector(
   companies,
@@ -43,17 +43,17 @@ library(readr, warn.conflicts = FALSE)
 
 options(readr.show_col_types = FALSE)
 
-companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
+companies <- read_csv(toy_sector_profile_companies())
+scenarios <- read_csv(toy_sector_profile_any_scenarios())
 
-result <- profile_emissions(
+result <- profile_sector(
   companies,
-  products,
+  scenarios,
   # TODO: Move to tiltToyData
-  europages_companies = tiltIndicatorAfter::ep_companies,
-  ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-  ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-  isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  europages_companies = ep_companies |> head(3),
+  ecoinvent_activities = ecoinvent_activities |> head(3),
+  ecoinvent_europages = matches_mapper |> head(3),
+  isic_tilt = isic_tilt_mapper |> head(3)
 )
 
 result |> unnest_product()
@@ -62,17 +62,21 @@ result |> unnest_company()
 
 
 
-inputs <- read_csv(toy_emissions_profile_upstream_products())
+companies <- read_csv(toy_sector_profile_upstream_companies())
+scenarios <- read_csv(toy_sector_profile_any_scenarios())
+inputs <- read_csv(toy_sector_profile_upstream_products())
+ecoinvent_inputs <- ecoinvent_inputs |> head(3)
 
-result <- profile_emissions_upstream(
+result <- profile_sector_upstream(
   companies,
+  scenarios,
   inputs,
   # TODO: Move to tiltToyData
-  europages_companies = tiltIndicatorAfter::ep_companies,
-  ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-  ecoinvent_inputs = tiltIndicatorAfter::ecoinvent_inputs,
-  ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-  isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  europages_companies = ep_companies |> head(3),
+  ecoinvent_activities = ecoinvent_activities |> head(3),
+  ecoinvent_inputs = ecoinvent_inputs |> head(3),
+  ecoinvent_europages = matches_mapper |> head(3),
+  isic_tilt = isic_tilt_mapper |> head(3)
 )
 
 result |> unnest_product()
@@ -81,6 +85,6 @@ result |> unnest_company()
 }
 \seealso{
 Other top-level functions: 
-\code{\link[tiltIndicatorAfter]{profile_sector}()}
+\code{\link[tiltIndicatorAfter]{profile_emissions}()}
 }
 \keyword{internal}

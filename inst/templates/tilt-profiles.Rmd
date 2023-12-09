@@ -37,20 +37,6 @@ library(future)
 library(fs)
 library(tiltWorkflows)
 
-# Create a path under ~/Downwloads/tilt/
-tilt_path <- function(...) {
-  path_home("Downloads", "tilt", ...)
-}
-# Read a .csv but if it doesnt' exist fall back to another dataset
-read_csv_falling_back_to <- function(path, data) {
-  if (file_exists(path)) {
-    read_csv(path)
-  } else {
-    warning("Using ", deparse(substitute(data)), call. = FALSE)
-    data
-  }
-}
-
 # Enable computing over multiple workers in parallel
 plan(multisession)
 # Read data quietly, extend the width of printed datasets
