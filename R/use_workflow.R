@@ -13,7 +13,7 @@
 #' workflows()
 #'
 #' \dontrun{
-#' # Note: Running this will write "profile.Rmd" to your working directory
+#' # Note: Running this will write "profile_emissions.Rmd" to your working directory
 #' use_workflow("profile_emissions.Rmd")
 #' }
 use_workflow <- function(template, save_as = template, open = FALSE) {
