@@ -1,4 +1,4 @@
 .Rproj.user
 docs
-inst/templates/profiles.html
-inst/templates/tiltWorkflows.html
+vignettes/articles/*.html
+inst/templates/*.html
