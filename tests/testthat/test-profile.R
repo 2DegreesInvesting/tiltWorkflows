@@ -27,7 +27,12 @@ test_that("outputs the same as tiltIndicatorAfter", {
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
     ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-  )
+  ) |>
+    # FIXME: Suppressing
+    # Attaching package: 'purrr'
+    # The following object is masked from 'package:testthat':
+    # is_null
+    suppressMessages()
 
   expect_equal(masked, original)
 })
