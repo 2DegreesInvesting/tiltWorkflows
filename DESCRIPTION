@@ -28,7 +28,7 @@ Imports:
 Suggests: 
     devtools,
     future,
-    testthat (>= 3.0.0),
+    testthat,
     withr
 Remotes: 
     2DegreesInvesting/tiltIndicatorAfter,
