@@ -1,0 +1,5 @@
+## Results
+
+```{r}
+params$output |> dir_tree()
+```
