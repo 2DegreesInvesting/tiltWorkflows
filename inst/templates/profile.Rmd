@@ -1,5 +1,5 @@
 ---
-title: "Running tilt profiles (by chunks)"
+title: "Run all `profile*()` functions"
 params:
   input: "~/Downloads/tilt/input"
   output: "~/Downloads/tilt/output"
