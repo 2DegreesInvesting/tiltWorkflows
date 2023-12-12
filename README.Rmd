@@ -33,13 +33,19 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 
 ## Example
 
+```{r message=FALSE}
+library(tiltWorkflows)
+```
+
 Run [`workflows()` and
 `use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
 to see available workflows and then create a workflow file into your working
 directory.
 
 ```{r}
-tiltWorkflows::use_workflow("profile_emissions.Rmd")
+workflows()
+
+use_workflow("profile_emissions.Rmd")
 ```
 
 *Knit* the workflow file to render an example with toy data, or *Knit with
