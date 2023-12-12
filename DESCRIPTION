@@ -16,7 +16,12 @@ Depends:
     tiltIndicatorAfter,
     tiltToyData (>= 0.0.0.9005)
 Imports: 
+    dchunkr (>= 0.0.0.9000),
+    dplyr,
     fs,
+    furrr,
+    purrr,
+    rappdirs,
     readr,
     tibble,
     usethis
@@ -27,7 +32,8 @@ Suggests:
     withr
 Remotes: 
     2DegreesInvesting/tiltIndicatorAfter,
-    2DegreesInvesting/tiltToyData
+    2DegreesInvesting/tiltToyData,
+    maurolepore/dchunkr
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
