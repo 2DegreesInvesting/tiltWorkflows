@@ -245,8 +245,8 @@ For efficiency this workflow cached intermediate results. This saves time and
 allows you to resume partial runs after interruptions. But if want to recompute
 your results you must first delete the cache directory.
 
-```{r eval=dir_exists(user_cache_dir("chunks"))}
-user_cache_dir("chunks") |> dir_tree()
+```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
+user_cache_dir("tiltWorkflows") |> dir_tree()
 
-user_cache_dir("chunks") |> dir_delete()
+user_cache_dir("tiltWorkflows") |> dir_delete()
 ```
