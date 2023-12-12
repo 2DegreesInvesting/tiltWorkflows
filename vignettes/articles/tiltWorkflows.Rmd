@@ -39,6 +39,7 @@ library(readr, warn.conflicts = FALSE)
 library(rappdirs)
 library(future)
 library(fs)
+# Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
 library(tiltWorkflows)
 
 options(
