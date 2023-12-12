@@ -9,12 +9,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Note: Running this will write "tilt-profiles.Rmd" to your working directory
+#' # Note: Running this will write "profiles.Rmd" to your working directory
 #' use_workflow()
 #' # Same
-#' use_workflow("tilt-profiles.Rmd")
+#' use_workflow("profiles.Rmd")
 #' }
-use_workflow <- function(template = "tilt-profiles.Rmd",
+use_workflow <- function(template = "profiles.Rmd",
                          save_as = template,
                          open = FALSE) {
   usethis::use_template(

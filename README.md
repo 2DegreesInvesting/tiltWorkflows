@@ -31,10 +31,16 @@ to create a workflow file into your working directory.
 library(tiltWorkflows)
 #> Loading required package: tiltIndicatorAfter
 #> Loading required package: tiltToyData
+#> 
+#> Attaching package: 'tiltWorkflows'
+#> The following objects are masked from 'package:tiltIndicatorAfter':
+#> 
+#>     profile_emissions, profile_emissions_upstream, profile_sector,
+#>     profile_sector_upstream
 
 use_workflow()
 #> ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'
-#> ✔ Writing 'tilt-profiles.Rmd'
+#> ✔ Writing 'profile.Rmd'
 ```
 
 *Knit* the workflow file to render an example with toy data, or *Knit
