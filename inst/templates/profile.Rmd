@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This workflow creates the output of for all `profile*()` functions in chunks of
+This workflow creates the output of all `profile*()` functions in chunks of
 data, to save memory and time, and using a cache to help you resume after
 interruptions.
 
