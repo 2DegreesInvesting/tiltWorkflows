@@ -7,12 +7,10 @@
 #' @return A logical vector indicating if file was modified.
 #' @export
 #'
-#' @examples
+#' @examplesIf interactive()
 #' \dontrun{
 #' # Note: Running this will write "profile.Rmd" to your working directory
 #' use_workflow()
-#' # Same
-#' use_workflow("profile.Rmd")
 #' }
 use_workflow <- function(template = "profile.Rmd",
                          save_as = template,

@@ -23,10 +23,10 @@ A logical vector indicating if file was modified.
 Creates a workflow file from a template in the tiltWorkflows package.
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \dontrun{
 # Note: Running this will write "profile.Rmd" to your working directory
 use_workflow()
-# Same
-use_workflow("profile.Rmd")
 }
+\dontshow{\}) # examplesIf}
 }
