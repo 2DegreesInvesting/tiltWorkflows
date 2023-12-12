@@ -16,11 +16,13 @@ Depends:
     tiltIndicatorAfter,
     tiltToyData (>= 0.0.0.9005)
 Imports: 
-    usethis
-Suggests: 
-    dplyr,
     fs,
     readr,
+    tibble,
+    usethis
+Suggests: 
+    devtools,
+    future,
     testthat (>= 3.0.0),
     withr
 Remotes: 
