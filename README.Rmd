@@ -51,6 +51,6 @@ Parameters* to use your own data.
 Learn more about [using parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/using-parameters.html).
 
 ```{r cleanup, echo=FALSE}
-unlink("profiles.Rmd")
+unlink("profile.Rmd")
 ```
 

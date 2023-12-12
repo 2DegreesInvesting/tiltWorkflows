@@ -3,7 +3,7 @@ test_that("defaults to tiltWorkflows.Rmd", {
 
   create_local_project()
   suppressMessages(use_workflow())
-  expect_true(file.exists("profiles.Rmd"))
+  expect_true(file.exists("profile.Rmd"))
 })
 
 test_that("is sensitive to `save_as`", {
