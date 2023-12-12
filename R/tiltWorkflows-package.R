@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom fs file_exists
+#' @importFrom fs path
 #' @importFrom readr read_csv
 #' @importFrom readr write_csv
 #' @importFrom tibble tibble
