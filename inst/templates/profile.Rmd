@@ -50,6 +50,7 @@ options(
   # Make printed output wider
   width = 500
 )
+
 # Enable computing over multiple workers in parallel
 plan(multisession)
 # Create a folder to save results

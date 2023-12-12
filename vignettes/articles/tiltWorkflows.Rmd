@@ -43,13 +43,14 @@ library(tiltWorkflows)
 
 options(
   # Split data in chunks to save memory. 
-  # TODO: Experiment with different numbers
+  # TODO: Modify the parameter to try different numbers, e.g. 3, 30, 300 ...
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
   readr.show_col_types = FALSE,
   # Make printed output wider
   width = 500
 )
+
 # Enable computing over multiple workers in parallel
 plan(multisession)
 # Create a folder to save results
