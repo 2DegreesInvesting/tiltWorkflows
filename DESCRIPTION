@@ -17,6 +17,8 @@ Depends:
     tiltToyData (>= 0.0.0.9005)
 Imports: 
     fs,
+    readr,
+    tibble,
     usethis
 Suggests: 
     devtools,
