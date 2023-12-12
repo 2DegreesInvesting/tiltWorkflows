@@ -34,21 +34,6 @@ library(readr, warn.conflicts = FALSE)
 library(fs)
 library(tiltWorkflows)
 
-# Helpers
-# Creates a path under ~/Downloads/tilt/
-tilt_path <- function(...) {
-  path_home("Downloads", "tilt", ...)
-}
-# Tries to read a .csv, but if it doesn't exist it returns another dataset
-read_csv_falling_back_to <- function(path, data) {
-  if (file_exists(path)) {
-    read_csv(path)
-  } else {
-    warning("Using ", deparse(substitute(data)), call. = FALSE)
-    data
-  }
-}
-
 # Create a folder to save results
 dir_create(tilt_path("output"))
 # Read data quietly, and extend the width of printed datasets
