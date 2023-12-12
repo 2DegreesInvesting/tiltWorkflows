@@ -16,8 +16,6 @@ params:
   ecoinvent_europages: "ecoinvent_europages.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
   isic: "isic.csv"
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}

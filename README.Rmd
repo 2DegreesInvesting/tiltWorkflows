@@ -38,9 +38,7 @@ Run
 to create a workflow file into your working directory.
 
 ```{r}
-library(tiltWorkflows)
-
-use_workflow()
+tiltWorkflows::use_workflow("profile.Rmd")
 ```
 
 *Knit* the workflow file to render an example with toy data, or *Knit with
