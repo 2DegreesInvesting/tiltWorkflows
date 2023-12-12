@@ -4,7 +4,7 @@
 \alias{use_workflow}
 \title{Use a workflow file}
 \usage{
-use_workflow(template = "tilt-profiles.Rmd", save_as = template, open = FALSE)
+use_workflow(template = "profile.Rmd", save_as = template, open = FALSE)
 }
 \arguments{
 \item{template}{Path to template file relative to \verb{templates/} directory
@@ -23,10 +23,10 @@ A logical vector indicating if file was modified.
 Creates a workflow file from a template in the tiltWorkflows package.
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \dontrun{
-# Note: Running this will write "tilt-profiles.Rmd" to your working directory
+# Note: Running this will write "profile.Rmd" to your working directory
 use_workflow()
-# Same
-use_workflow("tilt-profiles.Rmd")
 }
+\dontshow{\}) # examplesIf}
 }
