@@ -1,0 +1,20 @@
+## Cleanup
+
+For efficiency this workflow cached intermediate results. This saves time and
+allows you to resume partial runs after interruptions. 
+
+```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
+# NOTE: If you run other workflows (as I did), this shows the cache for all
+dir_tree(user_cache_dir("tiltWorkflows"))
+```
+
+But if want to recompute your results you must first delete the cache directory
+with something like this:
+
+```r
+library(fs)
+library(rappdirs)
+
+dir_delete(user_cache_dir("tiltWorkflows/PROFILE-DIRECTORY-YOU-WANT-TO-DELETE"))
+```
+

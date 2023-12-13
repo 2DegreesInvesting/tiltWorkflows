@@ -1,0 +1,155 @@
+---
+title: "Run profile_emissions()"
+params:
+  chunks: 3
+  input: "~/Downloads/tilt/input"
+  output: "~/Downloads/tilt/output"
+  emissions_profile_any_companies: "emissions_profile_any_companies.csv"
+  emissions_profile_products: "emissions_profile_products.csv"
+  europages_companies: "europages_companies.csv"
+  ecoinvent_activities: "ecoinvent_activities.csv"
+  ecoinvent_europages: "ecoinvent_europages.csv"
+  ecoinvent_inputs: "ecoinvent_inputs.csv"
+  isic: "isic.csv"
+---
+
+
+<!-- This file is generated from inst/extdata. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This workflow runs in chunks of the `*companies` data and caches intermediate
+results. This saves memory, completes faster, and allows you to resume after
+interruptions.
+
+## Setup
+
+```{r global}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(rappdirs)
+library(future)
+library(fs)
+# Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
+library(tiltWorkflows)
+
+options(
+  # Split data in chunks to save memory. 
+  # TODO: Modify the parameter to try different numbers, e.g. 3, 30, 300 ...
+  tiltWorkflows.chunks = params$chunks,
+  # Read data quietly
+  readr.show_col_types = FALSE,
+  # Make printed output wider
+  width = 500
+)
+
+# Enable computing over multiple workers in parallel
+plan(multisession)
+# Create a folder to save results
+dir_create(params$output)
+```
+## Data
+
+This example defaults to using toy datasets but you may [use the
+parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)
+of this file to instead use your own data.
+
+```{r}
+europages_companies <- path(params$input, params$europages_companies) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::ep_companies) |>
+  # FIXME: Move to `profile_*()`
+  select(
+    "company_name",
+    "country",
+    "company_city",
+    "postcode",
+    "address",
+    "main_activity",
+    "companies_id"
+  )
+
+ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_activities)
+
+ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::matches_mapper)
+
+ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
+  # FIXME: Move to `profile_*()`
+  select(
+    "input_activity_uuid_product_uuid",
+    "exchange_name",
+    "exchange_unit_name"
+  ) |>
+  distinct()
+
+isic <- path(params$input, params$isic) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
+```
+## Emissions profile
+
+```{r}
+# Load data specific to this indicator
+emissions_profile_any_companies <- path(params$input, params$emissions_profile_any_companies) |>
+  read_csv_falling_back_to(read_csv(toy_emissions_profile_any_companies()))
+
+# FIXME User toy_emissions_profile_products_ecoinvent()
+# See https://github.com/2DegreesInvesting/tiltToyData/pull/12
+# https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
+emissions_profile_products <- path(params$input, params$emissions_profile_products) |>
+  read_csv_falling_back_to(read_csv(toy_emissions_profile_products()))
+
+emissions_profile <- profile_emissions(
+  companies = emissions_profile_any_companies,
+  co2 = emissions_profile_products,
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_europages = ecoinvent_europages,
+  isic = isic,
+  low_threshold = 1 / 3,
+  high_threshold = 2 / 3
+)
+
+emissions_profile |>
+  unnest_product() |>
+  write_csv(path(params$output, "emissions_profile_at_product_level.csv")) |>
+  print()
+
+emissions_profile |>
+  unnest_company() |>
+  write_csv(path(params$output, "emissions_profile_at_company_level.csv")) |>
+  print()
+```
+## Results
+
+```{r}
+# NOTE: If you run other workflows (as I did), this shows all results
+params$output |> dir_tree()
+```
+
+## Cleanup
+
+For efficiency this workflow cached intermediate results. This saves time and
+allows you to resume partial runs after interruptions. 
+
+```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
+# NOTE: If you run other workflows (as I did), this shows the cache for all
+dir_tree(user_cache_dir("tiltWorkflows"))
+```
+
+But if want to recompute your results you must first delete the cache directory
+with something like this:
+
+```r
+library(fs)
+library(rappdirs)
+
+dir_delete(user_cache_dir("tiltWorkflows/PROFILE-DIRECTORY-YOU-WANT-TO-DELETE"))
+```
+

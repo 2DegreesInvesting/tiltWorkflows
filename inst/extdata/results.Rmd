@@ -1,0 +1,7 @@
+## Results
+
+```{r}
+# NOTE: If you run other workflows (as I did), this shows all results
+params$output |> dir_tree()
+```
+
