@@ -9,8 +9,9 @@ params:
   europages_companies: "europages_companies.csv"
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
-  ecoinvent_inputs: "ecoinvent_inputs.csv"
   isic: "isic.csv"
+  low_threshold: 1/3
+  high_threshold: 2/3
 ---
 
 
@@ -78,16 +79,6 @@ ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
 
 ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
   read_csv_falling_back_to(tiltIndicatorAfter::matches_mapper)
-
-ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
-  # FIXME: Move to `profile_*()`
-  select(
-    "input_activity_uuid_product_uuid",
-    "exchange_name",
-    "exchange_unit_name"
-  ) |>
-  distinct()
 
 isic <- path(params$input, params$isic) |>
   read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)

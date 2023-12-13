@@ -21,7 +21,7 @@ library(fs)
 library(tiltWorkflows)
 
 options(
-  # Split data in chunks to save memory. 
+  # Split data in chunks to save memory.
   # TODO: Modify the parameter to try different numbers, e.g. 3, 30, 300 ...
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
