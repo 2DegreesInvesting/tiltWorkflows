@@ -2,3 +2,4 @@
 docs
 vignettes/articles/*.html
 inst/templates/*.html
+inst/extdata/*.html

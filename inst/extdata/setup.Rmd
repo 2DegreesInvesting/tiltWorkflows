@@ -1,0 +1,37 @@
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This workflow runs in chunks of the `*companies` data and caches intermediate
+results. This saves memory, completes faster, and allows you to resume after
+interruptions.
+
+## Setup
+
+```{r global}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(rappdirs)
+library(future)
+library(fs)
+# Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
+library(tiltWorkflows)
+
+options(
+  # Split data in chunks to save memory. 
+  # TODO: Modify the parameter to try different numbers, e.g. 3, 30, 300 ...
+  tiltWorkflows.chunks = params$chunks,
+  # Read data quietly
+  readr.show_col_types = FALSE,
+  # Make printed output wider
+  width = 500
+)
+
+# Enable computing over multiple workers in parallel
+plan(multisession)
+# Create a folder to save results
+dir_create(params$output)
+```
