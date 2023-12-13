@@ -5,9 +5,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-This workflow runs in chunks of the `*companies`
-data, to save memory and time, and using a cache to help you resume after
-interruptions.
+This workflow runs in chunks of the `*companies` data to save memory and time.
+Also it caches intermediate results to help you resume after interruptions.
 
 ## Setup
 
