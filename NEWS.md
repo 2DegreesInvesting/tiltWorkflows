@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9008 (2023-12-13)
+
+* Workflows are now split by indicator, and run by chunks (#20). The split by
+indicator allows the user more granular control over what they want to run. And
+the computations by chunk run in parallel and caching intermediate results, so
+the process completes faster, saves memory, and allows resuming after
+interruptions.
+
 # tiltWorkflows 0.0.0.9007 (2023-12-08)
 
 * Parametrize the workflow tilt-profiles.Rmd (#14). This helps users pass their
