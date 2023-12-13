@@ -4,8 +4,8 @@ params:
   chunks: 3
   input: "~/Downloads/tilt/input"
   output: "~/Downloads/tilt/output"
-  sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   sector_profile_companies: "sector_profile_companies.csv"
+  sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   europages_companies: "europages_companies.csv"
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
