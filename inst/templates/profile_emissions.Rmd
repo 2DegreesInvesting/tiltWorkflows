@@ -129,7 +129,7 @@ emissions_profile |>
 ## Results
 
 ```{r}
-# NOTE: If you run other workflows (as I did), this shows all results
+# NOTE: If other workflows run before this one, this shows the results of all
 params$output |> dir_tree()
 ```
 
@@ -138,7 +138,7 @@ params$output |> dir_tree()
 Here is the cache that allows you to resume after interruptions.
 
 ```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
-# NOTE: If you run other workflows (as I did), this shows the cache for all
+# NOTE: If other workflows run before this one, this shows the cache of all
 dir_tree(user_cache_dir("tiltWorkflows"))
 ```
 
