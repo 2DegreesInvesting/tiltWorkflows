@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9009 (2023-12-13)
+
+* `use_workflow()` now automatically opens the workflow file in interactive
+sessions (#21).
+
 # tiltWorkflows 0.0.0.9008 (2023-12-13)
 
 * Workflows are now split by indicator, and run by chunks (#20). The split by
