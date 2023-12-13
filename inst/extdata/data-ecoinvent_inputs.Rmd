@@ -1,0 +1,13 @@
+
+```{r}
+ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
+  # FIXME: Move to `profile_*()`
+  select(
+    "input_activity_uuid_product_uuid",
+    "exchange_name",
+    "exchange_unit_name"
+  ) |>
+  distinct()
+```
+

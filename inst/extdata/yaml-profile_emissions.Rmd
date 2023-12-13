@@ -9,7 +9,6 @@ params:
   europages_companies: "europages_companies.csv"
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
-  ecoinvent_inputs: "ecoinvent_inputs.csv"
   isic: "isic.csv"
 ---
 
