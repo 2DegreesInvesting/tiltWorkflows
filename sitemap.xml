@@ -13,10 +13,19 @@
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/using-parameters.html</loc>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions_upstream.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_sector.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_sector_upstream.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/authors.html</loc>
@@ -32,6 +41,18 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_emissions.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_emissions_upstream.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_sector.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_sector_upstream.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/read_csv_falling_back_to.html</loc>
