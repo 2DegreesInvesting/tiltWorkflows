@@ -9,8 +9,8 @@ params:
   sector_profile_upstream_products: "sector_profile_upstream_products.csv"
   europages_companies: "europages_companies.csv"
   ecoinvent_activities: "ecoinvent_activities.csv"
-  ecoinvent_europages: "ecoinvent_europages.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
+  ecoinvent_europages: "ecoinvent_europages.csv"
   isic: "isic.csv"
 ---
 
@@ -39,7 +39,7 @@ library(fs)
 library(tiltWorkflows)
 
 options(
-  # Split data in chunks to save memory. 
+  # Split data in chunks to save memory.
   # TODO: Modify the parameter to try different numbers, e.g. 3, 30, 300 ...
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
@@ -79,6 +79,11 @@ ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
 ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
   read_csv_falling_back_to(tiltIndicatorAfter::matches_mapper)
 
+isic <- path(params$input, params$isic) |>
+  read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
+```
+
+```{r}
 ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
   read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
   # FIXME: Move to `profile_*()`
@@ -88,10 +93,8 @@ ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
     "exchange_unit_name"
   ) |>
   distinct()
-
-isic <- path(params$input, params$isic) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
 ```
+
 ## Sector profile upstream
 
 ```{r}

@@ -25,7 +25,7 @@ extdata_to_template_impl <- function(profile = profiles(), ext = ".Rmd") {
     yaml = extdata_path(paste0("yaml", "-profile_", profile, ext)),
     note = note_tempfile(),
     setup = extdata_path(paste0("setup", ext)),
-    data = extdata_path(paste0("data", ext)),
+    data = data_path(profile, ext),
     code = extdata_path(paste0("code", "-profile_", profile, ext)),
     results = extdata_path(paste0("results", ext)),
     cleanup = extdata_path(paste0("cleanup", ext))
@@ -37,6 +37,18 @@ extdata_to_template_impl <- function(profile = profiles(), ext = ".Rmd") {
     unlist() |>
     unname() |>
     writeLines(file)
+}
+
+data_path <- function(profile, ext) {
+  data <- extdata_path(paste0("data", ext))
+  if (!grepl("upstream", profile)) {
+    data
+  } else {
+    c(
+      data,
+      extdata_path(paste0("data-ecoinvent_inputs", ext))
+    )
+  }
 }
 
 extdata_path <- function(...) {
