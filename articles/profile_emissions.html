@@ -153,17 +153,6 @@ the parameters</a> of this file to instead use your own data.</p>
 <span>  <span class="fu"><a href="../reference/read_csv_falling_back_to.html">read_csv_falling_back_to</a></span><span class="op">(</span><span class="fu">tiltIndicatorAfter</span><span class="fu">::</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/matches_mapper.html" class="external-link">matches_mapper</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Using tiltIndicatorAfter::matches_mapper</span></span>
 <span></span>
-<span><span class="va">ecoinvent_inputs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">ecoinvent_inputs</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/read_csv_falling_back_to.html">read_csv_falling_back_to</a></span><span class="op">(</span><span class="fu">tiltIndicatorAfter</span><span class="fu">::</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/ecoinvent_inputs.html" class="external-link">ecoinvent_inputs</a></span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># FIXME: Move to `profile_*()`</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
-<span>    <span class="st">"input_activity_uuid_product_uuid"</span>,</span>
-<span>    <span class="st">"exchange_name"</span>,</span>
-<span>    <span class="st">"exchange_unit_name"</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Using tiltIndicatorAfter::ecoinvent_inputs</span></span>
-<span></span>
 <span><span class="va">isic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">isic</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/read_csv_falling_back_to.html">read_csv_falling_back_to</a></span><span class="op">(</span><span class="fu">tiltIndicatorAfter</span><span class="fu">::</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/isic_tilt_mapper.html" class="external-link">isic_tilt_mapper</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Using tiltIndicatorAfter::isic_tilt_mapper</span></span></code></pre></div>
