@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9011 (2023-12-14)
+
+* `use_workflow()` with no `template` now throws a helpful error message that
+makes `workflows()` unnecessary (#39). Thus, `workflow()` becomes internal and
+is retired from the public API without deprecation since this package is still
+experimental and has no users.
+
 # tiltWorkflows 0.0.0.9010 (2023-12-14)
 
 * The workflow files now output a `github_document` (#30). This makes it easy for
