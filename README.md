@@ -12,6 +12,16 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 The goal of tiltWorkflows is to make it easy to run tilt workflows.
 
+Main features:
+
+- Easily access any workflow file.
+- Easily access toy inputs to try any workflow.
+- Use your own data without writing code.
+- Easily share a reproducible report on GitHub.
+- Run large datasets that normally saturate your computer’s memory.
+- Run faster than normal by running multiple chunks of data in parallel.
+- Resume after interruptions without recomputing completed chunks.
+
 ## Installation
 
 You can install the development version of tiltWorkflows like so:
