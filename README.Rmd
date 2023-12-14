@@ -37,16 +37,14 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 library(tiltWorkflows)
 ```
 
-* [`workflows()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html) shows available workflows.
+* Run
+[`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
+to create a workflow file into your working directory.
 
-```{r}
-workflows()
-```
+```{r error=TRUE}
+# Trigger an error to see what's available
+use_workflow()
 
-* [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html) Create a workflow file into your working
-directory.
-
-```{r}
 use_workflow("profile_emissions.Rmd")
 ```
 

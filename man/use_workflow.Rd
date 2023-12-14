@@ -2,12 +2,9 @@
 % Please edit documentation in R/use_workflow.R
 \name{use_workflow}
 \alias{use_workflow}
-\alias{workflows}
-\title{List and use workflows}
+\title{Create a workflow file in the working directory}
 \usage{
 use_workflow(template, save_as = template, open = rlang::is_interactive())
-
-workflows()
 }
 \arguments{
 \item{template}{Path to template file relative to \verb{templates/} directory
@@ -24,13 +21,13 @@ A logical vector indicating if file was modified.
 }
 \description{
 \itemize{
-\item \code{workflows()} lists available workflows.
 \item \code{use_workflow()} creates a workflow file from a template in the tiltWorkflows
 package.
 }
 }
 \examples{
-workflows()
+# Trigger an error to see what's available
+try(use_workflow())
 
 \dontrun{
 # Note: Running this will write "profile_emissions.Rmd" to your working directory

@@ -27,19 +27,21 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 library(tiltWorkflows)
 ```
 
-- [`workflows()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-  shows available workflows.
+- Run
+  [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
+  to create a workflow file into your working directory.
 
 ``` r
-workflows()
-#> [1] "profile_emissions_upstream.Rmd" "profile_emissions.Rmd"         
-#> [3] "profile_sector_upstream.Rmd"    "profile_sector.Rmd"
-```
+# Trigger an error to see what's available
+use_workflow()
+#> Error in `use_workflow()`:
+#> ! ✖ The workflow file must be provided.
+#> ℹ Which one do you want?
+#> * `use_workflow("profile_emissions_upstream.Rmd")`
+#> * `use_workflow("profile_emissions.Rmd")`
+#> * `use_workflow("profile_sector_upstream.Rmd")`
+#> * `use_workflow("profile_sector.Rmd")`
 
-- [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-  Create a workflow file into your working directory.
-
-``` r
 use_workflow("profile_emissions.Rmd")
 #> ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'
 #> ✔ Writing 'profile_emissions.Rmd'

@@ -15,6 +15,6 @@ test_that("is sensitive to `save_as`", {
   expect_true(file.exists(file))
 })
 
-test_that("without a workflow errors gracefully", {
+test_that("a missing template yields a helpful error", {
   expect_snapshot_error(use_workflow())
 })
