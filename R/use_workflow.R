@@ -8,14 +8,12 @@
 #' @return A logical vector indicating if file was modified.
 #' @export
 #'
-#' @examples
+#' @examplesIf interactive()
 #' # The error shows what's available
 #' try(use_workflow())
 #'
-#' \dontrun{
 #' # Note: Running this will write "profile_emissions.Rmd" to your working directory
 #' use_workflow("profile_emissions.Rmd")
-#' }
 use_workflow <- function(template,
                          save_as = template,
                          open = rlang::is_interactive()) {
