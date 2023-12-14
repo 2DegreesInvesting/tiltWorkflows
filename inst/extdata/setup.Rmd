@@ -33,15 +33,28 @@ options(
 # Enable computing over multiple workers in parallel
 plan(multisession)
 
+# If there is no folder for inputs, create the input/ with toy datasets
+if (!dir_exists(params$input)) use_toy_input()
+
 # Create a folder to save results
 dir_create(params$output)
 ```
 
-Reproducibility.
+<details>
+
+<summary>Reproducibility</summary>
 
 ```{r}
+getwd()
+
 params
 
-if (dir_exists(params$input)) dir_info(params$input) else warning("No input/")
+try(dir_tree(params$input))
+
+dir_tree(params$output)
+
+sessioninfo::session_info()
 ```
+
+</details>
 

@@ -3,8 +3,8 @@ title: "Run profile_emissions()"
 output: github_document
 params:
   chunks: 3
-  input: "~/Downloads/tilt/input"
-  output: "~/Downloads/tilt/output"
+  input: "input"
+  output: "output"
   emissions_profile_any_companies: "emissions_profile_any_companies.csv"
   emissions_profile_products: "emissions_profile_products.csv"
   europages_companies: "europages_companies.csv"

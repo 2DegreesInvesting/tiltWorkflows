@@ -3,8 +3,8 @@ title: "Run profile_sector()"
 output: github_document
 params:
   chunks: 3
-  input: "~/Downloads/tilt/input"
-  output: "~/Downloads/tilt/output"
+  input: "input"
+  output: "output"
   sector_profile_companies: "sector_profile_companies.csv"
   sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   europages_companies: "europages_companies.csv"

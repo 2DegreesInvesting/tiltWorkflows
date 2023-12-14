@@ -3,13 +3,13 @@
 ```{r}
 # Load data specific to this indicator
 emissions_profile_any_companies <- path(params$input, params$emissions_profile_any_companies) |>
-  read_csv_falling_back_to(read_csv(toy_emissions_profile_any_companies()))
+  read_csv()
 
 # FIXME User toy_emissions_profile_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
 emissions_profile_products <- path(params$input, params$emissions_profile_products) |>
-  read_csv_falling_back_to(read_csv(toy_emissions_profile_products()))
+  read_csv()
 
 emissions_profile <- profile_emissions(
   companies = emissions_profile_any_companies,

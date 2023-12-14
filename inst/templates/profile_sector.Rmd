@@ -3,8 +3,8 @@ title: "Run profile_sector()"
 output: github_document
 params:
   chunks: 3
-  input: "~/Downloads/tilt/input"
-  output: "~/Downloads/tilt/output"
+  input: "input"
+  output: "output"
   sector_profile_companies: "sector_profile_companies.csv"
   sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   europages_companies: "europages_companies.csv"
@@ -50,17 +50,30 @@ options(
 # Enable computing over multiple workers in parallel
 plan(multisession)
 
+# If there is no folder for inputs, create the input/ with toy datasets
+if (!dir_exists(params$input)) use_toy_input()
+
 # Create a folder to save results
 dir_create(params$output)
 ```
 
-Reproducibility.
+<details>
+
+<summary>Reproducibility</summary>
 
 ```{r}
+getwd()
+
 params
 
-if (dir_exists(params$input)) dir_info(params$input) else warning("No input/")
+try(dir_tree(params$input))
+
+dir_tree(params$output)
+
+sessioninfo::session_info()
 ```
+
+</details>
 
 ## Data
 
@@ -70,7 +83,7 @@ of this file to instead use your own data.
 
 ```{r}
 europages_companies <- path(params$input, params$europages_companies) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ep_companies) |>
+  read_csv() |>
   # FIXME: Move to `profile_*()`
   select(
     "company_name",
@@ -83,23 +96,23 @@ europages_companies <- path(params$input, params$europages_companies) |>
   )
 
 ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_activities)
+  read_csv()
 
 ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::matches_mapper)
+  read_csv()
 
 isic <- path(params$input, params$isic) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
+  read_csv()
 ```
 ## Sector profile
 
 ```{r}
 # Load data specific to this indicator
 sector_profile_companies <- path(params$input, params$sector_profile_companies) |>
-  read_csv_falling_back_to(read_csv(toy_sector_profile_companies()))
+  read_csv()
 
 sector_profile_any_scenarios <- path(params$input, params$sector_profile_any_scenarios) |>
-  read_csv_falling_back_to(read_csv(toy_sector_profile_any_scenarios()))
+  read_csv()
 
 # Create results at product and company level
 sector_profile <- profile_sector(
