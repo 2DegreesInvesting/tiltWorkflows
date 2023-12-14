@@ -3,8 +3,8 @@ title: "Run profile_emissions_upstream()"
 output: github_document
 params:
   chunks: 3
-  input: "~/Downloads/tilt/input"
-  output: "~/Downloads/tilt/output"
+  input: "input"
+  output: "output"
   emissions_profile_any_companies: "emissions_profile_any_companies.csv"
   emissions_profile_upstream_products: "emissions_profile_upstream_products.csv"
   europages_companies: "europages_companies.csv"
@@ -51,17 +51,30 @@ options(
 # Enable computing over multiple workers in parallel
 plan(multisession)
 
+# If there is no folder for inputs, create the input/ with toy datasets
+if (!dir_exists(params$input)) use_toy_input()
+
 # Create a folder to save results
 dir_create(params$output)
 ```
 
-Reproducibility.
+<details>
+
+<summary>Reproducibility</summary>
 
 ```{r}
+getwd()
+
 params
 
-if (dir_exists(params$input)) dir_info(params$input) else warning("No input/")
+try(dir_tree(params$input))
+
+dir_tree(params$output)
+
+sessioninfo::session_info()
 ```
+
+</details>
 
 ## Data
 
@@ -71,7 +84,7 @@ of this file to instead use your own data.
 
 ```{r}
 europages_companies <- path(params$input, params$europages_companies) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ep_companies) |>
+  read_csv() |>
   # FIXME: Move to `profile_*()`
   select(
     "company_name",
@@ -84,18 +97,18 @@ europages_companies <- path(params$input, params$europages_companies) |>
   )
 
 ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_activities)
+  read_csv()
 
 ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::matches_mapper)
+  read_csv()
 
 isic <- path(params$input, params$isic) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
+  read_csv()
 ```
 
 ```{r}
 ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_inputs) |>
+  read_csv() |>
   # FIXME: Move to `profile_*()`
   select(
     "input_activity_uuid_product_uuid",
@@ -110,14 +123,14 @@ ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
 ```{r}
 # Load data specific to this indicator
 emissions_profile_any_companies <- path(params$input, params$emissions_profile_any_companies) |>
-  read_csv_falling_back_to(read_csv(toy_emissions_profile_any_companies()))
+  read_csv()
 
 # Load data specific to this indicator
 # FIXME User toy_emissions_profile_upstream_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
 emissions_profile_upstream_products <- path(params$input, params$emissions_profile_upstream_products) |>
-  read_csv_falling_back_to(read_csv(toy_emissions_profile_upstream_products()))
+  read_csv()
 
 # Create results at product and company level
 emissions_profile_upstream <- profile_emissions_upstream(

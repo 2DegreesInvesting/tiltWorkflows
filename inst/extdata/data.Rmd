@@ -6,7 +6,7 @@ of this file to instead use your own data.
 
 ```{r}
 europages_companies <- path(params$input, params$europages_companies) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ep_companies) |>
+  read_csv() |>
   # FIXME: Move to `profile_*()`
   select(
     "company_name",
@@ -19,11 +19,11 @@ europages_companies <- path(params$input, params$europages_companies) |>
   )
 
 ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::ecoinvent_activities)
+  read_csv()
 
 ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::matches_mapper)
+  read_csv()
 
 isic <- path(params$input, params$isic) |>
-  read_csv_falling_back_to(tiltIndicatorAfter::isic_tilt_mapper)
+  read_csv()
 ```

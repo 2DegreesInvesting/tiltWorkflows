@@ -15,10 +15,10 @@ Write an input/ directory with toy datasets into the working directory
 \examples{
 withr::with_dir(withr::local_tempdir(), {
   use_toy_input()
-  fs::dir_tree("input")
-
   # It won't overwrite
   try(use_toy_input())
+
+  fs::dir_tree("input")
 })
 
 }

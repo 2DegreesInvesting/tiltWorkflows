@@ -3,3 +3,7 @@ docs
 vignettes/articles/*.html
 inst/templates/*.html
 inst/extdata/*.html
+input
+output
+vignettes/articles/input
+vignettes/articles/output
