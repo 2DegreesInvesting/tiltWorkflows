@@ -91,18 +91,27 @@
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltWorkflows/">tiltWorkflows</a></span><span class="op">)</span></span></code></pre></div>
-<p>Run <a href="https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html"><code>workflows()</code> and <code>use_workflow()</code></a> to see available workflows and then create a workflow file into your working directory.</p>
+<ul>
+<li>
+<a href="https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html"><code>workflows()</code></a> shows available workflows.</li>
+</ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/use_workflow.html">workflows</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "profile_emissions_upstream.Rmd" "profile_emissions.Rmd"         </span></span>
-<span><span class="co">#&gt; [3] "profile_sector_upstream.Rmd"    "profile_sector.Rmd"</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/use_workflow.html">use_workflow</a></span><span class="op">(</span><span class="st">"profile_emissions.Rmd"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [3] "profile_sector_upstream.Rmd"    "profile_sector.Rmd"</span></span></code></pre></div>
+<ul>
+<li>
+<a href="https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html"><code>use_workflow()</code></a> Create a workflow file into your working directory.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/use_workflow.html">use_workflow</a></span><span class="op">(</span><span class="st">"profile_emissions.Rmd"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'</span></span>
 <span><span class="co">#&gt; ✔ Writing 'profile_emissions.Rmd'</span></span></code></pre></div>
-<p><em>Knit</em> the workflow file to render an example with toy data, or <em>Knit with Parameters</em> to use your own data.</p>
-<p><img src="https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/21464b5a-cd5d-4189-9f92-7978acc13c1a" width="150"></p>
-<p>Learn more about <a href="https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html">using parameters</a>.</p>
+<ul>
+<li>
+<em>Knit</em> the workflow (consider <a href="https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html">using parameters</a>).</li>
+</ul>
+<p>To share a link to the output .md file you may run <a href="https://cli.github.com/manual/gh_gist" class="external-link"><code>gh gist create profile_emissions.md</code></a> or paste its contents into a <a href="https://gist.github.com" class="external-link">new GitHub gist</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
