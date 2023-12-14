@@ -26,7 +26,7 @@ package.
 }
 }
 \examples{
-# Trigger an error to see what's available
+# The error shows what's available
 try(use_workflow())
 
 \dontrun{

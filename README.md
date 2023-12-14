@@ -50,6 +50,6 @@ use_workflow("profile_emissions.Rmd")
 - Knit the workflow (consider [using
   parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)).
 
-To share a link to the output .md file you may run
+To share a link to the output “.md” file you may run
 [`gh gist create profile_emissions.md`](https://cli.github.com/manual/gh_gist)
 or paste its contents into a [new GitHub gist](https://gist.github.com).
