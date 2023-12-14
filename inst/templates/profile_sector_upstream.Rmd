@@ -1,5 +1,5 @@
 ---
-title: "Run profile_sector_upstream()"
+title: "profile_sector_upstream.Rmd"
 output: github_document
 params:
   chunks: 3
