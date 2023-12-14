@@ -1,5 +1,6 @@
 ---
 title: "Run profile_emissions()"
+output: github_document
 params:
   chunks: 3
   input: "~/Downloads/tilt/input"
