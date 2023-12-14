@@ -93,14 +93,14 @@ code.</p>
 <pre><code>---
 title: "Using parameters"
 params: 
-  output: "~/Downloads/tilt/output"
+  output: "output"
   file: "example.csv"
 ---</code></pre>
 <p>Each parameter is an element of the <code>params</code> list:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">params</span></span>
 <span><span class="co">#&gt; $output</span></span>
-<span><span class="co">#&gt; [1] "~/Downloads/tilt/output"</span></span>
+<span><span class="co">#&gt; [1] "output"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $file</span></span>
 <span><span class="co">#&gt; [1] "example.csv"</span></span></code></pre></div>
@@ -108,7 +108,7 @@ params:
 example, to create paths:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">output</span>, <span class="va">params</span><span class="op">$</span><span class="va">file</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "~/Downloads/tilt/output/example.csv"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "output/example.csv"</span></span></code></pre></div>
 <p>You can set your own parameters in RStudio. Open the document and
 click on “Knit with Parameters …”:</p>
 <p><img src="https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/afcbe4ee-4ce2-4e0a-a095-0644e915a922" width="150"></p>
