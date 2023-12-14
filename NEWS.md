@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9013 (2023-12-14)
+
+* Default to expecting input/ and output/ in the working directory (#41)
+
+
 # tiltWorkflows 0.0.0.9012 (2023-12-14)
 
 * New `use_toy_input()` helps users get toy input/ .csv files (#42).
