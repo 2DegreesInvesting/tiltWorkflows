@@ -4,7 +4,10 @@
 \alias{use_toy_input}
 \title{Write an input/ directory with toy datasets into the working directory}
 \usage{
-use_toy_input()
+use_toy_input(quiet = FALSE)
+}
+\arguments{
+\item{quiet}{Logical. Throw a message?}
 }
 \value{
 Call for it's side effect.

@@ -32,6 +32,7 @@ library(tiltWorkflows)
 
 ``` r
 use_toy_input()
+#> Writing input/ with toy datasets.
 
 list.files("input")
 #>  [1] "ecoinvent_activities.csv"               
