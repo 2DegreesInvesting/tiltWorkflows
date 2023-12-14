@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9010 (2023-12-14)
+
+* The workflow files now output a `github_document` (#30). This makes it easy for
+the user to share the output on GitHub.
+
 # tiltWorkflows 0.0.0.9009 (2023-12-13)
 
 * `use_workflow()` now automatically opens the workflow file in interactive
