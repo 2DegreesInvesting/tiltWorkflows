@@ -49,14 +49,17 @@ options(
 
 # Enable computing over multiple workers in parallel
 plan(multisession)
-```
-
-```{r}
-# For reproducibility
-params
 
 # Create a folder to save results
 dir_create(params$output)
+```
+
+Reproducibility.
+
+```{r}
+params
+
+if (dir_exists(params$input)) dir_info(params$input) else warning("No input/")
 ```
 
 ## Data
