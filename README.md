@@ -27,25 +27,27 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 library(tiltWorkflows)
 ```
 
-Run [`workflows()` and
-`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-to see available workflows and then create a workflow file into your
-working directory.
+- [`workflows()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
+  shows available workflows.
 
 ``` r
 workflows()
 #> [1] "profile_emissions_upstream.Rmd" "profile_emissions.Rmd"         
 #> [3] "profile_sector_upstream.Rmd"    "profile_sector.Rmd"
+```
 
+- [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
+  Create a workflow file into your working directory.
+
+``` r
 use_workflow("profile_emissions.Rmd")
 #> ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'
 #> ✔ Writing 'profile_emissions.Rmd'
 ```
 
-*Knit* the workflow file to render an example with toy data, or *Knit
-with Parameters* to use your own data.
+- *Knit* the workflow (consider [using
+  parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)).
 
-<img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/21464b5a-cd5d-4189-9f92-7978acc13c1a width=150>
-
-Learn more about [using
-parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html).
+To share a link to the output .md file you may run
+[`gh gist create profile_emissions.md`](https://cli.github.com/manual/gh_gist)
+or paste its contents into a [new GitHub gist](https://gist.github.com).
