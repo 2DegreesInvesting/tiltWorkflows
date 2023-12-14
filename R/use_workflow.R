@@ -1,6 +1,5 @@
-#' List and use workflows
+#' Create a workflow file in the working directory
 #'
-#' * `workflows()` lists available workflows.
 #' * `use_workflow()` creates a workflow file from a template in the tiltWorkflows
 #' package.
 #'
@@ -10,7 +9,8 @@
 #' @export
 #'
 #' @examples
-#' workflows()
+#' # The error shows what's available
+#' try(use_workflow())
 #'
 #' \dontrun{
 #' # Note: Running this will write "profile_emissions.Rmd" to your working directory
@@ -19,7 +19,13 @@
 use_workflow <- function(template,
                          save_as = template,
                          open = rlang::is_interactive()) {
-  force(template)
+  if (missing(template)) {
+    abort(c(
+      x = "The workflow file must be provided.",
+      i = "Which one do you want?",
+      i = glue('* `use_workflow("{workflows()}")`')
+    ))
+  }
 
   usethis::use_template(
     template,
@@ -29,8 +35,6 @@ use_workflow <- function(template,
   )
 }
 
-#' @export
-#' @rdname use_workflow
 workflows <- function() {
   list.files(system.file("templates", package = "tiltWorkflows"))
 }
