@@ -42,13 +42,13 @@ library(tiltWorkflows)
 to create a workflow file into your working directory.
 
 ```{r error=TRUE}
-# Trigger an error to see what's available
+# The error shows what's available
 use_workflow()
 
 use_workflow("profile_emissions.Rmd")
 ```
 
-* *Knit* the workflow (consider [using parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)). 
+* Knit the workflow (consider [using parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)). 
 
 To share a link to the output .md file you may run [`gh gist create
 profile_emissions.md`](https://cli.github.com/manual/gh_gist) or paste its

@@ -32,7 +32,7 @@ library(tiltWorkflows)
   to create a workflow file into your working directory.
 
 ``` r
-# Trigger an error to see what's available
+# The error shows what's available
 use_workflow()
 #> Error in `use_workflow()`:
 #> ! ✖ The workflow file must be provided.
@@ -47,7 +47,7 @@ use_workflow("profile_emissions.Rmd")
 #> ✔ Writing 'profile_emissions.Rmd'
 ```
 
-- *Knit* the workflow (consider [using
+- Knit the workflow (consider [using
   parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)).
 
 To share a link to the output .md file you may run
