@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9014 (2023-12-14)
+
+* Remove `read_csv_falling_back_to()` without deprecation (#45). This function was
+internal, and the package is still not exposed to users.
+
 # tiltWorkflows 0.0.0.9013 (2023-12-14)
 
 * Default to expecting input/ and output/ in the working directory (#41)
