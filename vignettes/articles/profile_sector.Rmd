@@ -1,5 +1,5 @@
 ---
-title: "Run profile_sector()"
+title: "profile_sector.Rmd"
 output: github_document
 params:
   chunks: 3

@@ -2,3 +2,18 @@ url: https://2degreesinvesting.github.io/tiltWorkflows/
 template:
   bootstrap: 5
 
+# https://pkgdown.r-lib.org/articles/customise.html#navbar-heading
+# > You can use components to override the default content
+navbar:
+ components:
+   articles:
+    text: Workflows
+    menu:
+    - text: profile_emissions.Rmd
+      href: articles/profile_emissions.html
+    - text: profile_emissions_upstream.Rmd
+      href: articles/profile_emissions_upstream.html
+    - text: profile_sector.Rmd
+      href: articles/profile_sector.html
+    - text: profile_sector_upstream.Rmd
+      href: articles/profile_sector_upstream.html

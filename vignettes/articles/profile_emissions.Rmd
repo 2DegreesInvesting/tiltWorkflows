@@ -1,5 +1,5 @@
 ---
-title: "Run profile_emissions()"
+title: "profile_emissions.Rmd"
 output: github_document
 params:
   chunks: 3
