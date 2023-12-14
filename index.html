@@ -92,26 +92,26 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltWorkflows/">tiltWorkflows</a></span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>
-<a href="https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html"><code>workflows()</code></a> shows available workflows.</li>
+<li>Run <a href="https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html"><code>use_workflow()</code></a> to create a workflow file into your working directory.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/use_workflow.html">workflows</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "profile_emissions_upstream.Rmd" "profile_emissions.Rmd"         </span></span>
-<span><span class="co">#&gt; [3] "profile_sector_upstream.Rmd"    "profile_sector.Rmd"</span></span></code></pre></div>
-<ul>
-<li>
-<a href="https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html"><code>use_workflow()</code></a> Create a workflow file into your working directory.</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/use_workflow.html">use_workflow</a></span><span class="op">(</span><span class="st">"profile_emissions.Rmd"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># The error shows what's available</span></span>
+<span><span class="fu"><a href="reference/use_workflow.html">use_workflow</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `use_workflow()`:</span></span>
+<span><span class="co">#&gt; ! ✖ The workflow file must be provided.</span></span>
+<span><span class="co">#&gt; ℹ Which one do you want?</span></span>
+<span><span class="co">#&gt; * `use_workflow("profile_emissions_upstream.Rmd")`</span></span>
+<span><span class="co">#&gt; * `use_workflow("profile_emissions.Rmd")`</span></span>
+<span><span class="co">#&gt; * `use_workflow("profile_sector_upstream.Rmd")`</span></span>
+<span><span class="co">#&gt; * `use_workflow("profile_sector.Rmd")`</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/use_workflow.html">use_workflow</a></span><span class="op">(</span><span class="st">"profile_emissions.Rmd"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'</span></span>
 <span><span class="co">#&gt; ✔ Writing 'profile_emissions.Rmd'</span></span></code></pre></div>
 <ul>
-<li>
-<em>Knit</em> the workflow (consider <a href="https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html">using parameters</a>).</li>
+<li>Knit the workflow (consider <a href="https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html">using parameters</a>).</li>
 </ul>
-<p>To share a link to the output .md file you may run <a href="https://cli.github.com/manual/gh_gist" class="external-link"><code>gh gist create profile_emissions.md</code></a> or paste its contents into a <a href="https://gist.github.com" class="external-link">new GitHub gist</a>.</p>
+<p>To share a link to the output “.md” file you may run <a href="https://cli.github.com/manual/gh_gist" class="external-link"><code>gh gist create profile_emissions.md</code></a> or paste its contents into a <a href="https://gist.github.com" class="external-link">new GitHub gist</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
