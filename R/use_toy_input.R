@@ -6,10 +6,10 @@
 #' @examples
 #' withr::with_dir(withr::local_tempdir(), {
 #'   use_toy_input()
-#'   fs::dir_tree("input")
-#'
 #'   # It won't overwrite
 #'   try(use_toy_input())
+#'
+#'   fs::dir_tree("input")
 #' })
 #'
 use_toy_input <- function() {

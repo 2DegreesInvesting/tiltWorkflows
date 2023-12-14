@@ -27,9 +27,8 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 library(tiltWorkflows)
 ```
 
-- [`use_toy_input()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_toy_input.html)
-  to create an input/ folder with toy datasets in your working
-  directory.
+- `use_toy_input()` to create an input/ folder with toy datasets in your
+  working directory.
 
 ``` r
 use_toy_input()
@@ -60,9 +59,8 @@ use_toy_input()
 #> ℹ Do you need to move or remove your existing input/ directory?
 ```
 
-- Run
-  [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-  to create a workflow file into your working directory.
+- `use_workflow()` to create a workflow file into your working
+  directory.
 
 ``` r
 # The error shows what's available
