@@ -27,9 +27,40 @@ pak::pak("2DegreesInvesting/tiltWorkflows")
 library(tiltWorkflows)
 ```
 
-- Run
-  [`use_workflow()`](https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html)
-  to create a workflow file into your working directory.
+- `use_toy_input()` to create an input/ folder with toy datasets in your
+  working directory.
+
+``` r
+use_toy_input()
+
+list.files("input")
+#>  [1] "ecoinvent_activities.csv"               
+#>  [2] "ecoinvent_europages.csv"                
+#>  [3] "ecoinvent_inputs.csv"                   
+#>  [4] "emissions_profile_any_companies.csv"    
+#>  [5] "emissions_profile_products.csv"         
+#>  [6] "emissions_profile_upstream_products.csv"
+#>  [7] "emissions_profile_upstream.csv"         
+#>  [8] "emissions_profile.csv"                  
+#>  [9] "europages_companies.csv"                
+#> [10] "isic.csv"                               
+#> [11] "sector_profile_any_scenarios.csv"       
+#> [12] "sector_profile_companies.csv"           
+#> [13] "sector_profile_upstream_companies.csv"  
+#> [14] "sector_profile_upstream_products.csv"   
+#> [15] "sector_profile_upstream.csv"            
+#> [16] "sector_profile.csv"
+
+# It won't overwrite an existing input/ directory
+use_toy_input()
+#> Error in `use_toy_input()`:
+#> ! The input/ directory already exists in the working directory
+#> ✖ Aborting to avoid overwriting existing data.
+#> ℹ Do you need to move or remove your existing input/ directory?
+```
+
+- `use_workflow()` to create a workflow file into your working
+  directory.
 
 ``` r
 # The error shows what's available

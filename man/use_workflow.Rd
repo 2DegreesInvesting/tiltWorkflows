@@ -26,11 +26,11 @@ package.
 }
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # The error shows what's available
 try(use_workflow())
 
-\dontrun{
 # Note: Running this will write "profile_emissions.Rmd" to your working directory
 use_workflow("profile_emissions.Rmd")
-}
+\dontshow{\}) # examplesIf}
 }
