@@ -5,11 +5,7 @@
 \alias{workflows}
 \title{List and use workflows}
 \usage{
-use_workflow(
-  template = "profile.Rmd",
-  save_as = template,
-  open = rlang::is_interactive()
-)
+use_workflow(template, save_as = template, open = rlang::is_interactive())
 
 workflows()
 }

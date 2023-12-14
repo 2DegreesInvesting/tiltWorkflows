@@ -16,9 +16,11 @@
 #' # Note: Running this will write "profile_emissions.Rmd" to your working directory
 #' use_workflow("profile_emissions.Rmd")
 #' }
-use_workflow <- function(template = "profile.Rmd",
+use_workflow <- function(template,
                          save_as = template,
                          open = rlang::is_interactive()) {
+  force(template)
+
   usethis::use_template(
     template,
     save_as = save_as,
