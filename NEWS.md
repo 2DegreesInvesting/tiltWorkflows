@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9012 (2023-12-14)
+
+* New `use_toy_input()` helps users get toy input/ .csv files (#42).
+
 # tiltWorkflows 0.0.0.9011 (2023-12-14)
 
 * `use_workflow()` with no `template` now throws a helpful error message that
