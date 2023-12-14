@@ -32,6 +32,13 @@ options(
 
 # Enable computing over multiple workers in parallel
 plan(multisession)
+```
+
+```{r}
+# For reproducibility
+params
+
 # Create a folder to save results
 dir_create(params$output)
 ```
+
