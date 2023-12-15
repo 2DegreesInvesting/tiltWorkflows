@@ -1,18 +1,19 @@
 ---
-title: "profile_sector_upstream.Rmd"
+title: "`r params$workflow`"
 output: github_document
 params:
   chunks: 3
   input: "input"
   output: "output"
+  europages_companies: "europages_companies.csv"
+  ecoinvent_activities: "ecoinvent_activities.csv"
+  ecoinvent_europages: "ecoinvent_europages.csv"
+  isic: "isic.csv"
+  workflow: "sector_profile_upstream.Rmd"
   sector_profile_upstream_companies: "sector_profile_upstream_companies.csv"
   sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   sector_profile_upstream_products: "sector_profile_upstream_products.csv"
-  europages_companies: "europages_companies.csv"
-  ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
-  ecoinvent_europages: "ecoinvent_europages.csv"
-  isic: "isic.csv"
 ---
 
 <!-- This file is generated from inst/extdata. Please edit that file -->
