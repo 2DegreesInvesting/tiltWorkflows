@@ -8,6 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/2DegreesInvesting/tiltWorkflows/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/2DegreesInvesting/tiltWorkflows/actions/workflows/R-CMD-check.yaml)
+![r-universe](https://r-lib.r-universe.dev/badges/tiltWorflows)
 <!-- badges: end -->
 
 The goal of tiltWorkflows is to make it easy to run tilt workflows.
@@ -24,11 +25,20 @@ Main features:
 
 ## Installation
 
-You can install the development version of tiltWorkflows like so:
+You can install the development version of
+[tiltWorkflows](https://github.com/2DegreesInvesting/tiltWorkflows) from
+[r-universe](https://r-universe.dev/) with:
 
 ``` r
-# install.packages("pak")
-pak::pak("2DegreesInvesting/tiltWorkflows")
+options(repos = c("https://2degreesinvesting.r-universe.dev", getOption("repos")))
+install.packages("tiltWorkflows")
+```
+
+Or you can install it from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("2DegreesInvesting/tiltWorkflows")
 ```
 
 ## Example
