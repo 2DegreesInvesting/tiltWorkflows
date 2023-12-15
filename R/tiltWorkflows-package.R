@@ -7,6 +7,7 @@
 #' @importFrom dplyr select
 #' @importFrom fs dir_create
 #' @importFrom fs dir_exists
+#' @importFrom fs dir_ls
 #' @importFrom fs file_exists
 #' @importFrom fs path
 #' @importFrom furrr future_pwalk

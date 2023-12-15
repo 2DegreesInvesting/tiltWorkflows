@@ -1,0 +1,11 @@
+---
+title: "`r params$workflow`"
+output: github_document
+params:
+  chunks: 3
+  input: "input"
+  output: "output"
+  europages_companies: "europages_companies.csv"
+  ecoinvent_activities: "ecoinvent_activities.csv"
+  ecoinvent_europages: "ecoinvent_europages.csv"
+  isic: "isic.csv"

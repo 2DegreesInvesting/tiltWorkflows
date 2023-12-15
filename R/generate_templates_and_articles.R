@@ -22,7 +22,7 @@ extdata_to_template_impl <- function(profile = profiles(), ext = ".Rmd") {
   profile <- match.arg(profile)
 
   sections <- c(
-    yaml = extdata_path(paste0("yaml", "-profile_", profile, ext)),
+    yaml = yaml_path(profile),
     note = note_tempfile(),
     setup = extdata_path(paste0("setup", ext)),
     data = data_path(profile, ext),
@@ -49,6 +49,29 @@ data_path <- function(profile, ext) {
       extdata_path(paste0("data-ecoinvent_inputs", ext))
     )
   }
+}
+
+yaml_path <- function(profile) {
+  all <- extdata_path() |> fs::dir_ls(regexp = "yaml-01-all[.]Rmd$")
+  this <- extdata_path() |> fs::dir_ls(regexp = glue("yaml-.*{profile}[.]Rmd"))
+  maybe <- NULL
+  if(grepl("upstream", profile)) {
+    maybe <- dir_ls(extdata_path(), regexp = "yaml-.*all-upstream[.]Rmd")
+  }
+  end <- extdata_path() |> fs::dir_ls(regexp = "end")
+  out <- unname(sort(c(all, this, maybe, end)))
+
+  numbered <- "yaml-[0-9]{2}"
+  out[grepl(numbered, out)]
+}
+
+end_path <- function(profile) {
+  end <- extdata_path() |> fs::dir_ls(regexp = "end[.]")
+  ifelse(
+    grepl("upstream", profile),
+    grep("ecoinvent-inputs", end, value = TRUE),
+    grep("ecoinvent-inputs", end, value = TRUE, invert = TRUE)
+  )
 }
 
 extdata_path <- function(...) {

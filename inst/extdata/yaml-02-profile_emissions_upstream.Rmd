@@ -1,0 +1,3 @@
+  workflow: "profile_emissions_upstream.Rmd"
+  emissions_profile_any_companies: "emissions_profile_any_companies.csv"
+  emissions_profile_upstream_products: "emissions_profile_upstream_products.csv"
