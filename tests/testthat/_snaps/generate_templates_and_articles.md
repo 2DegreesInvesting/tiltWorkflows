@@ -1,4 +1,4 @@
-# yaml emissions
+# yaml_path()
 
     Code
       show(yaml_path("emissions"))
@@ -19,7 +19,7 @@
         emissions_profile_products: "emissions_profile_products.csv"
       ---
 
-# yaml emissions_upstream
+---
 
     Code
       show(yaml_path("emissions_upstream"))
@@ -41,7 +41,7 @@
         ecoinvent_inputs: "ecoinvent_inputs.csv"
       ---
 
-# yaml sector
+---
 
     Code
       show(yaml_path("sector"))
@@ -62,7 +62,7 @@
         sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
       ---
 
-# yaml sector_upstream
+---
 
     Code
       show(yaml_path("sector_upstream"))
