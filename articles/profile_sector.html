@@ -297,6 +297,8 @@ the parameters</a> of this file to instead use your own data.</p>
 <div class="section level2">
 <h2 id="sector-profile">Sector profile<a class="anchor" aria-label="anchor" href="#sector-profile"></a>
 </h2>
+<p>For this TILT indicator, compute results both at product and company
+level.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sector_profile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/profile_sector.html">profile_sector</a></span><span class="op">(</span></span>
 <span>  companies <span class="op">=</span> <span class="va">sector_profile_companies</span>,</span>
@@ -312,6 +314,7 @@ the parameters</a> of this file to instead use your own data.</p>
 <div class="section level2">
 <h2 id="results">Results<a class="anchor" aria-label="anchor" href="#results"></a>
 </h2>
+<p>Overview and save results at each level.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sector_profile</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_product</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
