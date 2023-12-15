@@ -1,5 +1,5 @@
 ---
-title: "`r params$workflow`"
+title: "{{{ workflow }}}"
 output: github_document
 params:
   chunks: 3
