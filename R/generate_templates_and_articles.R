@@ -25,7 +25,7 @@ extdata_to_template_impl <- function(profile = profiles()) {
     yaml = yaml_path(profile),
     note = note_tempfile(),
     setup = extdata_path("setup.Rmd"),
-    data = data_path(profile, ".Rmd"),
+    data = data_path(profile),
     code = extdata_path(paste0("code-profile_", profile, ".Rmd")),
     results = extdata_path("results.Rmd"),
     cleanup = extdata_path("cleanup.Rmd")
@@ -39,7 +39,7 @@ extdata_to_template_impl <- function(profile = profiles()) {
     writeLines(file)
 }
 
-data_path <- function(profile, ext = ".Rmd") {
+data_path <- function(profile) {
   data <- extdata_path(paste0("data", ".Rmd"))
   if (!grepl("upstream", profile)) {
     data
