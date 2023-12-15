@@ -15,6 +15,7 @@
 #' @importFrom furrr future_pwalk
 #' @importFrom future plan
 #' @importFrom glue glue
+#' @importFrom knitr knit
 #' @importFrom purrr map_df
 #' @importFrom rappdirs user_cache_dir
 #' @importFrom readr read_csv
