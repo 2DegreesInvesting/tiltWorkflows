@@ -1,4 +1,4 @@
-## Results
+The results are now saved in the output/ directory.
 
 ```{r}
 # NOTE: If other workflows run before this one, this shows the results of all
