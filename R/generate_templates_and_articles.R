@@ -18,20 +18,20 @@ profiles <- function() {
   c("emissions", "emissions_upstream", "sector", "sector_upstream")
 }
 
-extdata_to_template_impl <- function(profile = profiles(), ext = ".Rmd") {
+extdata_to_template_impl <- function(profile = profiles()) {
   profile <- match.arg(profile)
 
   sections <- c(
     yaml = yaml_path(profile),
     note = note_tempfile(),
-    setup = extdata_path(paste0("setup", ext)),
-    data = data_path(profile, ext),
-    code = extdata_path(paste0("code", "-profile_", profile, ext)),
-    results = extdata_path(paste0("results", ext)),
-    cleanup = extdata_path(paste0("cleanup", ext))
+    setup = extdata_path("setup.Rmd"),
+    data = data_path(profile, ".Rmd"),
+    code = extdata_path(paste0("code-profile_", profile, ".Rmd")),
+    results = extdata_path("results.Rmd"),
+    cleanup = extdata_path("cleanup.Rmd")
   )
 
-  file <- templates_path(paste0("profile_", profile, ext))
+  file <- templates_path(paste0("profile_", profile, ".Rmd"))
   sections |>
     lapply(readLines) |>
     unlist() |>
