@@ -3,12 +3,12 @@
     Code
       explain_indicator()
     Output
-      [1] "Compute the resutls for this specific indicator."
+      [1] "For this TILT indicator, compute results both at product and company level."
 
 ---
 
     Code
       explain_results()
     Output
-      [1] "See and save the results at product and company level."
+      [1] "Overview and save results at each level."
 
