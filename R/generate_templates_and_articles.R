@@ -58,18 +58,9 @@ yaml_path <- function(profile) {
   if(grepl("upstream", profile)) {
     maybe <- dir_ls(extdata_path(), regexp = "yaml-.*all-upstream[.]Rmd")
   }
-  end <- dir_ls(extdata_path(), regexp = "end")
+  end <- dir_ls(extdata_path(), regexp = "end[.]Rmd")
 
   unname(sort(c(all, this, maybe, end)))
-}
-
-end_path <- function(profile) {
-  end <- dir_ls(extdata_path(), regexp = "end[.]")
-  ifelse(
-    grepl("upstream", profile),
-    grep("ecoinvent-inputs", end, value = TRUE),
-    grep("ecoinvent-inputs", end, value = TRUE, invert = TRUE)
-  )
 }
 
 extdata_path <- function(...) {
