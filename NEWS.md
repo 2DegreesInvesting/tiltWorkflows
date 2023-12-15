@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9018 (2023-12-15)
+
+* In each workflow, each section now has some explanation.
+
 # tiltWorkflows 0.0.0.9017 (2023-12-15)
 
 * Explain indicator and results sections (@Tilmon #65).
