@@ -1,5 +1,5 @@
 ---
-title: "{{{ workflow }}}"
+title: "profile_emissions_upstream.Rmd"
 output: github_document
 params:
   chunks: 3
