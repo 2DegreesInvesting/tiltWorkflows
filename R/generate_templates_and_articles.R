@@ -27,7 +27,7 @@ extdata_to_template_impl <- function(profile = profiles()) {
     setup = extdata_path("setup.Rmd"),
     data = data_path(profile),
     code = extdata_path(paste0("code-profile_", profile, ".Rmd")),
-    results = extdata_path("results.Rmd"),
+    results = extdata_path("output.Rmd"),
     cleanup = extdata_path("cleanup.Rmd")
   )
 
