@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9016 (2023-12-15)
+
+* Document that knitting the workflow runs the code and creates the results
+(@Tilmon #59).
+
 # tiltWorkflows 0.0.0.9015 (2023-12-15)
 
 * Show results where readers expect them: Under Results (@Tilmon #60).
