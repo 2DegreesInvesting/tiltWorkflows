@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9017 (2023-12-15)
+
+* Explain indicator and results sections (@Tilmon #65).
+
 # tiltWorkflows 0.0.0.9016 (2023-12-15)
 
 * Document that knitting the workflow runs the code and creates the results
