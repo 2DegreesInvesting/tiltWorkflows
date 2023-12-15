@@ -36,12 +36,14 @@ library(readr, warn.conflicts = FALSE)
 library(rappdirs)
 library(future)
 library(fs)
+
 # Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
 library(tiltWorkflows)
 
+availableCores()
+
 options(
-  # Split data in chunks to save memory.
-  # TODO: Modify the parameter to try different numbers, e.g. 3, 30, 300 ...
+  # Run by chunks. TODO: Try different multiples of `availableCores()`
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
   readr.show_col_types = FALSE,
