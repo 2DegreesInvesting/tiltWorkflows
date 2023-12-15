@@ -40,13 +40,13 @@ extdata_to_template_impl <- function(profile = profiles()) {
 }
 
 data_path <- function(profile) {
-  data <- extdata_path(paste0("data", ".Rmd"))
+  data <- extdata_path("data.Rmd")
   if (!grepl("upstream", profile)) {
     data
   } else {
     c(
       data,
-      extdata_path(paste0("data-ecoinvent_inputs", ".Rmd"))
+      extdata_path("data-ecoinvent_inputs.Rmd")
     )
   }
 }
