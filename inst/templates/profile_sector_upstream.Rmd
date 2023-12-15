@@ -84,15 +84,11 @@ parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkf
 of this file to instead use your own data.
 
 ```{r}
-europages_companies <- path(params$input, params$europages_companies) |>
-  read_csv() |>
+europages_companies <- read_csv(path(params$input, params$europages_companies)) |> 
   FIXME_issue_49()
-ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
-  read_csv()
-ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
-  read_csv()
-isic <- path(params$input, params$isic) |>
-  read_csv()
+ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities))
+ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
+isic <- read_csv(path(params$input, params$isic))
 ```
 
 ```{r}
@@ -107,20 +103,17 @@ ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
   distinct()
 ```
 
+Data specific to this indicator.
+
+```{r}
+sector_profile_upstream_companies <- read_csv(path(params$input, params$sector_profile_upstream_companies))
+sector_profile_any_scenarios <- read_csv(path(params$input, params$sector_profile_any_scenarios))
+sector_profile_upstream_products <- read_csv(path(params$input, params$sector_profile_upstream_products))
+```
+
 ## Sector profile upstream
 
 ```{r}
-# Load data specific to this indicator
-sector_profile_upstream_companies <- path(params$input, params$sector_profile_upstream_companies) |>
-  read_csv()
-
-sector_profile_any_scenarios <- path(params$input, params$sector_profile_any_scenarios) |>
-  read_csv()
-
-sector_profile_upstream_products <- path(params$input, params$sector_profile_upstream_products) |>
-  read_csv()
-
-# Create results at product and company level
 sector_profile_upstream <- profile_sector_upstream(
   companies = sector_profile_upstream_companies,
   scenarios = sector_profile_any_scenarios,

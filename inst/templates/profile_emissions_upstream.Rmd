@@ -83,15 +83,11 @@ parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkf
 of this file to instead use your own data.
 
 ```{r}
-europages_companies <- path(params$input, params$europages_companies) |>
-  read_csv() |>
+europages_companies <- read_csv(path(params$input, params$europages_companies)) |> 
   FIXME_issue_49()
-ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
-  read_csv()
-ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
-  read_csv()
-isic <- path(params$input, params$isic) |>
-  read_csv()
+ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities))
+ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
+isic <- read_csv(path(params$input, params$isic))
 ```
 
 ```{r}
@@ -106,21 +102,19 @@ ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
   distinct()
 ```
 
-## Emissions profile upstream
+Data specific to this indicator.
 
 ```{r}
-# Load data specific to this indicator
-emissions_profile_any_companies <- path(params$input, params$emissions_profile_any_companies) |>
-  read_csv()
-
-# Load data specific to this indicator
+emissions_profile_any_companies <- read_csv(path(params$input, params$emissions_profile_any_companies))
 # FIXME User toy_emissions_profile_upstream_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
-emissions_profile_upstream_products <- path(params$input, params$emissions_profile_upstream_products) |>
-  read_csv()
+emissions_profile_upstream_products <- read_csv(path(params$input, params$emissions_profile_upstream_products))
+```
 
-# Create results at product and company level
+## Emissions profile upstream
+
+```{r}
 emissions_profile_upstream <- profile_emissions_upstream(
   companies = emissions_profile_any_companies,
   co2 = emissions_profile_upstream_products,
