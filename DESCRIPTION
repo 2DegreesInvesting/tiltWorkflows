@@ -21,19 +21,20 @@ Imports:
     dplyr,
     fs,
     furrr,
+    future,
     glue,
     here,
     purrr,
     rappdirs,
     readr,
     rlang,
+    sessioninfo,
+    shiny,
     tibble,
     usethis
 Suggests: 
     devtools,
-    future,
     rmarkdown,
-    sessioninfo,
     testthat (>= 3.0.0),
     withr
 Remotes: 
