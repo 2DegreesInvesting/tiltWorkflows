@@ -59,10 +59,8 @@ yaml_path <- function(profile) {
     maybe <- dir_ls(extdata_path(), regexp = "yaml-.*all-upstream[.]Rmd")
   }
   end <- dir_ls(extdata_path(), regexp = "end")
-  out <- unname(sort(c(all, this, maybe, end)))
 
-  numbered <- "yaml-[0-9]{2}"
-  out[grepl(numbered, out)]
+  unname(sort(c(all, this, maybe, end)))
 }
 
 end_path <- function(profile) {
