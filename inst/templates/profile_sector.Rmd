@@ -99,6 +99,8 @@ sector_profile_any_scenarios <- read_csv(path(params$input, params$sector_profil
 
 ## Sector profile
 
+`r explain_indicator()`
+
 ```{r}
 sector_profile <- profile_sector(
   companies = sector_profile_companies,
@@ -113,6 +115,8 @@ sector_profile <- profile_sector(
 ```
 
 ## Results
+
+`r explain_results()`
 
 ```{r}
 sector_profile |>

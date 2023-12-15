@@ -115,6 +115,8 @@ sector_profile_upstream_products <- read_csv(path(params$input, params$sector_pr
 
 ## Sector profile upstream
 
+`r explain_indicator()`
+
 ```{r}
 sector_profile_upstream <- profile_sector_upstream(
   companies = sector_profile_upstream_companies,
@@ -131,6 +133,8 @@ sector_profile_upstream <- profile_sector_upstream(
 ```
 
 ## Results
+
+`r explain_indicator()`
 
 ```{r}
 sector_profile_upstream |>

@@ -102,6 +102,8 @@ emissions_profile_products <- read_csv(path(params$input, params$emissions_profi
 
 ## Emissions profile
 
+`r explain_indicator()`
+
 ```{r}
 emissions_profile <- profile_emissions(
   companies = emissions_profile_any_companies,
@@ -116,6 +118,8 @@ emissions_profile <- profile_emissions(
 ```
 
 ## Results
+
+`r explain_indicator()`
 
 ```{r}
 emissions_profile |>
