@@ -207,7 +207,7 @@ Reproducibility
 <span><span class="co">#&gt;  collate  C.UTF-8</span></span>
 <span><span class="co">#&gt;  ctype    C.UTF-8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2023-12-14</span></span>
+<span><span class="co">#&gt;  date     2023-12-15</span></span>
 <span><span class="co">#&gt;  pandoc   2.19.2 @ /usr/bin/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
@@ -267,7 +267,7 @@ Reproducibility
 <span><span class="co">#&gt;  tiltIndicator        <span style="color: #BB00BB; font-weight: bold;">0.0.0.9107</span> <span style="color: #555555;">2023-12-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (2DegreesInvesting/tiltIndicator@fc3bdff)</span></span></span>
 <span><span class="co">#&gt;  tiltIndicatorAfter * <span style="color: #BB00BB; font-weight: bold;">0.0.0.9015</span> <span style="color: #555555;">2023-12-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (2DegreesInvesting/tiltIndicatorAfter@6b79f94)</span></span></span>
 <span><span class="co">#&gt;  tiltToyData        * <span style="color: #BB00BB; font-weight: bold;">0.0.0.9005</span> <span style="color: #555555;">2023-12-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">Github (2degreesinvesting/tiltToyData@b855833)</span></span></span>
-<span><span class="co">#&gt;  tiltWorkflows      * <span style="color: #BB00BB; font-weight: bold;">0.0.0.9014</span> <span style="color: #555555;">2023-12-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  tiltWorkflows      * <span style="color: #BB00BB; font-weight: bold;">0.0.0.9014</span> <span style="color: #555555;">2023-12-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  tzdb                 0.4.0      <span style="color: #555555;">2023-05-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  utf8                 1.2.4      <span style="color: #555555;">2023-10-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  vctrs                0.6.5      <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -290,23 +290,11 @@ the parameters</a> of this file to instead use your own data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">europages_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">europages_companies</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># FIXME: Move to `profile_*()`</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
-<span>    <span class="st">"company_name"</span>,</span>
-<span>    <span class="st">"country"</span>,</span>
-<span>    <span class="st">"company_city"</span>,</span>
-<span>    <span class="st">"postcode"</span>,</span>
-<span>    <span class="st">"address"</span>,</span>
-<span>    <span class="st">"main_activity"</span>,</span>
-<span>    <span class="st">"companies_id"</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
+<span>  <span class="fu"><a href="../reference/FIXME_issue_49.html">FIXME_issue_49</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">ecoinvent_activities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">ecoinvent_activities</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
 <span><span class="va">ecoinvent_europages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">ecoinvent_europages</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
 <span><span class="va">isic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">isic</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
