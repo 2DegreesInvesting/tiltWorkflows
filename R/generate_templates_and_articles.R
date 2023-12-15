@@ -52,13 +52,13 @@ data_path <- function(profile, ext) {
 }
 
 yaml_path <- function(profile) {
-  all <- extdata_path() |> fs::dir_ls(regexp = "yaml-01-all[.]Rmd$")
-  this <- extdata_path() |> fs::dir_ls(regexp = glue("yaml-.*{profile}[.]Rmd"))
+  all <- dir_ls(extdata_path(), regexp = "yaml-01-all[.]Rmd$")
+  this <- dir_ls(extdata_path(), regexp = glue("yaml-.*{profile}[.]Rmd"))
   maybe <- NULL
   if(grepl("upstream", profile)) {
     maybe <- dir_ls(extdata_path(), regexp = "yaml-.*all-upstream[.]Rmd")
   }
-  end <- extdata_path() |> fs::dir_ls(regexp = "end")
+  end <- dir_ls(extdata_path(), regexp = "end")
   out <- unname(sort(c(all, this, maybe, end)))
 
   numbered <- "yaml-[0-9]{2}"
@@ -66,7 +66,7 @@ yaml_path <- function(profile) {
 }
 
 end_path <- function(profile) {
-  end <- extdata_path() |> fs::dir_ls(regexp = "end[.]")
+  end <- dir_ls(extdata_path(), regexp = "end[.]")
   ifelse(
     grepl("upstream", profile),
     grep("ecoinvent-inputs", end, value = TRUE),
