@@ -7,23 +7,11 @@ of this file to instead use your own data.
 ```{r}
 europages_companies <- path(params$input, params$europages_companies) |>
   read_csv() |>
-  # FIXME: Move to `profile_*()`
-  select(
-    "company_name",
-    "country",
-    "company_city",
-    "postcode",
-    "address",
-    "main_activity",
-    "companies_id"
-  )
-
+  FIXME_issue_49()
 ecoinvent_activities <- path(params$input, params$ecoinvent_activities) |>
   read_csv()
-
 ecoinvent_europages <- path(params$input, params$ecoinvent_europages) |>
   read_csv()
-
 isic <- path(params$input, params$isic) |>
   read_csv()
 ```
