@@ -4,7 +4,7 @@
 \alias{explain}
 \alias{explain_indicator}
 \alias{explain_results}
-\title{Explain stuff consistently everywhere.}
+\title{Explain stuff consistently everywhere}
 \usage{
 explain_indicator()
 
@@ -14,7 +14,7 @@ explain_results()
 Character.
 }
 \description{
-Explain stuff consistently everywhere.
+Explain stuff consistently everywhere
 }
 \examples{
 explain_indicator()

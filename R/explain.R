@@ -1,4 +1,4 @@
-#' Explain stuff consistently everywhere.
+#' Explain stuff consistently everywhere
 #'
 #' @return Character.
 #' @keywords internal
@@ -13,11 +13,11 @@ NULL
 #' @export
 #' @rdname explain
 explain_indicator <- function() {
-  "Compute the resutls for this specific indicator."
+  "For this TILT indicator, compute results both at product and company level."
 }
 
 #' @export
 #' @rdname explain
 explain_results <- function() {
-  "See and save the results at product and company level."
+  "Overview and save results at each level."
 }
