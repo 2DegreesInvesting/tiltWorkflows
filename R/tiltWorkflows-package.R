@@ -22,6 +22,7 @@
 #' @importFrom readr write_csv
 #' @importFrom readr write_rds
 #' @importFrom rlang abort
+#' @importFrom rmarkdown render
 #' @importFrom sessioninfo session_info
 #' @importFrom shiny p
 #' @importFrom tibble tibble

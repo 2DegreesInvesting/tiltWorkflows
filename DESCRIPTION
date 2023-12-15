@@ -28,13 +28,13 @@ Imports:
     rappdirs,
     readr,
     rlang,
+    rmarkdown,
     sessioninfo,
     shiny,
     tibble,
     usethis
 Suggests: 
     devtools,
-    rmarkdown,
     testthat (>= 3.0.0),
     withr
 Remotes: 
