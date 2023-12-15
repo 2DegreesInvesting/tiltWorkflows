@@ -1,5 +1,13 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9019 (2023-12-15)
+
+* Add installation instructions from
+[r-universe](https://2degreesinvesting.r-universe.dev/) and point to
+[posit.cloud])(https://posit.cloud/) (@AnneSchoenauer #67).
+
+* Import packages that the user needs to render workflows (#68).
+
 # tiltWorkflows 0.0.0.9018 (2023-12-15)
 
 * In each workflow, each section now has some explanation.
