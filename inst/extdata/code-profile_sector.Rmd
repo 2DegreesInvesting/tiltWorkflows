@@ -1,14 +1,13 @@
+Data specific to this indicator.
+
+```{r}
+sector_profile_companies <- read_csv(path(params$input, params$sector_profile_companies))
+sector_profile_any_scenarios <- read_csv(path(params$input, params$sector_profile_any_scenarios))
+```
+
 ## Sector profile
 
 ```{r}
-# Load data specific to this indicator
-sector_profile_companies <- path(params$input, params$sector_profile_companies) |>
-  read_csv()
-
-sector_profile_any_scenarios <- path(params$input, params$sector_profile_any_scenarios) |>
-  read_csv()
-
-# Create results at product and company level
 sector_profile <- profile_sector(
   companies = sector_profile_companies,
   scenarios = sector_profile_any_scenarios,
