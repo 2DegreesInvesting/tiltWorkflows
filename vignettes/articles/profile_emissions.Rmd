@@ -5,14 +5,13 @@ params:
   chunks: 3
   input: "input"
   output: "output"
-  emissions_profile_any_companies: "emissions_profile_any_companies.csv"
-  emissions_profile_products: "emissions_profile_products.csv"
   europages_companies: "europages_companies.csv"
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
   isic: "isic.csv"
+  emissions_profile_any_companies: "emissions_profile_any_companies.csv"
+  emissions_profile_products: "emissions_profile_products.csv"
 ---
-
 
 <!-- This file is generated from inst/extdata. Please edit that file -->
 

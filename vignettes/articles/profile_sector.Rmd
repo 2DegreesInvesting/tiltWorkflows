@@ -5,12 +5,12 @@ params:
   chunks: 3
   input: "input"
   output: "output"
-  sector_profile_companies: "sector_profile_companies.csv"
-  sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   europages_companies: "europages_companies.csv"
   ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_europages: "ecoinvent_europages.csv"
   isic: "isic.csv"
+  sector_profile_companies: "sector_profile_companies.csv"
+  sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
 ---
 
 <!-- This file is generated from inst/extdata. Please edit that file -->
