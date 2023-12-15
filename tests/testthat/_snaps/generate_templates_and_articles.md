@@ -57,7 +57,7 @@
         ecoinvent_activities: "ecoinvent_activities.csv"
         ecoinvent_europages: "ecoinvent_europages.csv"
         isic: "isic.csv"
-        workflow: "sector_profile.Rmd"
+        workflow: "profile_sector.Rmd"
         sector_profile_companies: "sector_profile_companies.csv"
         sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
       ---
@@ -78,7 +78,7 @@
         ecoinvent_activities: "ecoinvent_activities.csv"
         ecoinvent_europages: "ecoinvent_europages.csv"
         isic: "isic.csv"
-        workflow: "sector_profile_upstream.Rmd"
+        workflow: "profile_sector_upstream.Rmd"
         sector_profile_upstream_companies: "sector_profile_upstream_companies.csv"
         sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
         sector_profile_upstream_products: "sector_profile_upstream_products.csv"
