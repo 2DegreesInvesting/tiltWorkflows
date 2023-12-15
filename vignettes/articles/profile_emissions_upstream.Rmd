@@ -93,6 +93,7 @@ ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities)
 ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
 isic <- read_csv(path(params$input, params$isic))
 ```
+The "upstream" workflows also need this dataset.
 
 ```{r}
 ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>

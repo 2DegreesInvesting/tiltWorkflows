@@ -1,3 +1,4 @@
+The "upstream" workflows also need this dataset.
 
 ```{r}
 ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
