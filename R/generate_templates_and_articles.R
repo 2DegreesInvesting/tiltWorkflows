@@ -88,10 +88,10 @@ templates_path <- function(...) {
 }
 
 template_to_article <- function() {
-  from <- fs::dir_ls(templates_path())
-  fs::file_copy(
+  from <- dir_ls(templates_path())
+  file_copy(
     from,
-    articles_path(fs::path_file(from)),
+    articles_path(path_file(from)),
     overwrite = TRUE
   )
 }
