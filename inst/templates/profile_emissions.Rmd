@@ -69,7 +69,7 @@ getwd()
 
 params
 
-try(dir_tree(params$input))
+dir_tree(params$input)
 
 dir_tree(params$output)
 
