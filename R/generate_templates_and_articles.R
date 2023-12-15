@@ -32,10 +32,12 @@ extdata_to_template_impl <- function(profile = profiles()) {
   )
 
   file <- templates_path(paste0("profile_", profile, ".Rmd"))
-  sections |>
+  out <- sections |>
     lapply(readLines) |>
     unlist() |>
-    unname() |>
+    unname()
+
+  gsub("{workflow}", path_file(file), out, fixed = TRUE) |>
     writeLines(file)
 }
 
