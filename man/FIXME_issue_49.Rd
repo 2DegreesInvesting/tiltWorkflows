@@ -26,6 +26,6 @@ tibble::tibble(
   main_activity = "a",
   companies_id = "a"
 ) |>
-FIXME_issue_49()
+  FIXME_issue_49()
 }
 \keyword{internal}
