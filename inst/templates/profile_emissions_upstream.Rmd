@@ -29,6 +29,8 @@ interruptions.
 
 ## Setup
 
+There is a lot to setup. See the comments and the *Reproducibility* drop-down.
+
 ```{r global}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
