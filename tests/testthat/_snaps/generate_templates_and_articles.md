@@ -4,7 +4,7 @@
       show(yaml_path("emissions"))
     Output
       ---
-      title: "`r params$workflow`"
+      title: "{workflow}"
       output: github_document
       params:
         chunks: 3
@@ -25,7 +25,7 @@
       show(yaml_path("emissions_upstream"))
     Output
       ---
-      title: "`r params$workflow`"
+      title: "{workflow}"
       output: github_document
       params:
         chunks: 3
@@ -47,7 +47,7 @@
       show(yaml_path("sector"))
     Output
       ---
-      title: "`r params$workflow`"
+      title: "{workflow}"
       output: github_document
       params:
         chunks: 3
@@ -68,7 +68,7 @@
       show(yaml_path("sector_upstream"))
     Output
       ---
-      title: "`r params$workflow`"
+      title: "{workflow}"
       output: github_document
       params:
         chunks: 3
