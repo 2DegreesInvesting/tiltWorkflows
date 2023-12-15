@@ -128,18 +128,23 @@ emissions_profile_upstream <- profile_emissions_upstream(
   low_threshold = 1 / 3,
   high_threshold = 2 / 3
 )
+```
 
+## Results
+
+```{r}
 emissions_profile_upstream |>
   unnest_product() |>
-  write_csv(path(params$output, "emissions_profile_upstream_at_product_level.csv")) |>
-  print()
+  print() |> 
+  write_csv(path(params$output, "emissions_profile_upstream_at_product_level.csv"))
 
 emissions_profile_upstream |>
   unnest_company() |>
-  write_csv(path(params$output, "emissions_profile_upstream_at_company_level.csv")) |>
-  print()
+  print() |> 
+  write_csv(path(params$output, "emissions_profile_upstream_at_company_level.csv"))
 ```
-## Results
+
+The results at product and company level are now saved in the output/ directory.
 
 ```{r}
 # NOTE: If other workflows run before this one, this shows the results of all
