@@ -1,3 +1,2 @@
-  workflow: "profile_emissions.Rmd"
   emissions_profile_any_companies: "emissions_profile_any_companies.csv"
   emissions_profile_products: "emissions_profile_products.csv"
