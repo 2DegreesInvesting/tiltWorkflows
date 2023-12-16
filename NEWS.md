@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9020 (2023-12-16)
+
+* In all workflows the parameter `chunks` now defaults to `NULL`, which
+automatically sets a reasonable number of chunks  (#74).
+
 # tiltWorkflows 0.0.0.9019 (2023-12-15)
 
 * Add installation instructions from
