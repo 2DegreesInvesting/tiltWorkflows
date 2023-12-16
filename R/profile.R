@@ -180,7 +180,9 @@ profile_sector_upstream <- function(companies,
 }
 
 abort_zero_chunks <- function(x) {
-  if (is.null(x) || x > 0) return(invisible(x))
+  if (is.null(x) || x > 0) {
+    return(invisible(x))
+  }
 
   abort(c(
     "The number of chunks must be greater than 0:",
