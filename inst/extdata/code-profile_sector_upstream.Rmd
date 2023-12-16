@@ -27,17 +27,17 @@ sector_profile_upstream <- profile_sector_upstream(
 
 ## Results
 
-`r explain_indicator()`
+`r explain_results()`
 
 ```{r}
 sector_profile_upstream |>
   unnest_product() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "sector_profile_upstream_at_product_level.csv"))
 
 sector_profile_upstream |>
   unnest_company() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "sector_profile_upstream_at_company_level.csv"))
 ```
 

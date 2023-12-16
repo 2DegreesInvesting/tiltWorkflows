@@ -33,12 +33,12 @@ emissions_profile_upstream <- profile_emissions_upstream(
 ```{r}
 emissions_profile_upstream |>
   unnest_product() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "emissions_profile_upstream_at_product_level.csv"))
 
 emissions_profile_upstream |>
   unnest_company() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "emissions_profile_upstream_at_company_level.csv"))
 ```
 

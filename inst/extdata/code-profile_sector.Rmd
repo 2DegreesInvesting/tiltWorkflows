@@ -29,12 +29,12 @@ sector_profile <- profile_sector(
 ```{r}
 sector_profile |>
   unnest_product() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "sector_profile_at_product_level.csv"))
 
 sector_profile |>
   unnest_company() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "sector_profile_at_company_level.csv"))
 ```
 

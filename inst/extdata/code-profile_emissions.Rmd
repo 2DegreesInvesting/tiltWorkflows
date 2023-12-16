@@ -27,17 +27,17 @@ emissions_profile <- profile_emissions(
 
 ## Results
 
-`r explain_indicator()`
+`r explain_results()`
 
 ```{r}
 emissions_profile |>
   unnest_product() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "emissions_profile_at_product_level.csv"))
 
 emissions_profile |>
   unnest_company() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "emissions_profile_at_company_level.csv"))
 ```
 
