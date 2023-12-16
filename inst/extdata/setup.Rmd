@@ -20,6 +20,8 @@ to find a good balance between memory-usage and speed. A small number of
 
 ```{r}
 params$chunks
+
+availableCores()
 ```
 
 The other settings need no action, but you may read the comments and the
@@ -34,8 +36,6 @@ library(fs)
 
 # Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
 library(tiltWorkflows)
-
-availableCores()
 
 options(
   # Run by chunks. TODO: Try different multiples of `availableCores()`
