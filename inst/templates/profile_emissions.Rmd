@@ -28,12 +28,12 @@ interruptions.
 
 ## Setup
 
-The parameter `chunks` defaults to `NULL`, which splits your `*companies`
-dataset in just  enough chunks to distribute companies evenly across the cores
-available in your computer. Consider manually adjusting the `chunks` parameter
-to find a good balance between memory-usage and speed. A small number of
-`chunks` makes each chunk bigger and may saturate the memory. A large number of
-`chunks` may take longer because of the overhead of caching each chunk.
+If `chunks` is `NULL`, tiltWorkflows automatically splits your `*companies`
+dataset in just  enough chunks to distribute companies evenly across the
+available cores in your computer. Consider adjusting the `chunks` parameter
+manually. Aim to balance memory-usage and speed. A small number of `chunks`
+makes each chunk bigger and may saturate the memory. A large number of `chunks`
+may take longer because of the overhead of caching each chunk.
 
 ```{r}
 params$chunks
