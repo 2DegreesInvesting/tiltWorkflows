@@ -92,3 +92,7 @@ template_to_article <- function() {
 articles_path <- function(...) {
   here::here("vignettes", "articles", ...)
 }
+
+style_extdata <- function() {
+  styler::style_dir(extdata_path())
+}
