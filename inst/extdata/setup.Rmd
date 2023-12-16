@@ -32,10 +32,6 @@ If `chunks` is `NULL` (default) tiltWorkflows automatically splits your
 across the available cores in your computer.
 
 ```{r}
-params$chunks
-
-future::availableCores()
-
 options(
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
@@ -60,6 +56,8 @@ dir_create(params$output)
 
 ```{r}
 getwd()
+
+availableCores()
 
 params
 
