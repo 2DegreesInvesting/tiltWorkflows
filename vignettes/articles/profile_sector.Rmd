@@ -149,7 +149,8 @@ params$output |> dir_tree()
 
 ## Cleanup
 
-Here is the cache that allows you to resume after interruptions.
+Here is the cache that allows you to resume after interruptions. The number of
+`chunks` determines the number of files.
 
 ```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
 # NOTE: If other workflows run before this one, this shows the cache of all
