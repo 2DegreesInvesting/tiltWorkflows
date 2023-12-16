@@ -57,7 +57,7 @@ yaml_path <- function(profile) {
   all <- dir_ls(extdata_path(), regexp = "yaml-01-all[.]Rmd$")
   this <- dir_ls(extdata_path(), regexp = glue("yaml-.*{profile}[.]Rmd"))
   maybe <- NULL
-  if(grepl("upstream", profile)) {
+  if (grepl("upstream", profile)) {
     maybe <- dir_ls(extdata_path(), regexp = "yaml-.*all-upstream[.]Rmd")
   }
   end <- dir_ls(extdata_path(), regexp = "end[.]Rmd")

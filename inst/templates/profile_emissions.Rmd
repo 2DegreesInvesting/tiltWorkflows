@@ -28,7 +28,13 @@ interruptions.
 
 ## Setup
 
-There is a lot to setup. See the comments and the *Reproducibility* drop-down.
+Use the parameters to try different numbers of `chunks`. A small number of
+`chunks` makes each chunk bigger and may saturate the memory. A large number of
+`chunks` may take longer because of the overhead of caching each chunk.
+
+A reasonable number of `chunks` may be the number of rows in your companies
+dataset divided by the number of available cores. Find out those numbers with
+`nrow()` and `furute::availableCores()`.
 
 ```{r global}
 library(dplyr, warn.conflicts = FALSE)
@@ -121,17 +127,17 @@ emissions_profile <- profile_emissions(
 
 ## Results
 
-`r explain_indicator()`
+`r explain_results()`
 
 ```{r}
 emissions_profile |>
   unnest_product() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "emissions_profile_at_product_level.csv"))
 
 emissions_profile |>
   unnest_company() |>
-  print() |> 
+  print() |>
   write_csv(path(params$output, "emissions_profile_at_company_level.csv"))
 ```
 
