@@ -9,10 +9,10 @@ profile_emissions <- function(companies,
                               isic_tilt,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
-  chunks <- getOption("tiltWorkflows.chunks")
+  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
 
-  if (is.null(chunks)) {
+  if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions(
       companies,
       co2 = co2,
@@ -26,7 +26,7 @@ profile_emissions <- function(companies,
   } else {
     map_chunks(
       companies,
-      chunks = chunks,
+      chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       .by = "companies_id",
       .f = tiltIndicatorAfter::profile_emissions,
@@ -53,10 +53,10 @@ profile_emissions_upstream <- function(companies,
                                        isic_tilt,
                                        low_threshold = 1 / 3,
                                        high_threshold = 2 / 3) {
-  chunks <- getOption("tiltWorkflows.chunks")
+  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
 
-  if (is.null(chunks)) {
+  if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions_upstream(
       companies,
       co2 = co2,
@@ -72,7 +72,7 @@ profile_emissions_upstream <- function(companies,
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = chunks,
+      chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       .f = tiltIndicatorAfter::profile_emissions_upstream,
       co2 = co2,
@@ -98,10 +98,10 @@ profile_sector <- function(companies,
                            isic_tilt,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  chunks <- getOption("tiltWorkflows.chunks")
+  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
 
-  if (is.null(chunks)) {
+  if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector(
       companies,
       scenarios = scenarios,
@@ -116,7 +116,7 @@ profile_sector <- function(companies,
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = chunks,
+      chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       .f = tiltIndicatorAfter::profile_sector,
       scenarios = scenarios,
@@ -143,10 +143,10 @@ profile_sector_upstream <- function(companies,
                                     isic_tilt,
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  chunks <- getOption("tiltWorkflows.chunks")
+  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
 
-  if (is.null(chunks)) {
+  if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector_upstream(
       companies,
       scenarios = scenarios,
@@ -163,7 +163,7 @@ profile_sector_upstream <- function(companies,
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = chunks,
+      chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       .f = tiltIndicatorAfter::profile_sector_upstream,
       scenarios = scenarios,
@@ -176,5 +176,35 @@ profile_sector_upstream <- function(companies,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
+  }
+}
+
+abort_zero_chunks <- function(x) {
+  if (is.null(x) || x > 0) return(invisible(x))
+
+  abort(c(
+    "The number of chunks must be greater than 0:",
+    "`0` is invalid.",
+    "`1` uses the entire `*companies` dataset.",
+    "`2` or more splits the `*companies` dataset in that number of pieces.",
+    "`NULL` distributes companies evently across available cores."
+  ))
+}
+
+handle_chunks <- function(data) {
+  chunks <- get_chunks(data)
+  if_1_return_2(chunks)
+}
+
+get_chunks <- function(data, default = ceiling(nrow(data) / future::availableCores())) {
+  getOption("tiltWorkflows.chunks", default = default)
+}
+
+if_1_return_2 <- function(x) {
+  stopifnot(x > 0)
+  if (x == 1) {
+    return(2)
+  } else {
+    x
   }
 }
