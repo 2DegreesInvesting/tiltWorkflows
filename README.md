@@ -8,14 +8,16 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/2DegreesInvesting/tiltWorkflows/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/2DegreesInvesting/tiltWorkflows/actions/workflows/R-CMD-check.yaml)
+[![tiltWorkflows status
+badge](https://2degreesinvesting.r-universe.dev/badges/tiltWorkflows)](https://2degreesinvesting.r-universe.dev/tiltWorkflows)
 <!-- badges: end -->
 
 The goal of tiltWorkflows is to make it easy to run tilt workflows.
 
 Main features:
 
-- Easily access any workflow file.
 - Easily access toy inputs to try any workflow.
+- Easily access any workflow file.
 - Use your own data without writing code.
 - Easily share a reproducible report on GitHub.
 - Run large datasets that normally saturate your computer’s memory.
@@ -24,12 +26,23 @@ Main features:
 
 ## Installation
 
-You can install the development version of tiltWorkflows like so:
+You can install the development version from
+[r-universe](https://r-universe.dev/):
+
+``` r
+options(repos = c("https://2degreesinvesting.r-universe.dev", getOption("repos")))
+install.packages("tiltWorkflows")
+```
+
+Or from [GitHub](https://github.com/):
 
 ``` r
 # install.packages("pak")
 pak::pak("2DegreesInvesting/tiltWorkflows")
 ```
+
+Having trouble? Try it on a fresh new project on <https://posit.cloud/>
+(free).
 
 ## Example
 

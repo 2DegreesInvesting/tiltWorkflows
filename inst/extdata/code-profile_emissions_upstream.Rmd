@@ -10,6 +10,8 @@ emissions_profile_upstream_products <- read_csv(path(params$input, params$emissi
 
 ## Emissions profile upstream
 
+`r explain_indicator()`
+
 ```{r}
 emissions_profile_upstream <- profile_emissions_upstream(
   companies = emissions_profile_any_companies,
@@ -25,6 +27,8 @@ emissions_profile_upstream <- profile_emissions_upstream(
 ```
 
 ## Results
+
+`r explain_results()`
 
 ```{r}
 emissions_profile_upstream |>

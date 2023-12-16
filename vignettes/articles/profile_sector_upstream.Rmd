@@ -5,14 +5,14 @@ params:
   chunks: 3
   input: "input"
   output: "output"
+  europages_companies: "europages_companies.csv"
+  ecoinvent_activities: "ecoinvent_activities.csv"
+  ecoinvent_europages: "ecoinvent_europages.csv"
+  isic: "isic.csv"
   sector_profile_upstream_companies: "sector_profile_upstream_companies.csv"
   sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
   sector_profile_upstream_products: "sector_profile_upstream_products.csv"
-  europages_companies: "europages_companies.csv"
-  ecoinvent_activities: "ecoinvent_activities.csv"
   ecoinvent_inputs: "ecoinvent_inputs.csv"
-  ecoinvent_europages: "ecoinvent_europages.csv"
-  isic: "isic.csv"
 ---
 
 <!-- This file is generated from inst/extdata. Please edit that file -->
@@ -29,6 +29,8 @@ results. This saves memory, completes faster, and allows you to resume after
 interruptions.
 
 ## Setup
+
+There is a lot to setup. See the comments and the *Reproducibility* drop-down.
 
 ```{r global}
 library(dplyr, warn.conflicts = FALSE)
@@ -92,6 +94,7 @@ ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities)
 ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
 isic <- read_csv(path(params$input, params$isic))
 ```
+The "upstream" workflows also need this dataset.
 
 ```{r}
 ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
@@ -115,6 +118,8 @@ sector_profile_upstream_products <- read_csv(path(params$input, params$sector_pr
 
 ## Sector profile upstream
 
+`r explain_indicator()`
+
 ```{r}
 sector_profile_upstream <- profile_sector_upstream(
   companies = sector_profile_upstream_companies,
@@ -131,6 +136,8 @@ sector_profile_upstream <- profile_sector_upstream(
 ```
 
 ## Results
+
+`r explain_indicator()`
 
 ```{r}
 sector_profile_upstream |>

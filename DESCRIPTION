@@ -1,6 +1,6 @@
 Package: tiltWorkflows
 Title: Makes it Easy to Run 'TILT' Workflows
-Version: 0.0.0.9016
+Version: 0.0.0.9019
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988")),
@@ -21,19 +21,21 @@ Imports:
     dplyr,
     fs,
     furrr,
+    future,
     glue,
     here,
+    knitr,
     purrr,
     rappdirs,
     readr,
     rlang,
+    rmarkdown,
+    sessioninfo,
+    shiny,
     tibble,
     usethis
 Suggests: 
     devtools,
-    future,
-    rmarkdown,
-    sessioninfo,
     testthat (>= 3.0.0),
     withr
 Remotes: 
