@@ -196,8 +196,12 @@ handle_chunks <- function(data) {
   if_1_return_2(chunks)
 }
 
-get_chunks <- function(data, default = ceiling(nrow(data) / future::availableCores())) {
+get_chunks <- function(data, default = default_chunks(data)) {
   getOption("tiltWorkflows.chunks", default = default)
+}
+
+default_chunks <- function(data) {
+  2 * ceiling(nrow(data) / future::availableCores())
 }
 
 if_1_return_2 <- function(x) {
