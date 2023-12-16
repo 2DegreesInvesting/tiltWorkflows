@@ -39,12 +39,14 @@ library(fs)
 library(tiltWorkflows)
 ```
 
-If `chunks` is `NULL` tiltWorkflows automatically splits your `*companies`
-dataset in just  enough chunks to distribute companies evenly across the
-available cores in your computer. Consider adjusting the `chunks` parameter
-manually. Aim to balance memory-usage and speed. A small number of `chunks`
-makes each chunk bigger and may saturate the memory. A large number of `chunks`
-may take longer because of the overhead of caching each chunk.
+Consider adjusting the `chunks` parameter. Aim to balance memory-usage and
+speed. A small number of `chunks` makes each chunk bigger and may saturate the
+memory. A large number of `chunks` may take longer because of the overhead of
+caching each chunk.
+
+If `chunks` is `NULL` (default) tiltWorkflows automatically splits your
+`*companies` dataset in just  enough chunks to distribute companies evenly
+across the available cores in your computer.
 
 ```{r}
 params$chunks
@@ -52,7 +54,6 @@ params$chunks
 future::availableCores()
 
 options(
-  # Run by chunks. TODO: Try different multiples of `availableCores()`
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
   readr.show_col_types = FALSE,
