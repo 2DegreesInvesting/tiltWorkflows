@@ -191,9 +191,16 @@ abort_zero_chunks <- function(x) {
   ))
 }
 
-handle_chunks <- function(data) {
+handle_chunks <- function(data, quiet = TRUE) {
   chunks <- get_chunks(data)
-  if_1_return_2(chunks)
+  out <- if_1_return_2(chunks)
+
+  if (!quiet) {
+    .data <- deparse(substitute(data))
+    rlang::inform(glue("Spliting `{.data}` into {out} chunks."))
+  }
+
+  out
 }
 
 get_chunks <- function(data, default = default_chunks(data)) {
