@@ -23,7 +23,6 @@ Imports:
     furrr,
     future,
     glue,
-    here,
     knitr,
     purrr,
     rappdirs,
@@ -36,6 +35,7 @@ Imports:
     usethis
 Suggests: 
     devtools,
+    here,
     styler,
     testthat (>= 3.0.0),
     withr
