@@ -24,6 +24,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = withr::local_tempdir(),
+    tiltWorkflows.handle_chunks.quiet = TRUE,
     tiltWorkflows.chunks = 1
   ))
 
@@ -43,6 +44,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = withr::local_tempdir(),
+    tiltWorkflows.handle_chunks.quiet = TRUE,
     tiltWorkflows.chunks = 3
   ))
   masked <- profile_emissions(
@@ -66,6 +68,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
 test_that("without tiltWorkflows.chunks throws no error", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
+    tiltWorkflows.handle_chunks.quiet = TRUE,
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
@@ -88,6 +91,7 @@ test_that("without tiltWorkflows.chunks throws no error", {
 test_that("without tiltWorkflows.cache_dir throws no error", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
+    tiltWorkflows.handle_chunks.quiet = TRUE,
     tiltWorkflows.chunks = 3
   ))
 
