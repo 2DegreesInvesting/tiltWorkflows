@@ -93,14 +93,6 @@ allows you to resume after interruptions.</p>
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
-<p>Use the parameters to try different numbers of <code>chunks</code>. A
-small number of <code>chunks</code> makes each chunk bigger and may
-saturate the memory. A large number of <code>chunks</code> may take
-longer because of the overhead of caching each chunk.</p>
-<p>A reasonable number of <code>chunks</code> may be the number of rows
-in your companies dataset divided by the number of available cores. Find
-out those numbers with <code><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow()</a></code> and
-<code>furute::availableCores()</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -108,7 +100,7 @@ out those numbers with <code><a href="https://rdrr.io/r/base/nrow.html" class="e
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://future.futureverse.org" class="external-link">future</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks</span></span>
+<span><span class="co"># Masking `tiltIndicatorAfter::profile*()` to use `chunks`</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://2degreesinvesting.github.io/tiltWorkflows/">tiltWorkflows</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: tiltIndicatorAfter</span></span>
 <span><span class="co">#&gt; Loading required package: tiltToyData</span></span>
@@ -117,14 +109,18 @@ out those numbers with <code><a href="https://rdrr.io/r/base/nrow.html" class="e
 <span><span class="co">#&gt; The following objects are masked from 'package:tiltIndicatorAfter':</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     profile_emissions, profile_emissions_upstream, profile_sector,</span></span>
-<span><span class="co">#&gt;     profile_sector_upstream</span></span>
-<span></span>
-<span><span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; system </span></span>
-<span><span class="co">#&gt;      4</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span></span>
-<span>  <span class="co"># Run by chunks. TODO: Try different multiples of `availableCores()`</span></span>
+<span><span class="co">#&gt;     profile_sector_upstream</span></span></code></pre></div>
+<p>Consider adjusting the <code>chunks</code> parameter. Aim to balance
+memory-usage and speed. A small number of <code>chunks</code> makes each
+chunk bigger and may saturate the memory. A large number of
+<code>chunks</code> may take longer because of the overhead of caching
+each chunk.</p>
+<p>If <code>chunks</code> is <code>NULL</code> (default) tiltWorkflows
+automatically splits your <code>*companies</code> dataset in just enough
+chunks to distribute companies evenly across the available cores in your
+computer.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span></span>
 <span>  tiltWorkflows.chunks <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">chunks</span>,</span>
 <span>  <span class="co"># Read data quietly</span></span>
 <span>  readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -143,13 +139,17 @@ out those numbers with <code><a href="https://rdrr.io/r/base/nrow.html" class="e
 <span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">output</span><span class="op">)</span></span></code></pre></div>
 <details><summary>
 Reproducibility
-</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "/home/runner/work/tiltWorkflows/tiltWorkflows/vignettes/articles"</span></span>
 <span></span>
+<span><span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; system </span></span>
+<span><span class="co">#&gt;      4</span></span>
+<span></span>
 <span><span class="va">params</span></span>
 <span><span class="co">#&gt; $chunks</span></span>
-<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="co">#&gt; NULL</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $input</span></span>
 <span><span class="co">#&gt; [1] "input"</span></span>
@@ -297,14 +297,14 @@ Reproducibility
 </h2>
 <p>This example defaults to using toy datasets but you may <a href="https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html">use
 the parameters</a> of this file to instead use your own data.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">europages_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">europages_companies</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/FIXME_issue_49.html">FIXME_issue_49</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">ecoinvent_activities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">ecoinvent_activities</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">ecoinvent_europages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">ecoinvent_europages</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">isic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">isic</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Data specific to this indicator.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emissions_profile_any_companies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span>, <span class="va">params</span><span class="op">$</span><span class="va">emissions_profile_any_companies</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># FIXME User toy_emissions_profile_products_ecoinvent()</span></span>
 <span><span class="co"># See https://github.com/2DegreesInvesting/tiltToyData/pull/12</span></span>
@@ -316,7 +316,7 @@ the parameters</a> of this file to instead use your own data.</p>
 </h2>
 <p>For this TILT indicator, compute results both at product and company
 level.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emissions_profile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/profile_emissions.html">profile_emissions</a></span><span class="op">(</span></span>
 <span>  companies <span class="op">=</span> <span class="va">emissions_profile_any_companies</span>,</span>
 <span>  co2 <span class="op">=</span> <span class="va">emissions_profile_products</span>,</span>
@@ -326,13 +326,14 @@ level.</p>
 <span>  isic <span class="op">=</span> <span class="va">isic</span>,</span>
 <span>  low_threshold <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span>,</span>
 <span>  high_threshold <span class="op">=</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Splitting `companies` into 6 chunks.</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="results">Results<a class="anchor" aria-label="anchor" href="#results"></a>
 </h2>
 <p>Overview and save results at each level.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emissions_profile</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/tiltIndicator/man/unnest_product.html" class="external-link">unnest_product</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -372,7 +373,7 @@ level.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 119 more rows</span></span></span></code></pre></div>
 <p>The results at product and company level are now saved in the output/
 directory.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># NOTE: If other workflows run before this one, this shows the results of all</span></span>
 <span><span class="va">params</span><span class="op">$</span><span class="va">output</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">output</span></span></span>
@@ -382,18 +383,49 @@ directory.</p>
 <div class="section level2">
 <h2 id="cleanup">Cleanup<a class="anchor" aria-label="anchor" href="#cleanup"></a>
 </h2>
-<p>Here is the cache that allows you to resume after interruptions.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>Here is the cache that allows you to resume after interruptions. The
+number of <code>chunks</code> determines the number of files.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># NOTE: If other workflows run before this one, this shows the cache of all</span></span>
 <span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="fu"><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html" class="external-link">user_cache_dir</a></span><span class="op">(</span><span class="st">"tiltWorkflows"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">~/.cache/tiltWorkflows</span></span></span>
-<span><span class="co">#&gt; └── <span style="color: #0000BB; font-weight: bold;">profile_emissions</span></span></span>
+<span><span class="co">#&gt; ├── <span style="color: #0000BB; font-weight: bold;">profile_emissions</span></span></span>
+<span><span class="co">#&gt; │   ├── 1.rds</span></span>
+<span><span class="co">#&gt; │   ├── 2.rds</span></span>
+<span><span class="co">#&gt; │   ├── 3.rds</span></span>
+<span><span class="co">#&gt; │   ├── 4.rds</span></span>
+<span><span class="co">#&gt; │   ├── 5.rds</span></span>
+<span><span class="co">#&gt; │   └── 6.rds</span></span>
+<span><span class="co">#&gt; ├── <span style="color: #0000BB; font-weight: bold;">profile_emissions_upstream</span></span></span>
+<span><span class="co">#&gt; │   ├── 1.rds</span></span>
+<span><span class="co">#&gt; │   ├── 2.rds</span></span>
+<span><span class="co">#&gt; │   ├── 3.rds</span></span>
+<span><span class="co">#&gt; │   ├── 4.rds</span></span>
+<span><span class="co">#&gt; │   ├── 5.rds</span></span>
+<span><span class="co">#&gt; │   └── 6.rds</span></span>
+<span><span class="co">#&gt; ├── <span style="color: #0000BB; font-weight: bold;">profile_sector</span></span></span>
+<span><span class="co">#&gt; │   ├── 1.rds</span></span>
+<span><span class="co">#&gt; │   ├── 10.rds</span></span>
+<span><span class="co">#&gt; │   ├── 11.rds</span></span>
+<span><span class="co">#&gt; │   ├── 12.rds</span></span>
+<span><span class="co">#&gt; │   ├── 13.rds</span></span>
+<span><span class="co">#&gt; │   ├── 14.rds</span></span>
+<span><span class="co">#&gt; │   ├── 2.rds</span></span>
+<span><span class="co">#&gt; │   ├── 3.rds</span></span>
+<span><span class="co">#&gt; │   ├── 4.rds</span></span>
+<span><span class="co">#&gt; │   ├── 5.rds</span></span>
+<span><span class="co">#&gt; │   ├── 6.rds</span></span>
+<span><span class="co">#&gt; │   ├── 7.rds</span></span>
+<span><span class="co">#&gt; │   ├── 8.rds</span></span>
+<span><span class="co">#&gt; │   └── 9.rds</span></span>
+<span><span class="co">#&gt; └── <span style="color: #0000BB; font-weight: bold;">profile_sector_upstream</span></span></span>
 <span><span class="co">#&gt;     ├── 1.rds</span></span>
 <span><span class="co">#&gt;     ├── 2.rds</span></span>
-<span><span class="co">#&gt;     └── 3.rds</span></span></code></pre></div>
+<span><span class="co">#&gt;     ├── 3.rds</span></span>
+<span><span class="co">#&gt;     └── 4.rds</span></span></code></pre></div>
 <p>If you want to recompute some result, you must first delete the
 relevant cache:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rappdirs.r-lib.org" class="external-link">rappdirs</a></span><span class="op">)</span></span>
 <span></span>
