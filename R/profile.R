@@ -193,13 +193,14 @@ abort_zero_chunks <- function(x) {
   ))
 }
 
-handle_chunks <- function(data, quiet = getOption("tiltWorkflows.handle_chunks.quiet", FALSE)) {
+handle_chunks <- function(data) {
   chunks <- get_chunks(data)
   out <- if_1_return_2(chunks)
 
-  if (!quiet) {
+  auto_set_chunks <- is.null(getOption("tiltWorkflows.chunks"))
+  if (auto_set_chunks) {
     .data <- deparse(substitute(data))
-    rlang::warn(glue("Splitting `{.data}` into {out} chunks."))
+    rlang::warn(glue("Splitting `{.data}` into {out} chunks."), class = "auto_set_chunks")
   }
 
   out
