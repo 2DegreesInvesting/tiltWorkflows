@@ -197,10 +197,11 @@ handle_chunks <- function(data) {
   chunks <- get_chunks(data)
   out <- if_1_return_2(chunks)
 
-  auto_set_chunks <- is.null(getOption("tiltWorkflows.chunks"))
-  if (auto_set_chunks) {
-    .data <- deparse(substitute(data))
-    rlang::warn(glue("Splitting `{.data}` into {out} chunks."), class = "auto_set_chunks")
+  if (is.null(getOption("tiltWorkflows.chunks"))) {
+    warn(
+      glue("Splitting `{deparse(substitute(data))}` into {out} chunks."),
+      class = "auto_set_chunks"
+    )
   }
 
   out
