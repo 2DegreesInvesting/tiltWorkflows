@@ -29,7 +29,18 @@ interruptions.
 
 ## Setup
 
-If `chunks` is `NULL`, tiltWorkflows automatically splits your `*companies`
+```{r global}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(rappdirs)
+library(future)
+library(fs)
+
+# Masking `tiltIndicatorAfter::profile*()` to use `chunks`
+library(tiltWorkflows)
+```
+
+If `chunks` is `NULL` tiltWorkflows automatically splits your `*companies`
 dataset in just  enough chunks to distribute companies evenly across the
 available cores in your computer. Consider adjusting the `chunks` parameter
 manually. Aim to balance memory-usage and speed. A small number of `chunks`
@@ -40,20 +51,6 @@ may take longer because of the overhead of caching each chunk.
 params$chunks
 
 future::availableCores()
-```
-
-The other settings need no action, but you may read the comments and the
-*Reproducibility* section below.
-
-```{r global}
-library(dplyr, warn.conflicts = FALSE)
-library(readr, warn.conflicts = FALSE)
-library(rappdirs)
-library(future)
-library(fs)
-
-# Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
-library(tiltWorkflows)
 
 options(
   # Run by chunks. TODO: Try different multiples of `availableCores()`
