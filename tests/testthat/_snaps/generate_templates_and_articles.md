@@ -7,7 +7,7 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: 3
+        chunks: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -27,7 +27,7 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: 3
+        chunks: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -48,7 +48,7 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: 3
+        chunks: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -68,7 +68,7 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: 3
+        chunks: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"

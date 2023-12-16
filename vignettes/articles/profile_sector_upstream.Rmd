@@ -2,7 +2,7 @@
 title: "profile_sector_upstream.Rmd"
 output: github_document
 params:
-  chunks: 3
+  chunks: NULL
   input: "input"
   output: "output"
   europages_companies: "europages_companies.csv"
@@ -30,14 +30,6 @@ interruptions.
 
 ## Setup
 
-Use the parameters to try different numbers of `chunks`. A small number of
-`chunks` makes each chunk bigger and may saturate the memory. A large number of
-`chunks` may take longer because of the overhead of caching each chunk.
-
-A reasonable number of `chunks` may be the number of rows in your companies
-dataset divided by the number of available cores. Find out those numbers with
-`nrow()` and `furute::availableCores()`.
-
 ```{r global}
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
@@ -45,13 +37,21 @@ library(rappdirs)
 library(future)
 library(fs)
 
-# Masking `tiltIndicatorAfter::profile*()` to handle larger datasets by chunks
+# Masking `tiltIndicatorAfter::profile*()` to use `chunks`
 library(tiltWorkflows)
+```
 
-availableCores()
+Consider adjusting the `chunks` parameter. Aim to balance memory-usage and
+speed. A small number of `chunks` makes each chunk bigger and may saturate the
+memory. A large number of `chunks` may take longer because of the overhead of
+caching each chunk.
 
+If `chunks` is `NULL` (default) tiltWorkflows automatically splits your
+`*companies` dataset in just  enough chunks to distribute companies evenly
+across the available cores in your computer.
+
+```{r}
 options(
-  # Run by chunks. TODO: Try different multiples of `availableCores()`
   tiltWorkflows.chunks = params$chunks,
   # Read data quietly
   readr.show_col_types = FALSE,
@@ -75,6 +75,8 @@ dir_create(params$output)
 
 ```{r}
 getwd()
+
+availableCores()
 
 params
 
@@ -166,7 +168,8 @@ params$output |> dir_tree()
 
 ## Cleanup
 
-Here is the cache that allows you to resume after interruptions.
+Here is the cache that allows you to resume after interruptions. The number of
+`chunks` determines the number of files.
 
 ```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
 # NOTE: If other workflows run before this one, this shows the cache of all
