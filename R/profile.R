@@ -212,7 +212,7 @@ get_chunks <- function(data, default = default_chunks(data)) {
 }
 
 default_chunks <- function(data) {
-  2 * ceiling(nrow(data) / future::availableCores())
+  2 * ceiling(nrow(data) / unname(future::availableCores()))
 }
 
 if_1_return_2 <- function(x) {
