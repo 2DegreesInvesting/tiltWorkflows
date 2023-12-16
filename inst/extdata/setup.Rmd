@@ -11,13 +11,19 @@ interruptions.
 
 ## Setup
 
-Use the parameters to try different numbers of `chunks`. A small number of
+The parameter `chunks` defaults to `NULL`, which splits your `*companies`
+dataset in just  enough chunks to distribute companies evenly across the cores
+available in your computer. Consider manually adjusting the `chunks` parameter
+to find a good balance between memory-usage and speed. A small number of
 `chunks` makes each chunk bigger and may saturate the memory. A large number of
 `chunks` may take longer because of the overhead of caching each chunk.
 
-A reasonable number of `chunks` may be the number of rows in your companies
-dataset divided by the number of available cores. Find out those numbers with
-`nrow()` and `furute::availableCores()`.
+```{r}
+params$chunks
+```
+
+The other settings need no action, but you may read the comments and the
+*Reproducibility* section below.
 
 ```{r global}
 library(dplyr, warn.conflicts = FALSE)
