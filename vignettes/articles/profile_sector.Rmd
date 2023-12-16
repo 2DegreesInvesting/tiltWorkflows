@@ -38,7 +38,7 @@ to find a good balance between memory-usage and speed. A small number of
 ```{r}
 params$chunks
 
-availableCores()
+future::availableCores()
 ```
 
 The other settings need no action, but you may read the comments and the
