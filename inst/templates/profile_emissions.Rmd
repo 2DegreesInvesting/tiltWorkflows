@@ -3,6 +3,7 @@ title: "profile_emissions.Rmd"
 output: github_document
 params:
   chunks: NULL
+  order_chunks: "sample"
   input: "input"
   output: "output"
   europages_companies: "europages_companies.csv"
@@ -59,6 +60,7 @@ params
 ```{r}
 options(
   tiltWorkflows.chunks = params$chunks,
+  tiltWorkflows.order_rows = params$order_rows,
   # Read data quietly
   readr.show_col_types = FALSE,
   # Make printed output wider
@@ -155,13 +157,25 @@ params$output |> dir_tree()
 
 ## Cleanup
 
-Here is the cache that allows you to resume after interruptions. The number of
-`chunks` determines the number of files.
+Here is the cache that allows you to resume after interruptions. 
+
+* The number of files is determined by `params$chunks`.
 
 ```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
 # NOTE: If other workflows run before this one, this shows the cache of all
 dir_tree(user_cache_dir("tiltWorkflows"))
 ```
+
+* The order of files is determined by `params$order_row`.
+
+```{r}
+user_cache_dir("tiltWorkflows") |> 
+  dir_ls(type = "file", recurse = TRUE) |> 
+  file_info() |> 
+  arrange(modification_time) |> 
+  select(path)
+```
+
 
 If you want to recompute some result, you must first delete the relevant cache:
 
