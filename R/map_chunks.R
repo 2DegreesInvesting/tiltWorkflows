@@ -1,4 +1,9 @@
-map_chunks <- function(data, .f, ..., .by, chunks, cache_dir) {
+map_chunks <- function(data,
+                       .f, ...,
+                       .by,
+                       chunks,
+                       cache_dir,
+                       order_rows = "identity") {
   parent <- rm_namespace(deparse(substitute(.f)))
   job <- data |>
     nest_chunk(.by = .by, chunks = chunks) |>
@@ -6,6 +11,7 @@ map_chunks <- function(data, .f, ..., .by, chunks, cache_dir) {
 
   job |>
     pick_undone() |>
+    dchunkr::order_rows(.fun = order_rows)
     select("data", "file") |>
     future_pwalk(\(data, file) .f(data, ...) |> write_rds(file), .progress = TRUE)
 
