@@ -40,14 +40,22 @@ library(fs)
 library(tiltWorkflows)
 ```
 
-Consider adjusting the `chunks` parameter. Aim to balance memory-usage and
-speed. A small number of `chunks` makes each chunk bigger and may saturate the
+If the parameter `chunks` is `NULL` (default) your `*companies` dataset is
+automatically chunked to distribute its companies across available cores. This
+uses your computer resources efficiently but may not be enough. Consider
+adjusting the `chunks` parameter manually. Aim to balance memory-usage and
+speed. A small number of `chunks` makes each chunk bigger and may overwhelm your
 memory. A large number of `chunks` may take longer because of the overhead of
 caching each chunk.
 
-If `chunks` is `NULL` (default) tiltWorkflows automatically splits your
-`*companies` dataset in just  enough chunks to distribute companies evenly
-across the available cores in your computer.
+<details>
+<summary>Parameters</summary>
+
+```{r}
+params
+```
+
+</details>
 
 ```{r}
 options(
@@ -61,23 +69,18 @@ options(
 # Enable computing over multiple workers in parallel
 plan(multisession)
 
-# If there is no folder for inputs, create the input/ with toy datasets
+# Ensure input/ and output/ directories
 if (!dir_exists(params$input)) use_toy_input()
-
-# Create a folder to save results
-dir_create(params$output)
+if (!dir_exists(params$output)) dir_create(params$output)
 ```
 
 <details>
-
-<summary>Reproducibility</summary>
+<summary>Session information</summary>
 
 ```{r}
 getwd()
 
 availableCores()
-
-params
 
 dir_tree(params$input)
 
