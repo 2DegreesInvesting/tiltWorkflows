@@ -9,6 +9,7 @@
       params:
         chunks: NULL
         order: "sample"
+        cache_dir: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -30,6 +31,7 @@
       params:
         chunks: NULL
         order: "sample"
+        cache_dir: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -52,6 +54,7 @@
       params:
         chunks: NULL
         order: "sample"
+        cache_dir: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -73,6 +76,7 @@
       params:
         chunks: NULL
         order: "sample"
+        cache_dir: NULL
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
