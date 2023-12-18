@@ -96,3 +96,15 @@ articles_path <- function(...) {
 style_extdata <- function() {
   styler::style_dir(extdata_path())
 }
+
+delete_cache_dir <- function(cache_dir = default_cache_dir()) {
+  if (fs::dir_exists(cache_dir)) {
+    fs::dir_delete(cache_dir)
+  }
+
+  invisible(cache_dir)
+}
+
+default_cache_dir <- function() {
+  rappdirs::user_cache_dir("tiltWorkflows")
+}
