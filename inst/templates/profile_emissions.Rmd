@@ -52,10 +52,6 @@ caching each chunk.
 
 ```{r}
 params
-
-dir_tree(params$input)
-
-dir_tree(params$output)
 ```
 
 </details>
@@ -72,11 +68,9 @@ options(
 # Enable computing over multiple workers in parallel
 plan(multisession)
 
-# If there is no folder for inputs, create the input/ with toy datasets
+# Ensure input/ and output/
 if (!dir_exists(params$input)) use_toy_input()
-
-# Create a folder to save results
-dir_create(params$output)
+if (!dir_exists(params$output)) dir_create(params$output)
 ```
 
 <details>
@@ -86,6 +80,10 @@ dir_create(params$output)
 getwd()
 
 availableCores()
+
+dir_tree(params$input)
+
+dir_tree(params$output)
 
 sessioninfo::session_info()
 ```
