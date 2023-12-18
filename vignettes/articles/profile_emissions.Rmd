@@ -60,7 +60,9 @@ params
 
 ```{r}
 options(
+  # Affects the number of chunks
   tiltWorkflows.chunks = params$chunks,
+  # Affects the order in which the chunks run
   tiltWorkflows.order = params$order,
   # Read data quietly
   readr.show_col_types = FALSE,
@@ -92,7 +94,6 @@ sessioninfo::session_info()
 ```
 
 </details>
-
 ## Data
 
 This example defaults to using toy datasets but you may [use the
@@ -165,17 +166,6 @@ Here is the cache that allows you to resume after interruptions.
 # NOTE: If other workflows run before this one, this shows the cache of all
 dir_tree(user_cache_dir("tiltWorkflows"))
 ```
-
-* The order of files is determined by `params$order`.
-
-```{r}
-user_cache_dir("tiltWorkflows") |>
-  dir_ls(type = "file", recurse = TRUE) |>
-  file_info() |>
-  arrange(modification_time) |>
-  select(path)
-```
-
 
 If you want to recompute some result, you must first delete the relevant cache:
 
