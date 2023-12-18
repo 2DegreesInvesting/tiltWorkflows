@@ -162,7 +162,7 @@ Here is the cache that allows you to resume after interruptions.
 dir_tree(user_cache_dir("tiltWorkflows"))
 ```
 
-* The order of files is determined by `params$order_row`.
+* The order of files is determined by `params$order`.
 
 ```{r}
 user_cache_dir("tiltWorkflows") |>
