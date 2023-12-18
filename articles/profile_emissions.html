@@ -128,6 +128,9 @@ Parameters
 <span><span class="co">#&gt; $order</span></span>
 <span><span class="co">#&gt; [1] "sample"</span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $cache_dir</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $input</span></span>
 <span><span class="co">#&gt; [1] "input"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -153,10 +156,12 @@ Parameters
 <span><span class="co">#&gt; [1] "emissions_profile_products.csv"</span></span></code></pre></div>
 </details><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span></span>
-<span>  <span class="co"># Affects the number of chunks</span></span>
+<span>  <span class="co"># Determines the number of chunks</span></span>
 <span>  tiltWorkflows.chunks <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">chunks</span>,</span>
-<span>  <span class="co"># Affects the order in which the chunks run</span></span>
+<span>  <span class="co"># Determines the order in which the chunks run</span></span>
 <span>  tiltWorkflows.order <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">order</span>,</span>
+<span>  <span class="co"># Determines where to store the cache</span></span>
+<span>  tiltWorkflows.cache_dir <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">cache_dir</span>,</span>
 <span>  <span class="co"># Read data quietly</span></span>
 <span>  readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="co"># Make printed output wider</span></span>
