@@ -41,8 +41,12 @@ params
 
 ```{r}
 options(
+  # Determines the number of chunks
   tiltWorkflows.chunks = params$chunks,
+  # Determines the order in which the chunks run
   tiltWorkflows.order = params$order,
+  # Determines where to store the cache
+  tiltWorkflows.cache_dir = params$cache_dir,
   # Read data quietly
   readr.show_col_types = FALSE,
   # Make printed output wider
@@ -73,4 +77,3 @@ sessioninfo::session_info()
 ```
 
 </details>
-

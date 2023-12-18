@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9022 (2023-12-18)
+
+* `cache_dir` is now a parameter (#84). By default it's
+`rappdirs::user_cache_dir("tiltWorkflows")`.
+
 # tiltWorkflows 0.0.0.9021 (2023-12-18)
 
 * Allow to run chunks in different order (#78).

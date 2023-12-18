@@ -4,6 +4,7 @@ output: github_document
 params:
   chunks: NULL
   order: "sample"
+  cache_dir: NULL
   input: "input"
   output: "output"
   europages_companies: "europages_companies.csv"
@@ -61,8 +62,12 @@ params
 
 ```{r}
 options(
+  # Determines the number of chunks
   tiltWorkflows.chunks = params$chunks,
+  # Determines the order in which the chunks run
   tiltWorkflows.order = params$order,
+  # Determines where to store the cache
+  tiltWorkflows.cache_dir = params$cache_dir,
   # Read data quietly
   readr.show_col_types = FALSE,
   # Make printed output wider
@@ -93,7 +98,6 @@ sessioninfo::session_info()
 ```
 
 </details>
-
 ## Data
 
 This example defaults to using toy datasets but you may [use the
@@ -180,17 +184,6 @@ Here is the cache that allows you to resume after interruptions.
 # NOTE: If other workflows run before this one, this shows the cache of all
 dir_tree(user_cache_dir("tiltWorkflows"))
 ```
-
-* The order of files is determined by `params$order`.
-
-```{r}
-user_cache_dir("tiltWorkflows") |>
-  dir_ls(type = "file", recurse = TRUE) |>
-  file_info() |>
-  arrange(modification_time) |>
-  select(path)
-```
-
 
 If you want to recompute some result, you must first delete the relevant cache:
 
