@@ -8,6 +8,7 @@
       output: github_document
       params:
         chunks: NULL
+        order_chunks: "sample"
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -28,6 +29,7 @@
       output: github_document
       params:
         chunks: NULL
+        order_chunks: "sample"
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -49,6 +51,7 @@
       output: github_document
       params:
         chunks: NULL
+        order_chunks: "sample"
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
@@ -69,6 +72,7 @@
       output: github_document
       params:
         chunks: NULL
+        order_chunks: "sample"
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
