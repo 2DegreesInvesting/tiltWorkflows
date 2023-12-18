@@ -43,6 +43,7 @@ params
 options(
   tiltWorkflows.chunks = params$chunks,
   tiltWorkflows.order = params$order,
+  tiltWorkflows.cache_dir = params$cache_dir,
   # Read data quietly
   readr.show_col_types = FALSE,
   # Make printed output wider
