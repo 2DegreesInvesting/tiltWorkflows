@@ -36,7 +36,3 @@ use_workflow <- function(template,
 workflows <- function() {
   list.files(system.file("templates", package = "tiltWorkflows"))
 }
-
-workflow_path <- function(...) {
-  system.file("templates", ..., package = "tiltWorkflows")
-}
