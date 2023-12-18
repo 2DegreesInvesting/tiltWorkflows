@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9021 (2023-12-18)
+
+* Allow to run chunks in different order (#78).
+
 # tiltWorkflows 0.0.0.9020 (2023-12-16)
 
 * In all workflows the parameter `chunks` now defaults to `NULL`, which
