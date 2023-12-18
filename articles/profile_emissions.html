@@ -153,7 +153,9 @@ Parameters
 <span><span class="co">#&gt; [1] "emissions_profile_products.csv"</span></span></code></pre></div>
 </details><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span></span>
+<span>  <span class="co"># Affects the number of chunks</span></span>
 <span>  tiltWorkflows.chunks <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">chunks</span>,</span>
+<span>  <span class="co"># Affects the order in which the chunks run</span></span>
 <span>  tiltWorkflows.order <span class="op">=</span> <span class="va">params</span><span class="op">$</span><span class="va">order</span>,</span>
 <span>  <span class="co"># Read data quietly</span></span>
 <span>  readr.show_col_types <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -415,37 +417,9 @@ directory.</p>
 <span><span class="co">#&gt;     ├── 2.rds</span></span>
 <span><span class="co">#&gt;     ├── 3.rds</span></span>
 <span><span class="co">#&gt;     └── 4.rds</span></span></code></pre></div>
-<ul>
-<li>The order of files is determined by <code>params$order</code>.</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html" class="external-link">user_cache_dir</a></span><span class="op">(</span><span class="st">"tiltWorkflows"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html" class="external-link">dir_ls</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"file"</span>, recurse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://fs.r-lib.org/reference/file_info.html" class="external-link">file_info</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">modification_time</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 1</span></span></span>
-<span><span class="co">#&gt;    path                                                              </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fs::path&gt;</span>                                                        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> /home/runner/.cache/tiltWorkflows/profile_emissions/1.rds         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> /home/runner/.cache/tiltWorkflows/profile_emissions/2.rds         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> /home/runner/.cache/tiltWorkflows/profile_emissions/3.rds         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> /home/runner/.cache/tiltWorkflows/profile_emissions/4.rds         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> /home/runner/.cache/tiltWorkflows/profile_emissions_upstream/1.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> /home/runner/.cache/tiltWorkflows/profile_emissions_upstream/2.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> /home/runner/.cache/tiltWorkflows/profile_emissions_upstream/3.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> /home/runner/.cache/tiltWorkflows/profile_emissions_upstream/4.rds</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> /home/runner/.cache/tiltWorkflows/profile_sector/1.rds            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> /home/runner/.cache/tiltWorkflows/profile_sector/2.rds            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> /home/runner/.cache/tiltWorkflows/profile_sector/3.rds            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> /home/runner/.cache/tiltWorkflows/profile_sector/4.rds            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> /home/runner/.cache/tiltWorkflows/profile_sector_upstream/1.rds   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> /home/runner/.cache/tiltWorkflows/profile_sector_upstream/2.rds   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> /home/runner/.cache/tiltWorkflows/profile_sector_upstream/3.rds   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> /home/runner/.cache/tiltWorkflows/profile_sector_upstream/4.rds</span></span></code></pre></div>
 <p>If you want to recompute some result, you must first delete the
 relevant cache:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org" class="external-link">fs</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rappdirs.r-lib.org" class="external-link">rappdirs</a></span><span class="op">)</span></span>
 <span></span>
