@@ -69,7 +69,7 @@ options(
 # Enable computing over multiple workers in parallel
 plan(multisession)
 
-# Ensure input/ and output/
+# Ensure input/ and output/ directories
 if (!dir_exists(params$input)) use_toy_input()
 if (!dir_exists(params$output)) dir_create(params$output)
 ```
