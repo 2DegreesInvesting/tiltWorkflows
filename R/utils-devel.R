@@ -113,3 +113,10 @@ use_workflow_index <- function(index = 1) {
   wf <- workflows()
   use_workflow(wf[[index]])
 }
+
+cache_info <- function(cache_dir = default_cache_dir()) {
+  fs::dir_ls(cache_dir, recurse = TRUE, type = "file") |>
+    fs::file_info() |>
+    dplyr::arrange(modification_time) |>
+    dplyr::relocate(modification_time, path)
+}

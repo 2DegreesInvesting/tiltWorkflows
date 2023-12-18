@@ -141,3 +141,95 @@ test_that("if `tiltWorkflows.chunks` is set, it throws no warning", {
     )
   )
 })
+
+test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", {
+  tmp_cache <- withr::local_tempfile()
+  withr::local_options(list(
+    readr.show_col_types = FALSE,
+    tiltWorkflows.chunks = 3,
+    tiltWorkflows.cache_dir = tmp_cache,
+    tiltWorkflows.order = "rev"
+  ))
+
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products())
+
+  profile_emissions(
+    companies,
+    products,
+    # TODO: Move to tiltToyData
+    europages_companies = tiltIndicatorAfter::ep_companies,
+    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  )
+
+  actual <- fs::dir_ls(tmp_cache, recurse = TRUE, type = "file") |>
+    fs::file_info() |>
+    dplyr::arrange(modification_time) |>
+    dplyr::pull(path) |>
+    fs::path_file() |>
+    fs::path_ext_remove()
+
+  expect_equal(actual, rev(as.character(1:3)))
+})
+
+test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
+  tmp_cache <- withr::local_tempfile()
+  withr::local_options(list(
+    readr.show_col_types = FALSE,
+    tiltWorkflows.chunks = 3,
+    tiltWorkflows.cache_dir = tmp_cache,
+    tiltWorkflows.order = "identity"
+  ))
+
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products())
+
+  profile_emissions(
+    companies,
+    products,
+    # TODO: Move to tiltToyData
+    europages_companies = tiltIndicatorAfter::ep_companies,
+    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  )
+
+  actual <- cache_info(tmp_cache) |>
+    dplyr::pull(path) |>
+    fs::path_file() |>
+    fs::path_ext_remove()
+
+  expect_equal(actual, as.character(1:3))
+})
+
+test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
+  tmp_cache <- withr::local_tempfile()
+  withr::local_options(list(
+    readr.show_col_types = FALSE,
+    tiltWorkflows.chunks = 3,
+    tiltWorkflows.cache_dir = tmp_cache,
+    tiltWorkflows.order = "rev"
+  ))
+
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products())
+
+  profile_emissions(
+    companies,
+    products,
+    # TODO: Move to tiltToyData
+    europages_companies = tiltIndicatorAfter::ep_companies,
+    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  )
+
+  actual <- cache_info(tmp_cache) |>
+    dplyr::pull(path) |>
+    fs::path_file() |>
+    fs::path_ext_remove()
+
+  expect_equal(actual, rev(as.character(1:3)))
+})
