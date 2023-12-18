@@ -7,7 +7,8 @@ test_that("creates output sensitive to .params", {
   fs::file_copy(path, workflow)
   use_toy_input(quiet = TRUE)
 
-  run_workflow(workflow, .params = list(chunks = 2, order = "rev", cache_dir = cache_dir))
+  .params <- list(chunks = 2, order = "rev", cache_dir = cache_dir)
+  render(workflow, params = .params, quiet = TRUE)
 
   expect_true(fs::dir_exists("output"))
 

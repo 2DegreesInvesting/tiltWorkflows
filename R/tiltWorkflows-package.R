@@ -24,7 +24,6 @@
 #' @importFrom readr write_rds
 #' @importFrom rlang abort
 #' @importFrom rlang warn
-#' @importFrom rmarkdown render
 #' @importFrom sessioninfo session_info
 #' @importFrom shiny p
 #' @importFrom tibble tibble
@@ -32,3 +31,7 @@
 #' @importFrom tiltToyData toy_files
 ## usethis namespace: end
 NULL
+
+#' @importFrom rmarkdown render
+#' @export
+rmarkdown::render
