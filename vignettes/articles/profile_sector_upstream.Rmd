@@ -62,7 +62,7 @@ params
 ```{r}
 options(
   tiltWorkflows.chunks = params$chunks,
-  tiltWorkflows.order_rows = params$order_rows,
+  tiltWorkflows.order = params$order,
   # Read data quietly
   readr.show_col_types = FALSE,
   # Make printed output wider

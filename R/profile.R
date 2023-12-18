@@ -11,7 +11,7 @@ profile_emissions <- function(companies,
                               high_threshold = 2 / 3) {
   chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order_rows <- getOption("tiltWorkflows.order_rows", "identity")
+  order <- getOption("tiltWorkflows.order", "identity")
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions(
@@ -29,7 +29,7 @@ profile_emissions <- function(companies,
       companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
-      order_rows = order_rows,
+      order = order,
       .by = "companies_id",
       .f = tiltIndicatorAfter::profile_emissions,
       co2 = co2,
@@ -57,7 +57,7 @@ profile_emissions_upstream <- function(companies,
                                        high_threshold = 2 / 3) {
   chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order_rows <- getOption("tiltWorkflows.order_rows", "identity")
+  order <- getOption("tiltWorkflows.order", "identity")
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions_upstream(
@@ -77,7 +77,7 @@ profile_emissions_upstream <- function(companies,
       .by = "companies_id",
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
-      order_rows = order_rows,
+      order = order,
       .f = tiltIndicatorAfter::profile_emissions_upstream,
       co2 = co2,
       europages_companies = europages_companies,
@@ -104,7 +104,7 @@ profile_sector <- function(companies,
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order_rows <- getOption("tiltWorkflows.order_rows", "identity")
+  order <- getOption("tiltWorkflows.order", "identity")
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector(
@@ -123,7 +123,7 @@ profile_sector <- function(companies,
       .by = "companies_id",
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
-      order_rows = order_rows,
+      order = order,
       .f = tiltIndicatorAfter::profile_sector,
       scenarios = scenarios,
       europages_companies = europages_companies,
@@ -151,7 +151,7 @@ profile_sector_upstream <- function(companies,
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
   chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order_rows <- getOption("tiltWorkflows.order_rows", "identity")
+  order <- getOption("tiltWorkflows.order", "identity")
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector_upstream(
@@ -172,7 +172,7 @@ profile_sector_upstream <- function(companies,
       .by = "companies_id",
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
-      order_rows = order_rows,
+      order = order,
       .f = tiltIndicatorAfter::profile_sector_upstream,
       scenarios = scenarios,
       inputs = inputs,
