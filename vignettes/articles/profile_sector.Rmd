@@ -166,10 +166,10 @@ dir_tree(user_cache_dir("tiltWorkflows"))
 * The order of files is determined by `params$order_row`.
 
 ```{r}
-user_cache_dir("tiltWorkflows") |> 
-  dir_ls(type = "file", recurse = TRUE) |> 
-  file_info() |> 
-  arrange(modification_time) |> 
+user_cache_dir("tiltWorkflows") |>
+  dir_ls(type = "file", recurse = TRUE) |>
+  file_info() |>
+  arrange(modification_time) |>
   select(path)
 ```
 
