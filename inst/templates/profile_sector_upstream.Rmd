@@ -105,8 +105,7 @@ parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkf
 of this file to instead use your own data.
 
 ```{r}
-europages_companies <- read_csv(path(params$input, params$europages_companies)) |>
-  FIXME_issue_49_europages_companies()
+europages_companies <- read_csv(path(params$input, params$europages_companies))
 ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities))
 ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
 isic <- read_csv(path(params$input, params$isic))
