@@ -1,5 +1,5 @@
 ---
-title: "profile_emissions_upstream.Rmd"
+title: "profile_emissions.Rmd"
 output: github_document
 params:
   chunks: NULL
@@ -12,8 +12,7 @@ params:
   ecoinvent_europages: "ecoinvent_europages.csv"
   isic: "isic.csv"
   emissions_profile_any_companies: "emissions_profile_any_companies.csv"
-  emissions_profile_upstream_products: "emissions_profile_upstream_products.csv"
-  ecoinvent_inputs: "ecoinvent_inputs.csv"
+  emissions_profile_products: "emissions_profile_products.csv"
 ---
 
 <!-- This file is generated from inst/extdata. Please edit that file -->
@@ -110,34 +109,26 @@ ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities)
 ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
 isic <- read_csv(path(params$input, params$isic))
 ```
-The "upstream" workflows also need this dataset.
-
-```{r}
-ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
-  read_csv() |>
-  FIXME_issue_49_ecoinvent_inputs()
-```
 Data specific to this indicator.
 
 ```{r}
 emissions_profile_any_companies <- read_csv(path(params$input, params$emissions_profile_any_companies))
-# FIXME User toy_emissions_profile_upstream_products_ecoinvent()
+# FIXME User toy_emissions_profile_products_ecoinvent()
 # See https://github.com/2DegreesInvesting/tiltToyData/pull/12
 # https://github.com/2DegreesInvesting/tiltWorkflows/issues/9
-emissions_profile_upstream_products <- read_csv(path(params$input, params$emissions_profile_upstream_products))
+emissions_profile_products <- read_csv(path(params$input, params$emissions_profile_products))
 ```
 
-## Emissions profile upstream
+## Emissions profile
 
 `r explain_indicator()`
 
 ```{r}
-emissions_profile_upstream <- profile_emissions_upstream(
+emissions_profile <- profile_emissions(
   companies = emissions_profile_any_companies,
-  co2 = emissions_profile_upstream_products,
+  co2 = emissions_profile_products,
   europages_companies = europages_companies,
   ecoinvent_activities = ecoinvent_activities,
-  ecoinvent_inputs = ecoinvent_inputs,
   ecoinvent_europages = ecoinvent_europages,
   isic = isic,
   low_threshold = 1 / 3,
@@ -150,15 +141,15 @@ emissions_profile_upstream <- profile_emissions_upstream(
 `r explain_results()`
 
 ```{r}
-emissions_profile_upstream |>
+emissions_profile |>
   unnest_product() |>
   print() |>
-  write_csv(path(params$output, "emissions_profile_upstream_at_product_level.csv"))
+  write_csv(path(params$output, "emissions_profile_at_product_level.csv"))
 
-emissions_profile_upstream |>
+emissions_profile |>
   unnest_company() |>
   print() |>
-  write_csv(path(params$output, "emissions_profile_upstream_at_company_level.csv"))
+  write_csv(path(params$output, "emissions_profile_at_company_level.csv"))
 ```
 
 The results at product and company level are now saved in the output/ directory.

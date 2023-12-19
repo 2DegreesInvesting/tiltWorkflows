@@ -3,22 +3,16 @@
 #' @param data A data frame.
 #'
 #' @return A data frame
-#' @export
 #'
 #' @keywords internal
 #'
 #' @examples
-#' tibble::tibble(
-#'   TO_REMOVE = "a",
-#'   company_name = "a",
-#'   country = "a",
-#'   company_city = "a",
-#'   postcode = "a",
-#'   address = "a",
-#'   main_activity = "a",
-#'   companies_id = "a"
-#' ) |>
-#'   FIXME_issue_49()
+#' #
+#' @name FIXME_issue_49
+NULL
+
+#' @rdname FIXME_issue_49
+#' @export
 FIXME_issue_49 <- function(data) {
   data |>
     select(
@@ -30,4 +24,16 @@ FIXME_issue_49 <- function(data) {
       "main_activity",
       "companies_id"
     )
+}
+
+#' @rdname FIXME_issue_49
+#' @export
+FIXME_issue_49_ecoinvent_inputs <- function(data) {
+  data |>
+    select(
+      "input_activity_uuid_product_uuid",
+      "exchange_name",
+      "exchange_unit_name"
+    ) |>
+    distinct()
 }
