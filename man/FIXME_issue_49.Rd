@@ -2,10 +2,11 @@
 % Please edit documentation in R/FIXME_issue_49.R
 \name{FIXME_issue_49}
 \alias{FIXME_issue_49}
+\alias{FIXME_issue_49_europages_companies}
 \alias{FIXME_issue_49_ecoinvent_inputs}
 \title{See issue #49}
 \usage{
-FIXME_issue_49(data)
+FIXME_issue_49_europages_companies(data)
 
 FIXME_issue_49_ecoinvent_inputs(data)
 }
