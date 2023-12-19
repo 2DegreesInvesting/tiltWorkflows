@@ -13,7 +13,7 @@ NULL
 
 #' @rdname FIXME_issue_49
 #' @export
-FIXME_issue_49 <- function(data) {
+FIXME_issue_49_europages_companies <- function(data) {
   data |>
     select(
       "company_name",
