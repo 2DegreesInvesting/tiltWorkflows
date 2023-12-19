@@ -4,6 +4,7 @@
 ## usethis namespace: start
 #' @import dchunkr
 #' @importFrom dplyr .data
+#' @importFrom dplyr distinct
 #' @importFrom dplyr select
 #' @importFrom fs dir_create
 #' @importFrom fs dir_exists

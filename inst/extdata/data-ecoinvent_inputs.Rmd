@@ -1,14 +1,5 @@
 The "upstream" workflows also need this dataset.
 
 ```{r}
-ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
-  read_csv() |>
-  # FIXME: Move to `profile_*()`
-  select(
-    "input_activity_uuid_product_uuid",
-    "exchange_name",
-    "exchange_unit_name"
-  ) |>
-  distinct()
+ecoinvent_inputs <- read_csv(path(params$input, params$ecoinvent_inputs))
 ```
-

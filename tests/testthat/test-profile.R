@@ -233,3 +233,28 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
 
   expect_equal(actual, rev(as.character(1:3)))
 })
+
+test_that("characterize output columns", {
+  withr::local_options(list(
+    readr.show_col_types = FALSE,
+    tiltWorkflows.chunks = 2,
+    tiltWorkflows.cache_dir = withr::local_tempdir()
+  ))
+
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products())
+
+  out <- profile_emissions(
+    companies,
+    products,
+    # TODO: Move to tiltToyData
+    europages_companies = tiltIndicatorAfter::ep_companies,
+    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  )
+
+  expect_snapshot(names(unnest_product(out)))
+
+  expect_snapshot(names(unnest_company(out)))
+})
