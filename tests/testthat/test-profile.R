@@ -237,6 +237,7 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
 test_that("characterize output columns", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
+    tiltWorkflows.chunks = 2,
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
