@@ -32,3 +32,6 @@
 #' @importFrom tiltToyData toy_files
 ## usethis namespace: end
 NULL
+
+#' @export
+rmarkdown::render
