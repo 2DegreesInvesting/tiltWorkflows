@@ -113,9 +113,7 @@ isic <- read_csv(path(params$input, params$isic))
 The "upstream" workflows also need this dataset.
 
 ```{r}
-ecoinvent_inputs <- path(params$input, params$ecoinvent_inputs) |>
-  read_csv() |>
-  FIXME_issue_49_ecoinvent_inputs()
+ecoinvent_inputs <- read_csv(path(params$input, params$ecoinvent_inputs))
 ```
 Data specific to this indicator.
 
