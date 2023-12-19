@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -57,36 +57,30 @@ Having trouble? Try it on a fresh new project on https://posit.cloud/ (free).
 library(tiltWorkflows)
 ```
 
-* `use_toy_input()` to create an input/ folder with toy datasets in your working
-directory.
+* Create a workflow file into your working directory.
 
-```{r error=TRUE}
-use_toy_input()
-
-list.files("input")
-
-# It won't overwrite an existing input/ directory
-use_toy_input()
-```
-
-* `use_workflow()` to create a workflow file into your working directory.
-
-```{r error=TRUE}
-# The error shows what's available
-use_workflow()
-
+```{r}
 use_workflow("profile_emissions.Rmd")
 ```
 
-* To run the workflow and create a report with the results click on Knit or [Knit
-with
-Parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html).
+* Create an input/ directory with toy datasets.
 
-To share a link to the output ".md" file you may run [`gh gist create
-profile_emissions.md`](https://cli.github.com/manual/gh_gist) or paste its
-contents into a [new GitHub gist](https://gist.github.com).
+```{r}
+use_toy_input()
+```
+
+* Render the workflow to create a report and output/ files with results.
+
+```{r}
+# Or click "Knit" in RStudio
+render("profile_emissions.Rmd", quiet = TRUE)
+
+list.files("output")
+```
+
+To learn more see [Get started](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html).
 
 ```{r cleanup, echo=FALSE}
-unlink("profile_emissions.Rmd")
-fs::dir_delete("input")
+cleanup_io()
+cleanup_profile_emissions()
 ```

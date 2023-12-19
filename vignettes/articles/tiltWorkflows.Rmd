@@ -1,22 +1,23 @@
 ---
-title: "Using parameters"
+title: "tiltWorkflows"
 params: 
   output: "output"
   file: "example.csv"
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-Computational documents may have parameters in their header that allow you to
-change the behavior of the document without changing its code.
+## Using parameters
+
+The workflow files may have parameters in their header that allow you to change
+the behavior of the document without changing its code.
 
 For example, consider this header:
-
 
 ```{r echo=FALSE, comment=""}
 this_file <- fs::path(getwd(), "tiltWorkflows.Rmd")
@@ -29,8 +30,8 @@ Each parameter is an element of the `params` list:
 params
 ```
 
-Computational documents can use those parameters in many ways, for example, to
-create paths:
+The workflow files use those parameters in many ways, for example, to create
+paths:
 
 ```{r}
 file.path(params$output, params$file)
@@ -46,3 +47,76 @@ Change the defaults as you need then click on "Kint".
 <img src=https://github.com/2DegreesInvesting/tiltWorkflows/assets/5856545/7255838b-f410-4c07-9938-2b94c15b18e3 width=500>
 
 Learn more about [parametrized computational documents](https://docs.posit.co/connect/user/param-rmarkdown/).
+
+## Sharing your work
+
+You can share a link to the output ".md" file of each workflow by pasting its
+contents into a [new GitHub gist](https://gist.github.com), or from the terminal
+with the [`gh` CLI](https://cli.github.com/), e.g:
+
+```bash
+gh gist create emissions_profile.md
+```
+
+Also you may share input/ output/ and the cache/ directories by compressing them
+into a .zip file, uploading them to an online drive, then sharing the link.
+
+## Handling large datasets and long run times
+
+The tiltWorkflows package handles a large `*companies` dataset by splitting it
+in chunks that fit in your computer's memory, and running multiple chunks in
+parallel across multiple cores. The entire process may still take a long time,
+but tiltWorkflows caches intermediate results so you can interrupt the process
+at any point and resume later without recomputing completed chunks.
+
+That may be enough for you, but you can still complete your job faster. You can
+run multiple processes in a complementary way and no interruption.
+
+### Running multiple processes in a complementary way
+
+Multiple processes can cooperate and complete all chunks faster than possible
+with a single process.
+
+It can be twice faster when two processes run the same workflow and feed the
+same cache but work through chunks in reverse order with the parameter `order =
+'rev'`.
+
+You can run the same workflow from multiple processes in a number of ways:
+
+1. Launch multiple instance of RStudio and click on Knit.
+
+2. Write multiple .R files and run them as a [background job in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/jobs.html):
+
+```r
+# job1.R
+rmarkdown::render('profile_emissions.Rmd')
+
+# job2.R
+rmarkdown::render('profile_emissions.Rmd', params = list(order = 'rev'))
+```
+
+3. From multiple instances of the Terminal use `Rscript` with an R expression:
+
+```bash
+# Terminal 1
+Rscript -e "rmarkdown::render('profile_emissions.Rmd')"
+
+# Terminal 2
+Rscript -e "rmarkdown::render('profile_emissions.Rmd', params = list(order = 'rev'))"
+```
+
+For even faster results use the parameter `order = 'sample'` and run as many
+processes as you want.
+
+### No interruptions
+
+To avoid interruptions you can use a remote computer. 
+
+I typically compute in containers from the [rocker/verse
+image](https://rocker-project.org/images/versioned/rstudio.html) running on a
+[Docker droplet on
+DigitalOcean](https://marketplace.digitalocean.com/apps/docker). For interactive
+work I use RStudio in the container. But for non-interactive, long-running
+scripts I use `tmux`: I `ssh` into a terminal on the remote server, start a
+`tmux` session, and use as many terminals as necessary to execute and monitor
+jobs inside the container.

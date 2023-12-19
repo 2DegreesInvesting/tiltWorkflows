@@ -50,62 +50,30 @@ Having trouble? Try it on a fresh new project on <https://posit.cloud/>
 library(tiltWorkflows)
 ```
 
-- `use_toy_input()` to create an input/ folder with toy datasets in your
-  working directory.
+- Create a workflow file into your working directory.
 
 ``` r
-use_toy_input()
-#> Writing input/ with toy datasets.
-
-list.files("input")
-#>  [1] "ecoinvent_activities.csv"               
-#>  [2] "ecoinvent_europages.csv"                
-#>  [3] "ecoinvent_inputs.csv"                   
-#>  [4] "emissions_profile_any_companies.csv"    
-#>  [5] "emissions_profile_products.csv"         
-#>  [6] "emissions_profile_upstream_products.csv"
-#>  [7] "emissions_profile_upstream.csv"         
-#>  [8] "emissions_profile.csv"                  
-#>  [9] "europages_companies.csv"                
-#> [10] "isic.csv"                               
-#> [11] "sector_profile_any_scenarios.csv"       
-#> [12] "sector_profile_companies.csv"           
-#> [13] "sector_profile_upstream_companies.csv"  
-#> [14] "sector_profile_upstream_products.csv"   
-#> [15] "sector_profile_upstream.csv"            
-#> [16] "sector_profile.csv"
-
-# It won't overwrite an existing input/ directory
-use_toy_input()
-#> Error in `use_toy_input()`:
-#> ! The input/ directory already exists in the working directory
-#> ✖ Aborting to avoid overwriting existing data.
-#> ℹ Do you need to move or remove your existing input/ directory?
-```
-
-- `use_workflow()` to create a workflow file into your working
-  directory.
-
-``` r
-# The error shows what's available
-use_workflow()
-#> Error in `use_workflow()`:
-#> ! ✖ The workflow file must be provided.
-#> ℹ Which one do you want?
-#> * `use_workflow("profile_emissions_upstream.Rmd")`
-#> * `use_workflow("profile_emissions.Rmd")`
-#> * `use_workflow("profile_sector_upstream.Rmd")`
-#> * `use_workflow("profile_sector.Rmd")`
-
 use_workflow("profile_emissions.Rmd")
 #> ✔ Setting active project to '/home/rstudio/git/tiltWorkflows'
 #> ✔ Writing 'profile_emissions.Rmd'
 ```
 
-- To run the workflow and create a report with the results click on Knit
-  or [Knit with
-  Parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html).
+- Create an input/ directory with toy datasets.
 
-To share a link to the output “.md” file you may run
-[`gh gist create profile_emissions.md`](https://cli.github.com/manual/gh_gist)
-or paste its contents into a [new GitHub gist](https://gist.github.com).
+``` r
+use_toy_input()
+#> Writing input/ with toy datasets.
+```
+
+- Render the workflow to create a report and output/ files with results.
+
+``` r
+# Or click "Knit" in RStudio
+render("profile_emissions.Rmd", quiet = TRUE)
+
+list.files("output")
+#> [1] "emissions_profile_at_company_level.csv" "emissions_profile_at_product_level.csv"
+```
+
+To learn more see [Get
+started](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html).
