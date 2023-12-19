@@ -65,6 +65,9 @@ profile_emissions_upstream <- function(companies,
   europages_companies <- europages_companies |>
     FIXME_issue_49_europages_companies()
 
+  ecoinvent_inputs <- ecoinvent_inputs |>
+    FIXME_issue_49_ecoinvent_inputs()
+
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions_upstream(
       companies,
@@ -164,6 +167,9 @@ profile_sector_upstream <- function(companies,
 
   europages_companies <- europages_companies |>
     FIXME_issue_49_europages_companies()
+
+  ecoinvent_inputs <- ecoinvent_inputs |>
+    FIXME_issue_49_ecoinvent_inputs()
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector_upstream(
