@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9023 (2023-12-19)
+
+* Reexport `rmarkdown::render()` (#88).
+
 # tiltWorkflows 0.0.0.9022 (2023-12-18)
 
 * `cache_dir` is now a parameter (#84). By default it's
