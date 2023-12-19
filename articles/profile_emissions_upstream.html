@@ -176,6 +176,7 @@ Parameters
 <span></span>
 <span><span class="co"># Ensure input/ and output/ directories</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">input</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="../reference/use_toy_input.html">use_toy_input</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Writing input/ with toy datasets.</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_access.html" class="external-link">dir_exists</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">output</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">output</span><span class="op">)</span></span></code></pre></div>
 <details><summary>
 Session information
@@ -208,8 +209,6 @@ Session information
 <span></span>
 <span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">output</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">output</span></span></span>
-<span><span class="co">#&gt; ├── emissions_profile_at_company_level.csv</span></span>
-<span><span class="co">#&gt; └── emissions_profile_at_product_level.csv</span></span>
 <span></span>
 <span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html" class="external-link">session_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
@@ -227,6 +226,7 @@ Session information
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package           </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version   </span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
+<span><span class="co">#&gt;  archive              1.1.7      <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  bslib                0.6.1      <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cachem               1.0.8      <span style="color: #555555;">2023-05-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli                  3.6.2      <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -402,8 +402,6 @@ directory.</p>
 <code class="sourceCode R"><span><span class="co"># NOTE: If other workflows run before this one, this shows the results of all</span></span>
 <span><span class="va">params</span><span class="op">$</span><span class="va">output</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #0000BB; font-weight: bold;">output</span></span></span>
-<span><span class="co">#&gt; ├── emissions_profile_at_company_level.csv</span></span>
-<span><span class="co">#&gt; ├── emissions_profile_at_product_level.csv</span></span>
 <span><span class="co">#&gt; ├── emissions_profile_upstream_at_company_level.csv</span></span>
 <span><span class="co">#&gt; └── emissions_profile_upstream_at_product_level.csv</span></span></code></pre></div>
 </div>

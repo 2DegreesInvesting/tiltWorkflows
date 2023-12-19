@@ -13,9 +13,6 @@
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions.html</loc>
-  </url>
-  <url>
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions_upstream.html</loc>
   </url>
   <url>
@@ -41,6 +38,9 @@
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/FIXME_issue_49.html</loc>
+  </url>
+  <url>
+    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/cleanup.html</loc>
   </url>
   <url>
     <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/explain.html</loc>
