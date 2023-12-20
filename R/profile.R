@@ -13,9 +13,6 @@ profile_emissions <- function(companies,
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
 
-  europages_companies <- europages_companies |>
-    FIXME_issue_49_europages_companies()
-
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions(
       companies,
@@ -61,12 +58,6 @@ profile_emissions_upstream <- function(companies,
   chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
-
-  europages_companies <- europages_companies |>
-    FIXME_issue_49_europages_companies()
-
-  ecoinvent_inputs <- ecoinvent_inputs |>
-    FIXME_issue_49_ecoinvent_inputs()
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions_upstream(
@@ -115,9 +106,6 @@ profile_sector <- function(companies,
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
 
-  europages_companies <- europages_companies |>
-    FIXME_issue_49_europages_companies()
-
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector(
       companies,
@@ -164,12 +152,6 @@ profile_sector_upstream <- function(companies,
   chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
-
-  europages_companies <- europages_companies |>
-    FIXME_issue_49_europages_companies()
-
-  ecoinvent_inputs <- ecoinvent_inputs |>
-    FIXME_issue_49_ecoinvent_inputs()
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector_upstream(
