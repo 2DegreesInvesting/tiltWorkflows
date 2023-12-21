@@ -29,5 +29,5 @@ test_that("cache_delete, if the cache exists throws a warning", {
 })
 
 test_that("cache_dir, points to the deault cache directory", {
-  expect_equal(path_file(cache_dir()), "tiltWorkflows")
+  expect_equal(path_file(cache_dir()), fs::path_file(rappdirs::user_cache_dir("tiltWorkflows")))
 })
