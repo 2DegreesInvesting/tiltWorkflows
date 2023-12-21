@@ -24,6 +24,7 @@
 #' @importFrom readr read_rds
 #' @importFrom readr write_csv
 #' @importFrom readr write_rds
+#' @importFrom rlang %||%
 #' @importFrom rlang abort
 #' @importFrom rlang warn
 #' @importFrom rmarkdown render

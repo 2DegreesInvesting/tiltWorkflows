@@ -4,7 +4,7 @@
     * `0` is invalid.
     * `1` uses the entire `*companies` dataset.
     * `2` or more splits the `*companies` dataset in that number of pieces.
-    * `NULL` distributes companies evently across available cores.
+    * `NULL` and `''` distributes companies evently across available cores.
 
 # characterize output columns
 

@@ -7,15 +7,16 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: NULL
+        chunks: ""
         order: "sample"
-        cache_dir: NULL
+        cache_dir: ""
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
         ecoinvent_activities: "ecoinvent_activities.csv"
         ecoinvent_europages: "ecoinvent_europages.csv"
         isic: "isic.csv"
+      
         emissions_profile_any_companies: "emissions_profile_any_companies.csv"
         emissions_profile_products: "emissions_profile_products.csv"
       ---
@@ -29,15 +30,16 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: NULL
+        chunks: ""
         order: "sample"
-        cache_dir: NULL
+        cache_dir: ""
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
         ecoinvent_activities: "ecoinvent_activities.csv"
         ecoinvent_europages: "ecoinvent_europages.csv"
         isic: "isic.csv"
+      
         emissions_profile_any_companies: "emissions_profile_any_companies.csv"
         emissions_profile_upstream_products: "emissions_profile_upstream_products.csv"
         ecoinvent_inputs: "ecoinvent_inputs.csv"
@@ -52,15 +54,16 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: NULL
+        chunks: ""
         order: "sample"
-        cache_dir: NULL
+        cache_dir: ""
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
         ecoinvent_activities: "ecoinvent_activities.csv"
         ecoinvent_europages: "ecoinvent_europages.csv"
         isic: "isic.csv"
+      
         sector_profile_companies: "sector_profile_companies.csv"
         sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
       ---
@@ -74,15 +77,16 @@
       title: "{workflow}"
       output: github_document
       params:
-        chunks: NULL
+        chunks: ""
         order: "sample"
-        cache_dir: NULL
+        cache_dir: ""
         input: "input"
         output: "output"
         europages_companies: "europages_companies.csv"
         ecoinvent_activities: "ecoinvent_activities.csv"
         ecoinvent_europages: "ecoinvent_europages.csv"
         isic: "isic.csv"
+      
         sector_profile_upstream_companies: "sector_profile_upstream_companies.csv"
         sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
         sector_profile_upstream_products: "sector_profile_upstream_products.csv"
