@@ -202,7 +202,7 @@ abort_zero_chunks <- function(x) {
     "`1` uses the entire `*companies` dataset.",
     "`2` or more splits the `*companies` dataset in that number of pieces.",
     "`NULL` and `''` distributes companies evently across available cores."
-  ))
+  ), class = "zero_chunks")
 }
 
 handle_chunks <- function(data) {
