@@ -9,10 +9,10 @@ profile_emissions <- function(companies,
                               isic_tilt,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
-  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
-  cache_dir <- empty_to_null(getOption("tiltWorkflows.cache_dir")) %||%
-    user_cache_dir("tiltWorkflows")
-  order <- getOption("tiltWorkflows.order", "identity")
+  op <- enlist_options()
+  chunks <- op$chunks
+  cache_dir <- op$cache_dir
+  order <- op$order
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions(
@@ -56,9 +56,10 @@ profile_emissions_upstream <- function(companies,
                                        isic_tilt,
                                        low_threshold = 1 / 3,
                                        high_threshold = 2 / 3) {
-  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
-  cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order <- getOption("tiltWorkflows.order", "identity")
+  op <- enlist_options()
+  chunks <- op$chunks
+  cache_dir <- op$cache_dir
+  order <- op$order
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_emissions_upstream(
@@ -103,9 +104,10 @@ profile_sector <- function(companies,
                            isic_tilt,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
-  cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order <- getOption("tiltWorkflows.order", "identity")
+  op <- enlist_options()
+  chunks <- op$chunks
+  cache_dir <- op$cache_dir
+  order <- op$order
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector(
@@ -150,9 +152,10 @@ profile_sector_upstream <- function(companies,
                                     isic_tilt,
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
-  cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
-  order <- getOption("tiltWorkflows.order", "identity")
+  op <- enlist_options()
+  chunks <- op$chunks
+  cache_dir <- op$cache_dir
+  order <- op$order
 
   if (identical(chunks, 1)) {
     tiltIndicatorAfter::profile_sector_upstream(
@@ -241,4 +244,13 @@ empty_to_null <- function(x) {
     return(NULL)
   }
   x
+}
+
+enlist_options <- function() {
+  list(
+    chunks = abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks"))),
+    cache_dir = empty_to_null(getOption("tiltWorkflows.cache_dir")) %||%
+      user_cache_dir("tiltWorkflows"),
+    order = getOption("tiltWorkflows.order", "identity")
+  )
 }
