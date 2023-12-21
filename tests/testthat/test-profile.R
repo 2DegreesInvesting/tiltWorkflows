@@ -41,7 +41,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
   expect_equal(masked, original)
 })
 
-test_that("with `tiltWorkflows.chunks = 0` throws an informative error", {
+test_that("with `chunks = 0` throws an informative error", {
   invalid <- 0
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -63,7 +63,7 @@ test_that("with `tiltWorkflows.chunks = 0` throws an informative error", {
   ))
 })
 
-test_that("with `tiltWorkflows.chunks` passed as a character throws no error", {
+test_that("with `chunks` passed as a character throws no error", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = as.character(3),
@@ -86,7 +86,7 @@ test_that("with `tiltWorkflows.chunks` passed as a character throws no error", {
   )
 })
 
-test_that("with `tiltWorkflows.chunks = NULL` warns auto set chunks", {
+test_that("with `chunks = NULL` warns auto set chunks", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = withr::local_tempdir()
@@ -109,7 +109,7 @@ test_that("with `tiltWorkflows.chunks = NULL` warns auto set chunks", {
   )
 })
 
-test_that("with `tiltWorkflows.chunks = ''` warns auto set chunks", {
+test_that("with `chunks = ''` warns auto set chunks", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = "",
@@ -133,7 +133,7 @@ test_that("with `tiltWorkflows.chunks = ''` warns auto set chunks", {
   )
 })
 
-test_that("with `tiltWorkflows.cache_dir = NULL` throws no error", {
+test_that("with `cache_dir = NULL` throws no error", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = 3
@@ -155,7 +155,7 @@ test_that("with `tiltWorkflows.cache_dir = NULL` throws no error", {
   )
 })
 
-test_that("with `tiltWorkflows.cache_dir = ''` throws no error", {
+test_that("with `cache_dir = ''` throws no error", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = "",
@@ -178,7 +178,7 @@ test_that("with `tiltWorkflows.cache_dir = ''` throws no error", {
   )
 })
 
-test_that("with `tiltWorkflows.order = 'rev'` the chunks work in reverse order", {
+test_that("with `order = 'rev'` the chunks work in reverse order", {
   tmp_cache <- local_tempfile()
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -209,17 +209,3 @@ test_that("with `tiltWorkflows.order = 'rev'` the chunks work in reverse order",
 
   expect_equal(actual, rev(as.character(1:3)))
 })
-
-test_that("get_chunks() returns the number passed via options", {
-  expected <- 2
-  withr::local_options(list(tiltWorkflows.chunks = expected))
-  data <- tibble(x = 1)
-  expect_equal(get_chunks(data), expected)
-})
-
-test_that("get_chunks() returns the default", {
-  data <- tibble(x = 1)
-  expect_equal(get_chunks(data, default = 999), 999)
-})
-
-
