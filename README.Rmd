@@ -78,6 +78,19 @@ render("profile_emissions.Rmd", quiet = TRUE)
 list.files("output")
 ```
 
+* Inspect information about the cache of intermediate results.
+
+```{r}
+cache_info()
+```
+
+* Delete the cache to recompute rather than resume a previous run.
+
+```{r}
+# DANGER
+cache_delete()
+```
+
 To learn more see [Get started](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html).
 
 ```{r cleanup, echo=FALSE}
