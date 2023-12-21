@@ -29,8 +29,8 @@ cache_dir <- function() {
   user_cache_dir("tiltWorkflows")
 }
 
-#' @export
 #' @rdname cache
+#' @export
 cache_info <- function(cache_dir = rappdirs::user_cache_dir("tiltWorkflows")) {
   if (!dir_exists(cache_dir)) {
     abort("`cache_dir` doesn't exist.")
@@ -44,11 +44,8 @@ cache_info <- function(cache_dir = rappdirs::user_cache_dir("tiltWorkflows")) {
 
 #' @rdname cache
 #' @export
-#'
-#' @examples
-#' # example code
-#'
-cache_delete <- function(cache_dir = cache_dir(), quiet = FALSE) {
+cache_delete <- function(cache_dir = rappdirs::user_cache_dir("tiltWorkflows"),
+                         quiet = FALSE) {
   if (dir_exists(cache_dir)) {
     if (!quiet) warn(c("Deleting `cache_dir`: ", cache_dir))
     dir_delete(cache_dir)

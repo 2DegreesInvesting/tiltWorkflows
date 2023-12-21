@@ -11,7 +11,10 @@ cache_dir()
 
 cache_info(cache_dir = rappdirs::user_cache_dir("tiltWorkflows"))
 
-cache_delete(cache_dir = cache_dir(), quiet = FALSE)
+cache_delete(
+  cache_dir = rappdirs::user_cache_dir("tiltWorkflows"),
+  quiet = FALSE
+)
 }
 \arguments{
 \item{cache_dir}{Character. A directory.}
@@ -40,6 +43,4 @@ cache_info(tmp)
 dir_exists(tmp)
 cache_delete(tmp)
 dir_exists(tmp)
-# example code
-
 }
