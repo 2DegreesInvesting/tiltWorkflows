@@ -14,7 +14,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     # TODO: Move to tiltToyData
     europages_companies = tiltIndicatorAfter::ep_companies,
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
   )
 
@@ -29,7 +29,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     # TODO: Move to tiltToyData
     europages_companies = tiltIndicatorAfter::ep_companies,
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
   ) |>
     # FIXME: Suppressing
@@ -58,7 +58,7 @@ test_that("0 chunks yields an informative error", {
     # TODO: Move to tiltToyData
     europages_companies = tiltIndicatorAfter::ep_companies,
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
   ))
 })
@@ -80,13 +80,13 @@ test_that("with `chunks` passed as a character throws no error", {
       # TODO: Move to tiltToyData
       europages_companies = tiltIndicatorAfter::ep_companies,
       ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
       isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
     )
   )
 })
 
-test_that("with `tiltWorkflows.chunks = NULL` wanrs auto set chunks", {
+test_that("with `tiltWorkflows.chunks = NULL` warns auto set chunks", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = withr::local_tempdir()
@@ -103,13 +103,13 @@ test_that("with `tiltWorkflows.chunks = NULL` wanrs auto set chunks", {
       # TODO: Move to tiltToyData
       europages_companies = tiltIndicatorAfter::ep_companies,
       ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
       isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
     )
   )
 })
 
-test_that("with `tiltWorkflows.chunks = ''` wanrs auto set chunks", {
+test_that("with `tiltWorkflows.chunks = ''` warns auto set chunks", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = "",
@@ -127,7 +127,7 @@ test_that("with `tiltWorkflows.chunks = ''` wanrs auto set chunks", {
       # TODO: Move to tiltToyData
       europages_companies = tiltIndicatorAfter::ep_companies,
       ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
       isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
     )
   )
@@ -149,7 +149,7 @@ test_that("with `tiltWorkflows.cache_dir = NULL` throws no error", {
       # TODO: Move to tiltToyData
       europages_companies = tiltIndicatorAfter::ep_companies,
       ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
       isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
     )
   )
@@ -172,7 +172,7 @@ test_that("with `tiltWorkflows.cache_dir = ''` throws no error", {
       # TODO: Move to tiltToyData
       europages_companies = tiltIndicatorAfter::ep_companies,
       ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
       isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
     )
   )
@@ -206,7 +206,7 @@ test_that("if `tiltWorkflows.chunks` is set, it throws no warning", {
       # TODO: Move to tiltToyData
       europages_companies = tiltIndicatorAfter::ep_companies,
       ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
       isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
     )
   )
@@ -230,7 +230,7 @@ test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", 
     # TODO: Move to tiltToyData
     europages_companies = tiltIndicatorAfter::ep_companies,
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
   )
 
@@ -262,7 +262,7 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
     # TODO: Move to tiltToyData
     europages_companies = tiltIndicatorAfter::ep_companies,
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
   )
 
@@ -292,7 +292,7 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
     # TODO: Move to tiltToyData
     europages_companies = tiltIndicatorAfter::ep_companies,
     ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
     isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
   )
 
