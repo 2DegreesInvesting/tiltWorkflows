@@ -9,8 +9,9 @@ profile_emissions <- function(companies,
                               isic_tilt,
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
-  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
-  cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
+  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
+  cache_dir <- empty_to_null(getOption("tiltWorkflows.cache_dir")) %||%
+    user_cache_dir("tiltWorkflows")
   order <- getOption("tiltWorkflows.order", "identity")
 
   if (identical(chunks, 1)) {
@@ -55,7 +56,7 @@ profile_emissions_upstream <- function(companies,
                                        isic_tilt,
                                        low_threshold = 1 / 3,
                                        high_threshold = 2 / 3) {
-  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
+  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
 
@@ -102,7 +103,7 @@ profile_sector <- function(companies,
                            isic_tilt,
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
+  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
 
@@ -149,7 +150,7 @@ profile_sector_upstream <- function(companies,
                                     isic_tilt,
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
-  chunks <- abort_zero_chunks(getOption("tiltWorkflows.chunks"))
+  chunks <- abort_zero_chunks(empty_to_null(getOption("tiltWorkflows.chunks")))
   cache_dir <- getOption("tiltWorkflows.cache_dir", user_cache_dir("tiltWorkflows"))
   order <- getOption("tiltWorkflows.order", "identity")
 
@@ -188,7 +189,7 @@ profile_sector_upstream <- function(companies,
 }
 
 abort_zero_chunks <- function(x) {
-  if (is.null(x) || x > 0) {
+  if (!nzchar(x) || is.null(x) || x > 0) {
     return(invisible(x))
   }
 
@@ -197,7 +198,7 @@ abort_zero_chunks <- function(x) {
     "`0` is invalid.",
     "`1` uses the entire `*companies` dataset.",
     "`2` or more splits the `*companies` dataset in that number of pieces.",
-    "`NULL` distributes companies evently across available cores."
+    "`NULL` and `''` distributes companies evently across available cores."
   ))
 }
 
@@ -205,7 +206,7 @@ handle_chunks <- function(data) {
   chunks <- get_chunks(data)
   out <- if_1_return_2(chunks)
 
-  if (is.null(getOption("tiltWorkflows.chunks"))) {
+  if (is.null(empty_to_null(getOption("tiltWorkflows.chunks")))) {
     warn(
       glue("Splitting `{deparse(substitute(data))}` into {out} chunks."),
       class = "auto_set_chunks"
@@ -216,7 +217,7 @@ handle_chunks <- function(data) {
 }
 
 get_chunks <- function(data, default = default_chunks(data)) {
-  getOption("tiltWorkflows.chunks", default = default)
+  empty_to_null(getOption("tiltWorkflows.chunks")) %||% default
 }
 
 default_chunks <- function(data) {
@@ -230,4 +231,14 @@ if_1_return_2 <- function(x) {
   } else {
     x
   }
+}
+
+empty_to_null <- function(x) {
+  if (is.null(x)) {
+    return(x)
+  }
+  if (!nzchar(x)) {
+    return(NULL)
+  }
+  x
 }
