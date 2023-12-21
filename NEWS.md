@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9026 (2023-12-21)
+
+* In the yaml setup change `NULL` to the empty string (#102). This allows the use
+of the GUI that pops up when clicking "Knit with Params" in RStudio.
+
 # tiltWorkflows 0.0.0.9025 (2023-12-21)
 
 * New helpers to handle the cache (#98).
