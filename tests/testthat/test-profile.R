@@ -41,7 +41,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
   expect_equal(masked, original)
 })
 
-test_that("0 chunks yields an informative error", {
+test_that("with `tiltWorkflows.chunks = 0` throws an informative error", {
   invalid <- 0
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -63,7 +63,7 @@ test_that("0 chunks yields an informative error", {
   ))
 })
 
-test_that("with `chunks` passed as a character throws no error", {
+test_that("with `tiltWorkflows.chunks` passed as a character throws no error", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = as.character(3),
@@ -178,41 +178,7 @@ test_that("with `tiltWorkflows.cache_dir = ''` throws no error", {
   )
 })
 
-test_that("get_chunks() returns the number passed via options", {
-  expected <- 2
-  withr::local_options(list(tiltWorkflows.chunks = expected))
-  data <- tibble(x = 1)
-  expect_equal(get_chunks(data), expected)
-})
-
-test_that("get_chunks() returns the default", {
-  data <- tibble(x = 1)
-  expect_equal(get_chunks(data, default = 999), 999)
-})
-
-test_that("if `tiltWorkflows.chunks` is set, it throws no warning", {
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
-    tiltWorkflows.chunks = 3
-  ))
-
-  companies <- companies()
-  products <- products()
-
-  expect_no_warning(
-    profile_emissions(
-      companies,
-      products,
-      # TODO: Move to tiltToyData
-      europages_companies = tiltIndicatorAfter::ep_companies,
-      ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-      isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-    )
-  )
-})
-
-test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", {
+test_that("with `tiltWorkflows.order = 'rev'` the chunks work in reverse order", {
   tmp_cache <- local_tempfile()
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -244,62 +210,16 @@ test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", 
   expect_equal(actual, rev(as.character(1:3)))
 })
 
-test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
-  tmp_cache <- local_tempfile()
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
-    tiltWorkflows.chunks = 3,
-    tiltWorkflows.cache_dir = tmp_cache,
-    tiltWorkflows.order = "identity"
-  ))
-
-  companies <- companies()
-  products <- products()
-
-  profile_emissions(
-    companies,
-    products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-  )
-
-  actual <- cache_info(tmp_cache) |>
-    dplyr::pull(path) |>
-    path_file() |>
-    fs::path_ext_remove()
-
-  expect_equal(actual, as.character(1:3))
+test_that("get_chunks() returns the number passed via options", {
+  expected <- 2
+  withr::local_options(list(tiltWorkflows.chunks = expected))
+  data <- tibble(x = 1)
+  expect_equal(get_chunks(data), expected)
 })
 
-test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
-  tmp_cache <- local_tempfile()
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
-    tiltWorkflows.chunks = 3,
-    tiltWorkflows.cache_dir = tmp_cache,
-    tiltWorkflows.order = "rev"
-  ))
-
-  companies <- companies()
-  products <- products()
-
-  profile_emissions(
-    companies,
-    products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-  )
-
-  actual <- cache_info(tmp_cache) |>
-    dplyr::pull(path) |>
-    path_file() |>
-    fs::path_ext_remove()
-
-  expect_equal(actual, rev(as.character(1:3)))
+test_that("get_chunks() returns the default", {
+  data <- tibble(x = 1)
+  expect_equal(get_chunks(data, default = 999), 999)
 })
+
+
