@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9025 (2023-12-21)
+
+* New helpers to handle the cache (#98).
+
 # tiltWorkflows 0.0.0.9024 (2023-12-19)
 
 * Polish README and extend Get started (#87).
