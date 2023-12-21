@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9028 (2023-12-21)
+
+* Ensure chunks is numeric (#106).
+
 # tiltWorkflows 0.0.0.9027 (2023-12-21)
 
 * Remove needless toy files from the toy input/ directory (#103). Those files were
