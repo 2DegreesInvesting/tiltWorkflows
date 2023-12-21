@@ -5,8 +5,8 @@ test_that("outputs the same as tiltIndicatorAfter", {
     tiltWorkflows.chunks = 1
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   original <- profile_emissions(
     companies,
@@ -49,8 +49,8 @@ test_that("0 chunks yields an informative error", {
     tiltWorkflows.chunks = invalid
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_error(class = "zero_chunks", profile_emissions(
     companies,
@@ -70,8 +70,8 @@ test_that("with `chunks` passed as a character throws no error", {
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_no_error(
     profile_emissions(
@@ -92,8 +92,8 @@ test_that("with `tiltWorkflows.chunks = NULL` wanrs auto set chunks", {
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_warning(
     class = "auto_set_chunks",
@@ -116,8 +116,8 @@ test_that("with `tiltWorkflows.chunks = ''` wanrs auto set chunks", {
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_warning(
     class = "auto_set_chunks",
@@ -139,8 +139,8 @@ test_that("with `tiltWorkflows.cache_dir = NULL` throws no error", {
     tiltWorkflows.chunks = 3
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_no_error(
     profile_emissions(
@@ -162,8 +162,8 @@ test_that("with `tiltWorkflows.cache_dir = ''` throws no error", {
     tiltWorkflows.chunks = 3
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_no_error(
     profile_emissions(
@@ -196,8 +196,8 @@ test_that("if `tiltWorkflows.chunks` is set, it throws no warning", {
     tiltWorkflows.chunks = 3
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   expect_no_warning(
     profile_emissions(
@@ -221,8 +221,8 @@ test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", 
     tiltWorkflows.order = "rev"
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   profile_emissions(
     companies,
@@ -253,8 +253,8 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
     tiltWorkflows.order = "identity"
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   profile_emissions(
     companies,
@@ -283,8 +283,8 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
     tiltWorkflows.order = "rev"
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
+  companies <- companies()
+  products <- products()
 
   profile_emissions(
     companies,

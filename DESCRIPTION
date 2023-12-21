@@ -37,6 +37,7 @@ Imports:
 Suggests: 
     devtools,
     here,
+    memoise,
     styler,
     testthat (>= 3.0.0)
 Remotes: 
