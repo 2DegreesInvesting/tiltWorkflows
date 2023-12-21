@@ -2,8 +2,8 @@
 
 # tiltWorkflows 0.0.0.9027 (2023-12-21)
 
-* Remove needless files from input/ (#103). Those files were toy output included
-by mistake.
+* Remove needless toy files from the toy input/ directory (#103). Those files were
+toy output included by mistake.
 
 # tiltWorkflows 0.0.0.9026 (2023-12-21)
 
