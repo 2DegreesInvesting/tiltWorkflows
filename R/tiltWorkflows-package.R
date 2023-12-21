@@ -7,6 +7,7 @@
 #' @importFrom dplyr distinct
 #' @importFrom dplyr select
 #' @importFrom fs dir_create
+#' @importFrom fs dir_delete
 #' @importFrom fs dir_exists
 #' @importFrom fs dir_ls
 #' @importFrom fs file_copy
@@ -31,6 +32,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tiltIndicatorAfter unnest_product
 #' @importFrom tiltToyData toy_files
+#' @importFrom withr local_tempfile
 ## usethis namespace: end
 NULL
 
