@@ -9,17 +9,16 @@
 #' * `cache_delete()` deletes the cache directory.
 #'
 #' @examples
-#' library(withr)
-#' library(fs)
-#'
 #' cache_dir()
 #'
-#' tmp <- dir_create(local_tempfile())
+#' tmp <- tempfile()
+#' dir.create(tmp)
+#'
 #' cache_info(tmp)
 #'
-#' dir_exists(tmp)
+#' dir.exists(tmp)
 #' cache_delete(tmp)
-#' dir_exists(tmp)
+#' dir.exists(tmp)
 #' @name cache
 NULL
 
