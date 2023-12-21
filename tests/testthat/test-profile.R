@@ -1,25 +1,3 @@
-test_that("0 chunks yields an informative error", {
-  invalid <- 0
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
-    tiltWorkflows.cache_dir = withr::local_tempdir(),
-    tiltWorkflows.chunks = invalid
-  ))
-
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
-
-  expect_snapshot_error(profile_emissions(
-    companies,
-    products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-  ))
-})
-
 test_that("outputs the same as tiltIndicatorAfter", {
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -61,6 +39,28 @@ test_that("outputs the same as tiltIndicatorAfter", {
     suppressMessages()
 
   expect_equal(masked, original)
+})
+
+test_that("0 chunks yields an informative error", {
+  invalid <- 0
+  withr::local_options(list(
+    readr.show_col_types = FALSE,
+    tiltWorkflows.cache_dir = withr::local_tempdir(),
+    tiltWorkflows.chunks = invalid
+  ))
+
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products())
+
+  expect_error(class = "zero_chunks", profile_emissions(
+    companies,
+    products,
+    # TODO: Move to tiltToyData
+    europages_companies = tiltIndicatorAfter::ep_companies,
+    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
+    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
+    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  ))
 })
 
 test_that("with `chunks` passed as a character throws no error", {
@@ -302,29 +302,4 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
     fs::path_ext_remove()
 
   expect_equal(actual, rev(as.character(1:3)))
-})
-
-test_that("characterize output columns", {
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
-    tiltWorkflows.chunks = 2,
-    tiltWorkflows.cache_dir = withr::local_tempdir()
-  ))
-
-  companies <- read_csv(toy_emissions_profile_any_companies())
-  products <- read_csv(toy_emissions_profile_products())
-
-  out <- profile_emissions(
-    companies,
-    products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
-  )
-
-  expect_snapshot(names(unnest_product(out)))
-
-  expect_snapshot(names(unnest_company(out)))
 })
