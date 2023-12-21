@@ -216,7 +216,7 @@ handle_chunks <- function(data) {
     )
   }
 
-  out
+  as.numeric(out)
 }
 
 get_chunks <- function(data, default = default_chunks(data)) {
