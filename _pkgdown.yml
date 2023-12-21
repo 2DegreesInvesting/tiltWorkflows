@@ -2,6 +2,16 @@ url: https://2degreesinvesting.github.io/tiltWorkflows/
 template:
   bootstrap: 5
 
+reference:
+
+  - title: Using workflows
+    contents:
+      - starts_with("use_")
+
+  - title: Handling the cache
+    contents:
+      - starts_with("cache_")
+
 # https://pkgdown.r-lib.org/articles/customise.html#navbar-heading
 # > You can use components to override the default content
 navbar:

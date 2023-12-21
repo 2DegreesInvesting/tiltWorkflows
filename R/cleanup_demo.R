@@ -12,8 +12,8 @@ NULL
 #' @export
 #' @rdname cleanup
 cleanup_io <- function() {
-  if (fs::dir_exists("input")) fs::dir_delete("input")
-  if (fs::dir_exists("output")) fs::dir_delete("output")
+  if (dir_exists("input")) dir_delete("input")
+  if (dir_exists("output")) dir_delete("output")
 }
 
 #' @export

@@ -32,13 +32,13 @@ Imports:
     sessioninfo,
     shiny,
     tibble,
-    usethis
+    usethis,
+    withr
 Suggests: 
     devtools,
     here,
     styler,
-    testthat (>= 3.0.0),
-    withr
+    testthat (>= 3.0.0)
 Remotes: 
     2DegreesInvesting/tiltIndicatorAfter,
     2DegreesInvesting/tiltToyData,

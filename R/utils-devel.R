@@ -97,26 +97,7 @@ style_extdata <- function() {
   styler::style_dir(extdata_path())
 }
 
-delete_cache_dir <- function(cache_dir = default_cache_dir()) {
-  if (fs::dir_exists(cache_dir)) {
-    fs::dir_delete(cache_dir)
-  }
-
-  invisible(cache_dir)
-}
-
-default_cache_dir <- function() {
-  rappdirs::user_cache_dir("tiltWorkflows")
-}
-
 use_workflow_index <- function(index = 1) {
   wf <- workflows()
   use_workflow(wf[[index]])
-}
-
-cache_info <- function(cache_dir = default_cache_dir()) {
-  fs::dir_ls(cache_dir, recurse = TRUE, type = "file") |>
-    fs::file_info() |>
-    dplyr::arrange(.data$modification_time) |>
-    dplyr::relocate("modification_time", path)
 }

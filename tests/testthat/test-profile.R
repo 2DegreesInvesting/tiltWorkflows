@@ -143,7 +143,7 @@ test_that("if `tiltWorkflows.chunks` is set, it throws no warning", {
 })
 
 test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", {
-  tmp_cache <- withr::local_tempfile()
+  tmp_cache <- local_tempfile()
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = 3,
@@ -168,14 +168,14 @@ test_that("if `tiltWorkflows.order` is 'rev' the chunks work in reverse order", 
     fs::file_info() |>
     dplyr::arrange(modification_time) |>
     dplyr::pull(path) |>
-    fs::path_file() |>
+    path_file() |>
     fs::path_ext_remove()
 
   expect_equal(actual, rev(as.character(1:3)))
 })
 
 test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
-  tmp_cache <- withr::local_tempfile()
+  tmp_cache <- local_tempfile()
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = 3,
@@ -198,14 +198,14 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
 
   actual <- cache_info(tmp_cache) |>
     dplyr::pull(path) |>
-    fs::path_file() |>
+    path_file() |>
     fs::path_ext_remove()
 
   expect_equal(actual, as.character(1:3))
 })
 
 test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
-  tmp_cache <- withr::local_tempfile()
+  tmp_cache <- local_tempfile()
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = 3,
@@ -228,7 +228,7 @@ test_that("if `tiltWorkflows.order` is 'identity' the chunks work in order", {
 
   actual <- cache_info(tmp_cache) |>
     dplyr::pull(path) |>
-    fs::path_file() |>
+    path_file() |>
     fs::path_ext_remove()
 
   expect_equal(actual, rev(as.character(1:3)))
