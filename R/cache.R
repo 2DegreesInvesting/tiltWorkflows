@@ -1,4 +1,4 @@
-#' Information about the cache directory
+#' Work with the cache directory
 #'
 #' @param cache_dir Character. A directory.
 #' @param quiet Logical. Throw a warning?

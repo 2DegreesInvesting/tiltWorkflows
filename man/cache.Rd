@@ -5,7 +5,7 @@
 \alias{cache_dir}
 \alias{cache_info}
 \alias{cache_delete}
-\title{Information about the cache directory}
+\title{Work with the cache directory}
 \usage{
 cache_dir()
 
@@ -29,7 +29,7 @@ cache_delete(
 }
 }
 \description{
-Information about the cache directory
+Work with the cache directory
 }
 \examples{
 library(withr)
