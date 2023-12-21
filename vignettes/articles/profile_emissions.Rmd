@@ -165,7 +165,7 @@ Here is the cache that allows you to resume after interruptions.
 
 ```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
 # NOTE: If other workflows run before this one, this shows the cache of all
-dir_tree(user_cache_dir("tiltWorkflows"))
+cache_info()
 ```
 
 If you want to recompute some result, you must first delete the relevant cache:
@@ -175,4 +175,7 @@ library(fs)
 library(rappdirs)
 
 dir_delete(user_cache_dir("tiltWorkflows/PROFILE-DIRECTORY-YOU-WANT-TO-DELETE"))
+
+# DANGER: Or delete the entire default cache directory with
+cache_delete()
 ```
