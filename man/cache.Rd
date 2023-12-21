@@ -9,7 +9,7 @@
 \usage{
 cache_dir()
 
-cache_info(cache_dir = cache_dir())
+cache_info(cache_dir = rappdirs::user_cache_dir("tiltWorkflows"))
 
 cache_delete(cache_dir = cache_dir(), quiet = FALSE)
 }

@@ -31,7 +31,7 @@ cache_dir <- function() {
 
 #' @export
 #' @rdname cache
-cache_info <- function(cache_dir = cache_dir()) {
+cache_info <- function(cache_dir = rappdirs::user_cache_dir("tiltWorkflows")) {
   if (!dir_exists(cache_dir)) {
     abort("`cache_dir` doesn't exist.")
   }
