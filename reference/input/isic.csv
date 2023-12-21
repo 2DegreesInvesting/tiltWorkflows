@@ -1,0 +1,183 @@
+isic_4digit,isic_4digit_name_ecoinvent
+0111,"Growing of cereals (except rice), leguminous crops and oil seeds"
+0112,Growing of rice
+0113,"Growing of vegetables and melons, roots and tubers"
+0114,Growing of sugar cane
+0116,Growing of fibre crops
+0119,Growing of other non-perennial crops
+0121,Growing of grapes
+0122,Growing of tropical and subtropical fruits
+0123,Growing of citrus fruits
+0124,Growing of pome fruits and stone fruits
+0125,Growing of other tree and bush fruits and nuts
+0126,Growing of oleaginous fruits
+0127,Growing of beverage crops
+0128,"Growing of spices, aromatic, drug and pharmaceutical crops"
+0129,Growing of other perennial crops
+0130,Plant propagation
+0141,Raising of cattle and buffaloes
+0144,Raising of sheep and goats
+0145,Raising of swine/pigs
+0146,Raising of poultry
+0149,Raising of other animals
+0161,Support activities for crop production
+0162,Support activities for animal production
+0163,Post-harvest crop activities
+0164,Seed processing for propagation
+0210,Silviculture and other forestry activities
+0220,Logging
+0230,Gathering of non-wood forest products
+0311,Marine fishing
+032,Aquaculture
+0322,Freshwater aquaculture
+0510,Mining of hard coal
+0520,Mining of lignite
+06,Extraction of crude petroleum and natural gas
+0610,Extraction of crude petroleum
+0620,Extraction of natural gas
+0710,Mining of iron ores
+0721,Mining of uranium and thorium ores
+0729,Mining of other non-ferrous metal ores
+0810,"Quarrying of stone, sand and clay"
+0891,Mining of chemical and fertilizer minerals
+0892,Extraction of peat
+0893,Extraction of salt
+0899,Other mining and quarrying n.e.c.
+0910,Support activities for petroleum and natural gas extraction
+0990,Support activities for other mining and quarrying
+1010,Processing and preserving of meat
+1020,"Processing and preserving of fish, crustaceans and molluscs"
+1030,Processing and preserving of fruit and vegetables
+1040,Manufacture of vegetable and animal oils and fats
+1050,Manufacture of dairy products
+1061,Manufacture of grain mill products
+1062,Manufacture of starches and starch products
+1072,Manufacture of sugar
+1075,Manufacture of prepared meals and dishes
+1080,Manufacture of prepared animal feeds
+1311,Preparation and spinning of textile fibres
+1312,Weaving of textiles
+1313,Finishing of textiles
+1391,Manufacture of knitted and crocheted fabrics
+1399,Manufacture of other textiles n.e.c.
+1610,Sawmilling and planing of wood
+162,"Manufacture of products of wood, cork, straw and plaiting materials"
+1621,Manufacture of veneer sheets and wood-based panels
+1622,Manufacture of builders' carpentry and joinery
+1623,Manufacture of wooden containers
+1701,"Manufacture of pulp, paper and paperboard"
+1702,Manufacture of corrugated paper and paperboard and of containers of paper a
+1709,Manufacture of other articles of paper and paperboard
+1811,Printing
+1812,Service activities related to printing
+1910,Manufacture of coke oven products
+1920,Manufacture of refined petroleum products
+20,Manufacture of chemicals and chemical products
+201,"Manufacture of basic chemicals, fertilizers and nitrogen compounds, plastics"
+2011,Manufacture of basic chemicals
+2012,Manufacture of fertilizers and nitrogen compounds
+2013,Manufacture of plastics and synthetic rubber in primary forms
+2021,Manufacture of pesticides and other agrochemical products
+2022,"Manufacture of paints, varnishes and similar coatings, printing ink and mas"
+2023,"Manufacture of soap and detergents, cleaning and polishing preparations, pe"
+2029,Manufacture of other chemical products n.e.c.
+2030,Manufacture of man-made fibres
+2100,"Manufacture of pharmaceuticals, medicinal chemical and botanical products"
+2219,Manufacture of other rubber products
+2220,Manufacture of plastics products
+2310,Manufacture of glass and glass products
+239,Manufacture of non-metallic mineral products n.e.c.
+2391,Manufacture of refractory products
+2392,Manufacture of clay building materials
+2393,Manufacture of other porcelain and ceramic products
+2394,"Manufacture of cement, lime and plaster"
+2395,"Manufacture of articles of concrete, cement and plaster"
+2396,"Cutting, shaping and finishing of stone"
+2399,Manufacture of other non-metallic mineral products n.e.c.
+2410,Manufacture of basic Iron & Steel
+242,Manufacture of basic precious and other non-ferrous metals
+2420,Manufacture of basic precious and other non-ferrous metals
+2431,Casting of Iron & Steel
+2432,Casting of non-ferrous metals
+2511,Manufacture of structural metal products
+2512,"Manufacture of tanks, reservoirs and containers of metal"
+259,Manufacture of other fabricated metal products; metalworking service activit
+2591,"Forging, pressing, stamping and roll-forming of metal; powder metallurgy"
+2592,Treatment and coating of metals; machining
+2599,Manufacture of other fabricated metal products n.e.c.
+2610,Manufacture of electronic components and boards
+2620,Manufacture of computers and peripheral equipment
+2630,Manufacture of communication equipment
+2640,Manufacture of consumer electronics
+2651,"Manufacture of measuring, testing, navigating and control equipment"
+2710,"Manufacture of electric motors, generators, transformers and electricity di"
+2720,Manufacture of batteries and accumulators
+2732,Manufacture of other electronic and electric wires and cables
+2740,Manufacture of electric lighting equipment
+2750,Manufacture of domestic appliances
+2790,Manufacture of other electrical equipment
+2811,"Manufacture of engines and turbines, except aircraft, vehicle and cycle eng"
+2812,Manufacture of fluid power equipment
+2813,"Manufacture of other pumps, compressors, taps and valves"
+2815,"Manufacture of ovens, furnaces and furnace burners"
+2816,Manufacture of lifting and handling equipment
+2817,Manufacture of office machinery and equipment (except computers and periphe
+2818,Manufacture of power-driven hand tools
+2819,Manufacture of other general-purpose machinery
+2821,Manufacture of agricultural and forestry machinery
+2822,Manufacture of metal-forming machinery and machine tools
+2823,Manufacture of machinery for metallurgy
+2824,"Manufacture of machinery for mining, quarrying and construction"
+2829,Manufacture of other special-purpose machinery
+2910,Manufacture of motor vehicles
+2920,Manufacture of bodies (coachwork) for motor vehicles; manufacture of traile
+2930,Manufacture of parts and accessories for motor vehicles
+3011,Building of ships and floating structures
+3020,Manufacture of railway locomotives and rolling stock
+3030,Manufacture of air and spacecraft and related machinery
+3091,Manufacture of motorcycles
+3092,Manufacture of bicycles and invalid carriages
+3100,Manufacture of furniture
+3314,Repair of electrical equipment
+3315,"Repair of transport equipment, except motor vehicles"
+3320,Installation of industrial machinery and equipment
+35,"Electricity, gas, steam and air conditioning supply"
+3510,"Electric power generation, transmission and distribution"
+3520,Manufacture of gas; distribution of gaseous fuels through mains
+3530,Steam and air conditioning supply
+3600,"Water collection, treatment and supply"
+3700,Sewerage
+3811,Collection of non-hazardous waste
+3821,Treatment and disposal of non-hazardous waste
+3822,Treatment and disposal of hazardous waste
+3830,Materials recovery
+3900,Remediation activities and other waste management services
+4100,Construction of buildings
+4210,Construction of roads and railways
+4220,Construction of utility projects
+4290,Construction of other civil engineering projects
+4312,Site preparation
+4322,"Plumbing, heat and air-conditioning installation"
+4390,Other specialized construction activities
+4520,Maintenance and repair of motor vehicles
+4540,"Sale, maintenance and repair of motorcycles and related parts and accessori"
+4661,"Wholesale of solid, liquid and gaseous fuels and related products"
+4911,"Passenger rail transport, interurban"
+4912,Freight rail transport
+492,Other land transport
+4921,Urban and suburban passenger land transport
+4922,Other passenger land transport
+4923,Freight transport by road
+4930,Transport via pipeline
+5012,Sea and coastal freight water transport
+5022,Inland freight water transport
+5110,Passenger air transport
+5120,Freight air transport
+5229,Other transportation support activities
+5510,Short term accommodation activities
+6110,Wired telecommunications activities
+7110,Architectural and engineering activities and related technical consultancy
+8219,"Photocopying, document preparation and other specialized office support act"
+8292,Packaging activities
+9529,Repair of other personal and household goods
+9601,Washing and (dry-) cleaning of textile and fur products

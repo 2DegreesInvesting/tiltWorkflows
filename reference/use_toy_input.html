@@ -81,32 +81,32 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_dir.html" class="external-link">with_dir</a></span><span class="op">(</span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">local_tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="fu">use_toy_input</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># It won't overwrite</span></span></span>
-<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">use_toy_input</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="st">"input"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">use_toy_input</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Writing input/ with toy datasets.</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># It won't overwrite</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="fu">use_toy_input</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in use_toy_input() : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   The input/ directory already exists in the working directory</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Aborting to avoid overwriting existing data.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">ℹ</span> Do you need to move or remove your existing input/ directory?</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-weight: bold;">input</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── ecoinvent_activities.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── ecoinvent_europages.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── ecoinvent_inputs.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── emissions_profile_any_companies.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── emissions_profile_products.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── emissions_profile_upstream_products.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── europages_companies.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── isic.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── sector_profile_any_scenarios.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── sector_profile_companies.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ├── sector_profile_upstream_companies.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> └── sector_profile_upstream_products.csv</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="st">"input"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ecoinvent_activities.csv"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "ecoinvent_europages.csv"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "ecoinvent_inputs.csv"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "emissions_profile_any_companies.csv"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "emissions_profile_products.csv"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "emissions_profile_upstream_products.csv"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "europages_companies.csv"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "isic.csv"                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "sector_profile_any_scenarios.csv"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "sector_profile_companies.csv"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "sector_profile_upstream_companies.csv"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "sector_profile_upstream_products.csv"   </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Cleanup</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="st">"input"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

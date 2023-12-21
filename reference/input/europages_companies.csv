@@ -1,0 +1,4 @@
+company_name,country,company_city,postcode,address,main_activity,companies_id
+company C,austria,voitsberg,8570,ruhmannstrasse 1 | 8570 voitsberg,service provider,id3
+company B,germany,berlin,13353,sprengelstrasse 15 | 13353 berlin,distributor,id2
+company A,germany,frankfurt,60316,wittelsbacherallee 37 | 60316 frankfurt,manufacturer/ producer,id1

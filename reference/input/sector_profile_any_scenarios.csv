@@ -1,0 +1,389 @@
+scenario,region,sector,subsector,year,value,reductions,type
+1.5c rps,world,power,NA,2030,5359.18,0.58,ipr
+1.5c rps,world,power,NA,2050,-807.13,1.06,ipr
+1.5c rps,world,buildings,NA,2030,2454.21,0.18,ipr
+1.5c rps,world,buildings,NA,2050,61.3,0.98,ipr
+1.5c rps,world,industry,iron and steel,2030,1871.82,0.23,ipr
+1.5c rps,world,industry,iron and steel,2050,88.29,0.96,ipr
+1.5c rps,world,industry,non-metallic minerals,2030,2641.47,0.13,ipr
+1.5c rps,world,industry,non-metallic minerals,2050,591.81,0.8,ipr
+1.5c rps,world,industry,chemicals,2030,1217.95,0.12,ipr
+1.5c rps,world,industry,chemicals,2050,101.76,0.93,ipr
+1.5c rps,world,industry,other industry,2030,1747.64,0.09,ipr
+1.5c rps,world,industry,other industry,2050,92,0.95,ipr
+1.5c rps,world,transport,cars,2030,2341.53,0.15,ipr
+1.5c rps,world,transport,cars,2050,24.95,0.99,ipr
+1.5c rps,world,transport,trucks,2030,2087.33,-0.14,ipr
+1.5c rps,world,transport,trucks,2050,33.09,0.98,ipr
+1.5c rps,world,transport,aviation,2030,1211.47,-0.85,ipr
+1.5c rps,world,transport,aviation,2050,362.59,0.45,ipr
+1.5c rps,world,transport,shipping,2030,1042.77,-0.29,ipr
+1.5c rps,world,transport,shipping,2050,223.51,0.72,ipr
+1.5c rps,world,transport,other transport,2030,993.91,0.22,ipr
+1.5c rps,world,transport,other transport,2050,96.94,0.92,ipr
+1.5c rps,world,other energy,NA,2030,2742.62,0.06,ipr
+1.5c rps,world,other energy,NA,2050,699.21,0.76,ipr
+1.5c rps,world,total,energy,2030,25711.9,0.26,ipr
+1.5c rps,world,total,energy,2050,1568.33,0.95,ipr
+1.5c rps,world,NA,land use,2030,2250,0.62,ipr
+1.5c rps,world,NA,land use,2050,-1870,1.32,ipr
+stated policies scenario,world,total,biofuels production and direct air capture,2020,0.81,0,weo
+announced pledges scenario,world,total,biofuels production and direct air capture,2020,0.81,0,weo
+net zero emissions by 2050 scenario,world,total,biofuels production and direct air capture,2020,0.81,0,weo
+stated policies scenario,world,total,biofuels production and direct air capture,2030,8.74,-9.790123457,weo
+stated policies scenario,world,coal,total energy supply,2020,14335.2,0,weo
+stated policies scenario,world,coal,total energy supply,2030,13695,0.0446593,weo
+stated policies scenario,world,coal,total energy supply,2040,11553.4,0.194053798,weo
+stated policies scenario,world,coal,total energy supply,2050,9863.04,0.311970534,weo
+stated policies scenario,world,oil,total energy supply,2020,10193.7,0,weo
+stated policies scenario,world,oil,total energy supply,2030,11411.5,-0.119465945,weo
+stated policies scenario,world,oil,total energy supply,2040,11247.9,-0.103416816,weo
+stated policies scenario,world,oil,total energy supply,2050,11094.2,-0.088338876,weo
+stated policies scenario,world,natural gas,total energy supply,2020,7161.51,0,weo
+stated policies scenario,world,natural gas,total energy supply,2030,7773.69,-0.085481972,weo
+stated policies scenario,world,natural gas,total energy supply,2040,7674.74,-0.071665054,weo
+stated policies scenario,world,natural gas,total energy supply,2050,7628.53,-0.065212504,weo
+stated policies scenario,world,bioenergy and waste,total energy supply,2020,213.41,0,weo
+stated policies scenario,world,bioenergy and waste,total energy supply,2030,254.37,-0.191931025,weo
+stated policies scenario,world,bioenergy and waste,total energy supply,2040,323.65,-0.51656436,weo
+stated policies scenario,world,bioenergy and waste,total energy supply,2050,360.38,-0.688674383,weo
+announced pledges scenario,world,total,biofuels production and direct air capture,2030,49.97,-60.69135802,weo
+net zero emissions by 2050 scenario,world,total,biofuels production and direct air capture,2030,155.87,-191.4320988,weo
+stated policies scenario,world,total,biofuels production and direct air capture,2040,27.79,-33.30864198,weo
+announced pledges scenario,world,total,biofuels production and direct air capture,2040,163.53,-200.8888889,weo
+net zero emissions by 2050 scenario,world,total,biofuels production and direct air capture,2040,530.3,-653.691358,weo
+stated policies scenario,world,total,biofuels production and direct air capture,2050,59.28,-72.18518519,weo
+announced pledges scenario,world,total,biofuels production and direct air capture,2050,405.96,-500.1851852,weo
+net zero emissions by 2050 scenario,world,total,biofuels production and direct air capture,2050,786.85,-970.4197531,weo
+stated policies scenario,world,coal,power sector inputs,2020,9750.4,0,weo
+stated policies scenario,world,coal,power sector inputs,2030,9127.98,0.06383533,weo
+stated policies scenario,world,coal,power sector inputs,2040,7281.79,0.253180382,weo
+stated policies scenario,world,coal,power sector inputs,2050,5938.44,0.390954217,weo
+stated policies scenario,world,oil,power sector inputs,2020,557.3,0,weo
+stated policies scenario,world,oil,power sector inputs,2030,371.56,0.333285484,weo
+stated policies scenario,world,oil,power sector inputs,2040,308.52,0.446402297,weo
+stated policies scenario,world,oil,power sector inputs,2050,260.29,0.532944554,weo
+stated policies scenario,world,natural gas,power sector inputs,2020,3095.24,0,weo
+stated policies scenario,world,natural gas,power sector inputs,2030,3104.66,-0.003043383,weo
+stated policies scenario,world,natural gas,power sector inputs,2040,2863.26,0.074947338,weo
+stated policies scenario,world,natural gas,power sector inputs,2050,2842.1,0.081783642,weo
+stated policies scenario,world,bioenergy and waste,power sector inputs,2020,99.1,0,weo
+stated policies scenario,world,bioenergy and waste,power sector inputs,2030,154.44,-0.558425832,weo
+stated policies scenario,world,bioenergy and waste,power sector inputs,2040,222.77,-1.247931382,weo
+stated policies scenario,world,bioenergy and waste,power sector inputs,2050,266.91,-1.693340061,weo
+stated policies scenario,world,total,buildings,2020,2850.65,0,weo
+announced pledges scenario,world,total,buildings,2020,2850.65,0,weo
+net zero emissions by 2050 scenario,world,total,buildings,2020,2850.65,0,weo
+stated policies scenario,world,total,buildings,2030,2680.33,0.059747777,weo
+announced pledges scenario,world,total,buildings,2030,2266.82,0.204805921,weo
+net zero emissions by 2050 scenario,world,total,buildings,2030,1631.91,0.427530563,weo
+stated policies scenario,world,total,buildings,2040,2446.36,0.141823795,weo
+announced pledges scenario,world,total,buildings,2040,1434.38,0.496823531,weo
+stated policies scenario,world,coal,total final consumption,2020,4474.28,0,weo
+stated policies scenario,world,coal,total final consumption,2030,4458.24,0.003584934,weo
+stated policies scenario,world,coal,total final consumption,2040,4170.37,0.067923778,weo
+stated policies scenario,world,coal,total final consumption,2050,3829.98,0.144000822,weo
+stated policies scenario,world,oil,total final consumption,2020,9080.06,0,weo
+stated policies scenario,world,oil,total final consumption,2030,10455.5,-0.151479175,weo
+stated policies scenario,world,oil,total final consumption,2040,10388.4,-0.144089356,weo
+stated policies scenario,world,oil,total final consumption,2050,10331.1,-0.137778825,weo
+stated policies scenario,world,natural gas,total final consumption,2020,3320.85,0,weo
+stated policies scenario,world,natural gas,total final consumption,2030,3800.01,-0.14428836,weo
+stated policies scenario,world,natural gas,total final consumption,2040,3929.05,-0.183145881,weo
+stated policies scenario,world,natural gas,total final consumption,2050,3904.12,-0.175638767,weo
+stated policies scenario,world,bioenergy and waste,total final consumption,2020,113.5,0,weo
+stated policies scenario,world,bioenergy and waste,total final consumption,2030,100.04,0.118590308,weo
+stated policies scenario,world,bioenergy and waste,total final consumption,2040,101,0.110132159,weo
+stated policies scenario,world,bioenergy and waste,total final consumption,2050,93.65,0.174889868,weo
+net zero emissions by 2050 scenario,world,total,buildings,2040,474.58,0.833518671,weo
+stated policies scenario,world,total,buildings,2050,2293.41,0.195478224,weo
+announced pledges scenario,world,total,buildings,2050,1029.49,0.638857804,weo
+net zero emissions by 2050 scenario,world,total,buildings,2050,55.36,0.980579868,weo
+stated policies scenario,world,total,chemicals,2020,1286.79,0,weo
+announced pledges scenario,world,total,chemicals,2020,1286.79,0,weo
+net zero emissions by 2050 scenario,world,total,chemicals,2020,1286.79,0,weo
+stated policies scenario,world,total,chemicals,2030,1492.19,-0.159622005,weo
+announced pledges scenario,world,total,chemicals,2030,1314.62,-0.021627461,weo
+net zero emissions by 2050 scenario,world,total,chemicals,2030,1137.24,0.11621943,weo
+stated policies scenario,world,total,chemicals,2040,1492,-0.159474351,weo
+announced pledges scenario,world,total,chemicals,2040,925.04,0.281125902,weo
+net zero emissions by 2050 scenario,world,total,chemicals,2040,545.83,0.575820452,weo
+stated policies scenario,world,total,chemicals,2050,1429.13,-0.11061634,weo
+announced pledges scenario,world,total,chemicals,2050,547.97,0.574157399,weo
+net zero emissions by 2050 scenario,world,total,chemicals,2050,38.48,0.970096131,weo
+stated policies scenario,world,total,industry,2020,9132.22,0,weo
+announced pledges scenario,world,total,industry,2020,9132.22,0,weo
+net zero emissions by 2050 scenario,world,total,industry,2020,9132.22,0,weo
+stated policies scenario,world,total,industry,2030,10036.5,-0.09902083,weo
+announced pledges scenario,world,total,industry,2030,8569.29,0.061642186,weo
+net zero emissions by 2050 scenario,world,total,industry,2030,7167.71,0.215118558,weo
+stated policies scenario,world,total,industry,2040,10060.7,-0.101670788,weo
+announced pledges scenario,world,total,industry,2040,6233.7,0.317394894,weo
+net zero emissions by 2050 scenario,world,total,industry,2040,3246.05,0.644549737,weo
+stated policies scenario,world,total,industry,2050,9669.44,-0.058826879,weo
+announced pledges scenario,world,total,industry,2050,3946.03,0.567900248,weo
+net zero emissions by 2050 scenario,world,total,industry,2050,395.78,0.95666114,weo
+stated policies scenario,world,total,iron and steel,2020,2724.26,0,weo
+announced pledges scenario,world,total,iron and steel,2020,2724.26,0,weo
+net zero emissions by 2050 scenario,world,total,iron and steel,2020,2724.26,0,weo
+stated policies scenario,world,total,iron and steel,2030,2929,-0.075154354,weo
+announced pledges scenario,world,total,iron and steel,2030,2511.52,0.078090931,weo
+net zero emissions by 2050 scenario,world,total,iron and steel,2030,2090.54,0.232620969,weo
+stated policies scenario,world,total,iron and steel,2040,2797.7,-0.026957779,weo
+announced pledges scenario,world,total,iron and steel,2040,1807.75,0.336425304,weo
+net zero emissions by 2050 scenario,world,total,iron and steel,2040,965.05,0.645757013,weo
+stated policies scenario,world,total,iron and steel,2050,2652.97,0.026168574,weo
+announced pledges scenario,world,total,iron and steel,2050,1119.84,0.588937913,weo
+net zero emissions by 2050 scenario,world,total,iron and steel,2050,176.88,0.935072277,weo
+stated policies scenario,world,total,non-metallic minerals: cement,2020,2458.33,0,weo
+announced pledges scenario,world,total,non-metallic minerals: cement,2020,2458.33,0,weo
+net zero emissions by 2050 scenario,world,total,non-metallic minerals: cement,2020,2458.33,0,weo
+stated policies scenario,world,total,non-metallic minerals: cement,2030,2648.17,-0.077223156,weo
+announced pledges scenario,world,total,non-metallic minerals: cement,2030,2328.63,0.052759394,weo
+net zero emissions by 2050 scenario,world,total,non-metallic minerals: cement,2030,1910.46,0.222862675,weo
+stated policies scenario,world,total,non-metallic minerals: cement,2040,2699.14,-0.097956743,weo
+announced pledges scenario,world,total,non-metallic minerals: cement,2040,1758.41,0.284713606,weo
+net zero emissions by 2050 scenario,world,total,non-metallic minerals: cement,2040,869.02,0.64649986,weo
+stated policies scenario,world,total,non-metallic minerals: cement,2050,2585.3,-0.051648884,weo
+announced pledges scenario,world,total,non-metallic minerals: cement,2050,1084.1,0.559009572,weo
+net zero emissions by 2050 scenario,world,total,non-metallic minerals: cement,2050,75.5,0.969288094,weo
+stated policies scenario,world,total,other energy sector,2020,1487.18,0,weo
+announced pledges scenario,world,total,other energy sector,2020,1487.18,0,weo
+net zero emissions by 2050 scenario,world,total,other energy sector,2020,1487.18,0,weo
+stated policies scenario,world,total,other energy sector,2030,1698.37,-0.14200702,weo
+announced pledges scenario,world,total,other energy sector,2030,1334.09,0.102939792,weo
+net zero emissions by 2050 scenario,world,total,other energy sector,2030,965.62,0.350704017,weo
+stated policies scenario,world,total,other energy sector,2040,1695.49,-0.140070469,weo
+announced pledges scenario,world,total,other energy sector,2040,730.29,0.5089431,weo
+announced pledges scenario,world,coal,total energy supply,2020,14335.2,0,weo
+announced pledges scenario,world,coal,total energy supply,2030,11881.3,0.171180032,weo
+announced pledges scenario,world,coal,total energy supply,2040,6594.46,0.539981305,weo
+announced pledges scenario,world,coal,total energy supply,2050,2973.15,0.792597941,weo
+announced pledges scenario,world,oil,total energy supply,2020,10193.7,0,weo
+announced pledges scenario,world,oil,total energy supply,2030,10092.6,0.00991789,weo
+announced pledges scenario,world,oil,total energy supply,2040,7169.41,0.296682265,weo
+announced pledges scenario,world,oil,total energy supply,2050,5077.77,0.501871744,weo
+announced pledges scenario,world,natural gas,total energy supply,2020,7161.51,0,weo
+announced pledges scenario,world,natural gas,total energy supply,2030,6679.86,0.067255369,weo
+announced pledges scenario,world,natural gas,total energy supply,2040,4966.95,0.306438167,weo
+announced pledges scenario,world,natural gas,total energy supply,2050,3758.47,0.475184703,weo
+announced pledges scenario,world,bioenergy and waste,total energy supply,2020,213.41,0,weo
+announced pledges scenario,world,bioenergy and waste,total energy supply,2030,149.19,0.300923106,weo
+announced pledges scenario,world,bioenergy and waste,total energy supply,2040,-176.46,1.826859098,weo
+announced pledges scenario,world,bioenergy and waste,total energy supply,2050,-462.91,3.169111101,weo
+net zero emissions by 2050 scenario,world,total,other energy sector,2040,112.33,0.924467785,weo
+stated policies scenario,world,total,other energy sector,2050,1659.1,-0.115601339,weo
+announced pledges scenario,world,total,other energy sector,2050,191.2,0.871434527,weo
+net zero emissions by 2050 scenario,world,total,other energy sector,2050,-266.45,1.179164593,weo
+stated policies scenario,world,total,power sector inputs,2020,13502,0,weo
+announced pledges scenario,world,total,power sector inputs,2020,13502,0,weo
+net zero emissions by 2050 scenario,world,total,power sector inputs,2020,13502,0,weo
+stated policies scenario,world,total,power sector inputs,2030,12758.6,0.05505851,weo
+announced pledges scenario,world,coal,power sector inputs,2020,9750.4,0,weo
+announced pledges scenario,world,coal,power sector inputs,2030,8163.43,0.162759477,weo
+announced pledges scenario,world,coal,power sector inputs,2040,4291.95,0.559818059,weo
+announced pledges scenario,world,coal,power sector inputs,2050,1712.59,0.824356949,weo
+announced pledges scenario,world,oil,power sector inputs,2020,557.3,0,weo
+announced pledges scenario,world,oil,power sector inputs,2030,322.08,0.422070698,weo
+announced pledges scenario,world,oil,power sector inputs,2040,230.35,0.586667863,weo
+announced pledges scenario,world,oil,power sector inputs,2050,155.86,0.720330163,weo
+announced pledges scenario,world,natural gas,power sector inputs,2020,3095.24,0,weo
+announced pledges scenario,world,natural gas,power sector inputs,2030,2759.41,0.108498856,weo
+announced pledges scenario,world,natural gas,power sector inputs,2040,2021.73,0.346826094,weo
+announced pledges scenario,world,natural gas,power sector inputs,2050,1597.93,0.48374601,weo
+announced pledges scenario,world,bioenergy and waste,power sector inputs,2020,99.1,0,weo
+announced pledges scenario,world,bioenergy and waste,power sector inputs,2030,84.93,0.142986882,weo
+announced pledges scenario,world,bioenergy and waste,power sector inputs,2040,-154.91,2.563168517,weo
+announced pledges scenario,world,bioenergy and waste,power sector inputs,2050,-328.71,4.316952573,weo
+announced pledges scenario,world,total,power sector inputs,2030,11329.9,0.160872463,weo
+net zero emissions by 2050 scenario,world,total,power sector inputs,2030,7076.47,0.475894682,weo
+stated policies scenario,world,total,power sector inputs,2040,10676.3,0.209280107,weo
+announced pledges scenario,world,total,power sector inputs,2040,6389.13,0.526801215,weo
+net zero emissions by 2050 scenario,world,total,power sector inputs,2040,-188.61,1.013969042,weo
+stated policies scenario,world,total,power sector inputs,2050,9307.74,0.310639905,weo
+announced pledges scenario,world,total,power sector inputs,2050,3137.67,0.767614427,weo
+net zero emissions by 2050 scenario,world,total,power sector inputs,2050,-350.78,1.025979855,weo
+announced pledges scenario,world,coal,total final consumption,2020,4474.28,0,weo
+announced pledges scenario,world,coal,total final consumption,2030,3621.14,0.190676489,weo
+announced pledges scenario,world,coal,total final consumption,2040,2239.15,0.499550766,weo
+announced pledges scenario,world,coal,total final consumption,2050,1238.78,0.723133107,weo
+announced pledges scenario,world,oil,total final consumption,2020,9080.06,0,weo
+announced pledges scenario,world,oil,total final consumption,2030,9302.23,-0.0244679,weo
+announced pledges scenario,world,oil,total final consumption,2040,6669.63,0.265464105,weo
+announced pledges scenario,world,oil,total final consumption,2050,4754.88,0.476338262,weo
+announced pledges scenario,world,natural gas,total final consumption,2020,3320.85,0,weo
+announced pledges scenario,world,natural gas,total final consumption,2030,3225.17,0.028811901,weo
+announced pledges scenario,world,natural gas,total final consumption,2040,2464.88,0.257756297,weo
+announced pledges scenario,world,natural gas,total final consumption,2050,1803.36,0.456958309,weo
+announced pledges scenario,world,bioenergy and waste,total final consumption,2020,113.5,0,weo
+announced pledges scenario,world,bioenergy and waste,total final consumption,2030,64.43,0.432334802,weo
+announced pledges scenario,world,bioenergy and waste,total final consumption,2040,-21.03,1.185286344,weo
+announced pledges scenario,world,bioenergy and waste,total final consumption,2050,-124.93,2.100704846,weo
+stated policies scenario,world,total,residential,2020,1982.94,0,weo
+announced pledges scenario,world,total,residential,2020,1982.94,0,weo
+net zero emissions by 2050 scenario,world,total,residential,2020,1982.94,0,weo
+stated policies scenario,world,total,residential,2030,1746.6,0.119186662,weo
+announced pledges scenario,world,total,residential,2030,1558.57,0.21401051,weo
+net zero emissions by 2050 scenario,world,total,residential,2030,1197.4,0.396149152,weo
+stated policies scenario,world,total,residential,2040,1527.82,0.229517787,weo
+announced pledges scenario,world,total,residential,2040,1002.23,0.494573714,weo
+net zero emissions by 2050 scenario,world,total,residential,2040,368.88,0.813973191,weo
+stated policies scenario,world,total,residential,2050,1415.08,0.28637276,weo
+announced pledges scenario,world,total,residential,2050,747.73,0.622918495,weo
+net zero emissions by 2050 scenario,world,total,residential,2050,54.61,0.972460085,weo
+stated policies scenario,world,total,road,2020,5484.78,0,weo
+announced pledges scenario,world,total,road,2020,5484.78,0,weo
+net zero emissions by 2050 scenario,world,total,road,2020,5484.78,0,weo
+stated policies scenario,world,total,road,2030,6064.52,-0.105699773,weo
+announced pledges scenario,world,total,road,2030,5458.55,0.004782325,weo
+net zero emissions by 2050 scenario,world,total,road,2030,3987.84,0.27292617,weo
+stated policies scenario,world,total,road,2040,5925.1,-0.080280339,weo
+announced pledges scenario,world,total,road,2040,3772.68,0.312154726,weo
+net zero emissions by 2050 scenario,world,total,road,2040,1369.97,0.750223345,weo
+stated policies scenario,world,total,road,2050,5666.9,-0.033204613,weo
+announced pledges scenario,world,total,road,2050,2508.61,0.542623405,weo
+net zero emissions by 2050 scenario,world,total,road,2050,195.03,0.9644416,weo
+stated policies scenario,world,total,road heavy-duty trucks,2020,1688.1,0,weo
+announced pledges scenario,world,total,road heavy-duty trucks,2020,1688.1,0,weo
+net zero emissions by 2050 scenario,world,total,road heavy-duty trucks,2020,1688.1,0,weo
+stated policies scenario,world,total,road heavy-duty trucks,2030,2069.79,-0.226106273,weo
+announced pledges scenario,world,total,road heavy-duty trucks,2030,1909.47,-0.131135596,weo
+net zero emissions by 2050 scenario,world,total,road heavy-duty trucks,2030,1574.26,0.067436763,weo
+stated policies scenario,world,total,road heavy-duty trucks,2040,2274.16,-0.347171376,weo
+announced pledges scenario,world,total,road heavy-duty trucks,2040,1548.75,0.082548427,weo
+net zero emissions by 2050 scenario,world,total,road heavy-duty trucks,2040,745.58,0.558331852,weo
+stated policies scenario,world,total,road heavy-duty trucks,2050,2435.04,-0.442473787,weo
+announced pledges scenario,world,total,road heavy-duty trucks,2050,1137.45,0.326195131,weo
+net zero emissions by 2050 scenario,world,total,road heavy-duty trucks,2050,136.12,0.919364967,weo
+stated policies scenario,world,total,road passenger light duty vehicle,2020,2803.05,0,weo
+announced pledges scenario,world,total,road passenger light duty vehicle,2020,2803.05,0,weo
+net zero emissions by 2050 scenario,world,total,road passenger light duty vehicle,2020,2803.05,0,weo
+stated policies scenario,world,total,road passenger light duty vehicle,2030,2961.6,-0.056563386,weo
+announced pledges scenario,world,total,road passenger light duty vehicle,2030,2588.6,0.076505949,weo
+net zero emissions by 2050 scenario,world,total,road passenger light duty vehicle,2030,1690.99,0.396732131,weo
+stated policies scenario,world,total,road passenger light duty vehicle,2040,2760.55,0.015162056,weo
+announced pledges scenario,world,total,road passenger light duty vehicle,2040,1597.82,0.429970925,weo
+net zero emissions by 2050 scenario,world,total,road passenger light duty vehicle,2040,421.66,0.849571003,weo
+stated policies scenario,world,total,road passenger light duty vehicle,2050,2470.34,0.118695706,weo
+announced pledges scenario,world,total,road passenger light duty vehicle,2050,996.87,0.644362391,weo
+net zero emissions by 2050 scenario,world,total,road passenger light duty vehicle,2050,45.34,0.983824762,weo
+stated policies scenario,world,total,services,2020,867.71,0,weo
+announced pledges scenario,world,total,services,2020,867.71,0,weo
+net zero emissions by 2050 scenario,world,total,services,2020,867.71,0,weo
+stated policies scenario,world,total,services,2030,933.73,-0.076085328,weo
+announced pledges scenario,world,total,services,2030,708.25,0.183771076,weo
+net zero emissions by 2050 scenario,world,total,services,2030,434.51,0.49924514,weo
+stated policies scenario,world,total,services,2040,918.54,-0.058579479,weo
+announced pledges scenario,world,total,services,2040,432.15,0.501964942,weo
+net zero emissions by 2050 scenario,world,total,services,2040,105.7,0.878185108,weo
+stated policies scenario,world,total,services,2050,878.33,-0.012239112,weo
+announced pledges scenario,world,total,services,2050,281.77,0.675271692,weo
+net zero emissions by 2050 scenario,world,total,services,2050,0.75,0.999135656,weo
+net zero emissions by 2050 scenario,world,coal,total energy supply,2020,14335.2,0,weo
+net zero emissions by 2050 scenario,world,coal,total energy supply,2030,7578.32,0.471348848,weo
+net zero emissions by 2050 scenario,world,coal,total energy supply,2040,1140.44,0.920444779,weo
+net zero emissions by 2050 scenario,world,coal,total energy supply,2050,114.27,0.992028713,weo
+net zero emissions by 2050 scenario,world,oil,total energy supply,2020,10193.7,0,weo
+net zero emissions by 2050 scenario,world,oil,total energy supply,2030,7710.44,0.243607326,weo
+net zero emissions by 2050 scenario,world,oil,total energy supply,2040,3029.61,0.702795844,weo
+net zero emissions by 2050 scenario,world,oil,total energy supply,2050,722.15,0.929157225,weo
+net zero emissions by 2050 scenario,world,natural gas,total energy supply,2020,7161.51,0,weo
+net zero emissions by 2050 scenario,world,natural gas,total energy supply,2030,5282.33,0.262399969,weo
+net zero emissions by 2050 scenario,world,natural gas,total energy supply,2040,1390.91,0.805779787,weo
+net zero emissions by 2050 scenario,world,natural gas,total energy supply,2050,404.67,0.94349376,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total energy supply,2020,213.41,0,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total energy supply,2030,19.34,0.909376318,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total energy supply,2040,-457.68,3.144604283,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total energy supply,2050,-731.46,4.427486997,weo
+stated policies scenario,world,total,total aviation (domestic and bunkers),2020,586.31,0,weo
+announced pledges scenario,world,total,total aviation (domestic and bunkers),2020,586.31,0,weo
+net zero emissions by 2050 scenario,world,total,total aviation (domestic and bunkers),2020,586.31,0,weo
+stated policies scenario,world,total,total aviation (domestic and bunkers),2030,1259.49,-1.148163941,weo
+announced pledges scenario,world,total,total aviation (domestic and bunkers),2030,1196.89,-1.041394484,weo
+net zero emissions by 2050 scenario,world,total,total aviation (domestic and bunkers),2030,884.21,-0.508092988,weo
+stated policies scenario,world,total,total aviation (domestic and bunkers),2040,1439.57,-1.455305214,weo
+announced pledges scenario,world,total,total aviation (domestic and bunkers),2040,1135.75,-0.937115178,weo
+net zero emissions by 2050 scenario,world,coal,power sector inputs,2020,9750.4,0,weo
+net zero emissions by 2050 scenario,world,coal,power sector inputs,2030,4653.48,0.52273958,weo
+net zero emissions by 2050 scenario,world,coal,power sector inputs,2040,48.73,0.995002256,weo
+net zero emissions by 2050 scenario,world,coal,power sector inputs,2050,26.65,0.997266779,weo
+net zero emissions by 2050 scenario,world,oil,power sector inputs,2020,557.3,0,weo
+net zero emissions by 2050 scenario,world,oil,power sector inputs,2030,167.39,0.699641127,weo
+net zero emissions by 2050 scenario,world,oil,power sector inputs,2040,17.8,0.968060291,weo
+net zero emissions by 2050 scenario,world,oil,power sector inputs,2050,2.34,0.995801184,weo
+net zero emissions by 2050 scenario,world,natural gas,power sector inputs,2020,3095.24,0,weo
+net zero emissions by 2050 scenario,world,natural gas,power sector inputs,2030,2264.18,0.268496142,weo
+net zero emissions by 2050 scenario,world,natural gas,power sector inputs,2040,79.99,0.974157093,weo
+net zero emissions by 2050 scenario,world,natural gas,power sector inputs,2050,41.69,0.986530931,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,power sector inputs,2020,99.1,0,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,power sector inputs,2030,-8.58,1.086579213,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,power sector inputs,2040,-335.13,4.381735621,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,power sector inputs,2050,-421.46,5.252875883,weo
+net zero emissions by 2050 scenario,world,total,total aviation (domestic and bunkers),2040,511.02,0.128413297,weo
+stated policies scenario,world,total,total aviation (domestic and bunkers),2050,1675.45,-1.857617984,weo
+announced pledges scenario,world,total,total aviation (domestic and bunkers),2050,1073.76,-0.831386127,weo
+net zero emissions by 2050 scenario,world,total,total aviation (domestic and bunkers),2050,199.44,0.659838652,weo
+stated policies scenario,world,total,total energy supply,2020,31904,0,weo
+announced pledges scenario,world,total,total energy supply,2020,31904,0,weo
+net zero emissions by 2050 scenario,world,coal,total final consumption,2020,4474.28,0,weo
+net zero emissions by 2050 scenario,world,coal,total final consumption,2030,2835.23,0.366327096,weo
+net zero emissions by 2050 scenario,world,coal,total final consumption,2040,1043.45,0.766789293,weo
+net zero emissions by 2050 scenario,world,coal,total final consumption,2050,72.92,0.983702406,weo
+net zero emissions by 2050 scenario,world,oil,total final consumption,2020,9080.06,0,weo
+net zero emissions by 2050 scenario,world,oil,total final consumption,2030,7162.05,0.211233186,weo
+net zero emissions by 2050 scenario,world,oil,total final consumption,2040,2864.5,0.684528516,weo
+net zero emissions by 2050 scenario,world,oil,total final consumption,2050,650.79,0.928327566,weo
+net zero emissions by 2050 scenario,world,natural gas,total final consumption,2020,3320.85,0,weo
+net zero emissions by 2050 scenario,world,natural gas,total final consumption,2030,2490.73,0.249972146,weo
+net zero emissions by 2050 scenario,world,natural gas,total final consumption,2040,1094.3,0.670475932,weo
+net zero emissions by 2050 scenario,world,natural gas,total final consumption,2050,213.23,0.935790536,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total final consumption,2020,113.5,0,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total final consumption,2030,28.89,0.745462555,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total final consumption,2040,-96.18,1.847400881,weo
+net zero emissions by 2050 scenario,world,bioenergy and waste,total final consumption,2050,-204.82,2.804581498,weo
+net zero emissions by 2050 scenario,world,total,total energy supply,2020,31904,0,weo
+stated policies scenario,world,total,total energy supply,2030,33134.7,-0.0385751,weo
+announced pledges scenario,world,total,total energy supply,2030,28803,0.097197844,weo
+net zero emissions by 2050 scenario,world,total,total energy supply,2030,20590.4,0.354613842,weo
+stated policies scenario,world,total,total energy supply,2040,30799.9,0.034606946,weo
+announced pledges scenario,world,total,total energy supply,2040,18554.4,0.418430291,weo
+net zero emissions by 2050 scenario,world,total,total energy supply,2040,5103.27,0.840042941,weo
+stated policies scenario,world,total,total energy supply,2050,28946.4,0.092703109,weo
+announced pledges scenario,world,total,total energy supply,2050,11346.5,0.64435494,weo
+net zero emissions by 2050 scenario,world,total,total energy supply,2050,509.63,0.984026141,weo
+stated policies scenario,world,total,total final consumption,2020,19521.6,0,weo
+announced pledges scenario,world,total,total final consumption,2020,19521.6,0,weo
+net zero emissions by 2050 scenario,world,total,total final consumption,2020,19521.6,0,weo
+stated policies scenario,world,total,total final consumption,2030,21627,-0.107849766,weo
+announced pledges scenario,world,total,total final consumption,2030,18784.8,0.037742808,weo
+net zero emissions by 2050 scenario,world,total,total final consumption,2030,14765,0.243658307,weo
+stated policies scenario,world,total,total final consumption,2040,21501.3,-0.101410745,weo
+announced pledges scenario,world,total,total final consumption,2040,13438.2,0.311624047,weo
+net zero emissions by 2050 scenario,world,total,total final consumption,2040,6092.07,0.687931829,weo
+stated policies scenario,world,total,total final consumption,2050,21056.1,-0.078605237,weo
+announced pledges scenario,world,total,total final consumption,2050,9123.89,0.532625912,weo
+net zero emissions by 2050 scenario,world,total,total final consumption,2050,1004.68,0.948534956,weo
+stated policies scenario,world,total,total navigation (domestic and bunkers),2020,795.85,0,weo
+announced pledges scenario,world,total,total navigation (domestic and bunkers),2020,795.85,0,weo
+net zero emissions by 2050 scenario,world,total,total navigation (domestic and bunkers),2020,795.85,0,weo
+stated policies scenario,world,total,total navigation (domestic and bunkers),2030,904.98,-0.13712383,weo
+announced pledges scenario,world,total,total navigation (domestic and bunkers),2030,778.33,0.022014199,weo
+net zero emissions by 2050 scenario,world,total,total navigation (domestic and bunkers),2030,673.37,0.153898348,weo
+stated policies scenario,world,total,total navigation (domestic and bunkers),2040,978.64,-0.22967896,weo
+announced pledges scenario,world,total,total navigation (domestic and bunkers),2040,524.75,0.340642081,weo
+net zero emissions by 2050 scenario,world,total,total navigation (domestic and bunkers),2040,303.78,0.618294905,weo
+stated policies scenario,world,total,total navigation (domestic and bunkers),2050,1144.94,-0.438637934,weo
+announced pledges scenario,world,total,total navigation (domestic and bunkers),2050,361.89,0.545278633,weo
+net zero emissions by 2050 scenario,world,total,total navigation (domestic and bunkers),2050,107.1,0.865426902,weo
+stated policies scenario,world,total,transport,2020,7112.95,0,weo
+announced pledges scenario,world,total,transport,2020,7112.95,0,weo
+net zero emissions by 2050 scenario,world,total,transport,2020,7112.95,0,weo
+stated policies scenario,world,total,transport,2030,8471.76,-0.191033256,weo
+announced pledges scenario,world,total,transport,2030,7616.07,-0.070732959,weo
+net zero emissions by 2050 scenario,world,total,transport,2030,5687.01,0.200470972,weo
+stated policies scenario,world,total,transport,2040,8570.57,-0.20492482,weo
+announced pledges scenario,world,total,transport,2040,5556.61,0.218803731,weo
+net zero emissions by 2050 scenario,world,total,transport,2040,2258.2,0.682522723,weo
+stated policies scenario,world,total,transport,2050,8699.66,-0.223073408,weo
+announced pledges scenario,world,total,transport,2050,4024.76,0.434164447,weo
+net zero emissions by 2050 scenario,world,total,transport,2050,535.16,0.924762581,weo

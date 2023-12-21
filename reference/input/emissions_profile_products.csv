@@ -1,0 +1,6 @@
+co2_footprint,tilt_sector,tilt_subsector,unit,isic_4digit,activity_uuid_product_uuid,ei_activity_name
+175.6154785,Industry,Other,unit,'2560',0a242b09-772a-5edf-8e82-9cb4ba52a258_ae39ee61-d4d0-4cce-93b4-0745344da5fa,cookstove production or electric
+58.12000177,Industry,Other,unit,'2560',be06d25c-73dc-55fb-965b-0f300453e380_98b48ff2-2200-4b08-9dec-9c7c0e3585bc,microwave oven production
+4.949117653,Steel & Metals,Steel,kg,'2870',977d997e-c257-5033-ba39-d0edeeef4ba2_0ace02fa-eca5-482d-a829-c18e46a52db4,"market for steel, chromium steel"
+12.4688647,Agriculture,Agriculture,kg,'1780',ebb8475e-ff57-5e4e-937b-b5788186a5ca_ccee034c-8b6c-40d6-ac36-4c70c4623efa,"cheese production, soft, from cow milk"
+2.072348549,Industry,Other,kg,'2679',2f7b77a7-1556-5c1b-b0aa-c4534ddc8885_38d493e9-6feb-4c66-86eb-2253ef8ee54d,"market for seal, natural rubber based"
