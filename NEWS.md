@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9027 (2023-12-21)
+
+* Remove needless files from input/ (#103). Those files were toy output included
+by mistake.
+
 # tiltWorkflows 0.0.0.9026 (2023-12-21)
 
 * In the yaml setup change `NULL` to the empty string (#102). This allows the use
