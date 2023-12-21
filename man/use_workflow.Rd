@@ -26,11 +26,12 @@ package.
 }
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# The error shows what's available
-try(use_workflow())
-
-# Note: Running this will write "profile_emissions.Rmd" to your working directory
+\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 use_workflow("profile_emissions.Rmd")
+
+file.exists("profile_emissions.Rmd")
+
+# Cleanup
+unlink("profile_emissions.Rmd")
 \dontshow{\}) # examplesIf}
 }

@@ -40,6 +40,8 @@ dir.create(tmp)
 cache_info(tmp)
 
 dir.exists(tmp)
+
 cache_delete(tmp)
+
 dir.exists(tmp)
 }

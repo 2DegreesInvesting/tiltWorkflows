@@ -17,7 +17,9 @@
 #' cache_info(tmp)
 #'
 #' dir.exists(tmp)
+#'
 #' cache_delete(tmp)
+#'
 #' dir.exists(tmp)
 #' @name cache
 NULL
