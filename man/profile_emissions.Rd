@@ -24,7 +24,7 @@ profile_emissions(
 
 \item{ecoinvent_europages}{Dataframe. Mapper between europages and ecoinvent.}
 
-\item{isic_tilt}{Dataframe. Mapper between isic and tilt.}
+\item{isic_tilt}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
 
 \item{low_threshold}{A numeric value to segment low and medium transition
 risk products.}
@@ -55,7 +55,7 @@ result <- profile_emissions(
   europages_companies = tiltIndicatorAfter::ep_companies,
   ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
   ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-  isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  isic = tiltIndicatorAfter::isic_tilt_mapper
 )
 
 result |> unnest_product()
@@ -74,7 +74,7 @@ result <- profile_emissions_upstream(
   ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
   ecoinvent_inputs = tiltIndicatorAfter::ecoinvent_inputs,
   ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(100),
-  isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+  isic = tiltIndicatorAfter::isic_tilt_mapper
 )
 
 result |> unnest_product()
