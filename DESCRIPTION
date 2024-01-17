@@ -8,7 +8,7 @@ Authors@R: c(
     person("2 Degrees Investing Initiative", , , "contact@2degrees-investing.org", role = c("cph", "fnd"))
   )
 Description: Makes it easy to run 'tilt' workflows.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 URL: https://2degreesinvesting.github.io/tiltWorkflows/,
     https://github.com/2DegreesInvesting/tiltWorkflows
 BugReports: https://github.com/2DegreesInvesting/tiltWorkflows/issues
