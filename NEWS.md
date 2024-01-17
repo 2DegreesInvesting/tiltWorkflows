@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9029 (2024-01-17)
+
+* Change license to GPLv3 (#116).
+
 # tiltWorkflows 0.0.0.9028 (2023-12-21)
 
 * Ensure chunks is numeric (#106).
