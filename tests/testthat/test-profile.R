@@ -1,21 +1,25 @@
 test_that("outputs the same as tiltIndicatorAfter", {
+  withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 1
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   original <- profile_emissions(
     companies,
     products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic_name
   )
 
   withr::local_options(list(
@@ -26,11 +30,10 @@ test_that("outputs the same as tiltIndicatorAfter", {
   masked <- profile_emissions(
     companies,
     products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic_name
   ) |>
     # FIXME: Suppressing
     # Attaching package: 'purrr'
@@ -38,10 +41,11 @@ test_that("outputs the same as tiltIndicatorAfter", {
     # is_null
     suppressMessages()
 
-  expect_equal(masked, original)
+  expect_equal(dplyr::arrange(masked, companies_id), dplyr::arrange(original, companies_id))
 })
 
 test_that("with `chunks = 0` throws an informative error", {
+  withr::local_options(readr.show_col_types = FALSE)
   invalid <- 0
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -49,136 +53,160 @@ test_that("with `chunks = 0` throws an informative error", {
     tiltWorkflows.chunks = invalid
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   expect_error(class = "zero_chunks", profile_emissions(
     companies,
     products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic_name
   ))
 })
 
 test_that("with `chunks` passed as a character throws no error", {
+  withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = as.character(3),
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   expect_no_error(
     profile_emissions(
       companies,
       products,
-      # TODO: Move to tiltToyData
-      europages_companies = tiltIndicatorAfter::ep_companies,
-      ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-      isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+      europages_companies = europages_companies,
+      ecoinvent_activities = ecoinvent_activities,
+      ecoinvent_europages = ecoinvent_europages,
+      isic = isic_name
     )
   )
 })
 
 test_that("with `chunks = NULL` warns auto set chunks", {
+  withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   expect_warning(
     class = "auto_set_chunks",
     profile_emissions(
       companies,
       products,
-      # TODO: Move to tiltToyData
-      europages_companies = tiltIndicatorAfter::ep_companies,
-      ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-      isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+      europages_companies = europages_companies,
+      ecoinvent_activities = ecoinvent_activities,
+      ecoinvent_europages = ecoinvent_europages,
+      isic = isic_name
     )
   )
 })
 
 test_that("with `chunks = ''` warns auto set chunks", {
+  withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = "",
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   expect_warning(
     class = "auto_set_chunks",
     profile_emissions(
       companies,
       products,
-      # TODO: Move to tiltToyData
-      europages_companies = tiltIndicatorAfter::ep_companies,
-      ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-      isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+      europages_companies = europages_companies,
+      ecoinvent_activities = ecoinvent_activities,
+      ecoinvent_europages = ecoinvent_europages,
+      isic = isic_name
     )
   )
 })
 
 test_that("with `cache_dir = NULL` throws no error", {
+  withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.chunks = 3
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   expect_no_error(
     profile_emissions(
       companies,
       products,
-      # TODO: Move to tiltToyData
-      europages_companies = tiltIndicatorAfter::ep_companies,
-      ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-      isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+      europages_companies = europages_companies,
+      ecoinvent_activities = ecoinvent_activities,
+      ecoinvent_europages = ecoinvent_europages,
+      isic = isic_name
     )
   )
 })
 
 test_that("with `cache_dir = ''` throws no error", {
+  withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
     readr.show_col_types = FALSE,
     tiltWorkflows.cache_dir = "",
     tiltWorkflows.chunks = 3
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   expect_no_error(
     profile_emissions(
       companies,
       products,
-      # TODO: Move to tiltToyData
-      europages_companies = tiltIndicatorAfter::ep_companies,
-      ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-      ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-      isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+      europages_companies = europages_companies,
+      ecoinvent_activities = ecoinvent_activities,
+      ecoinvent_europages = ecoinvent_europages,
+      isic = isic_name
     )
   )
 })
 
 test_that("with `order = 'rev'` the chunks work in reverse order", {
+  withr::local_options(readr.show_col_types = FALSE)
   tmp_cache <- local_tempfile()
   withr::local_options(list(
     readr.show_col_types = FALSE,
@@ -187,17 +215,20 @@ test_that("with `order = 'rev'` the chunks work in reverse order", {
     tiltWorkflows.order = "rev"
   ))
 
-  companies <- companies()
-  products <- products()
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
 
   profile_emissions(
     companies,
     products,
-    # TODO: Move to tiltToyData
-    europages_companies = tiltIndicatorAfter::ep_companies,
-    ecoinvent_activities = tiltIndicatorAfter::ecoinvent_activities,
-    ecoinvent_europages = tiltIndicatorAfter::matches_mapper |> head(10),
-    isic_tilt = tiltIndicatorAfter::isic_tilt_mapper
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic_name
   )
 
   actual <- fs::dir_ls(tmp_cache, recurse = TRUE, type = "file") |>

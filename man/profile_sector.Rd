@@ -24,11 +24,11 @@ profile_sector(
 
 \item{isic_tilt}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
 
-\item{low_threshold}{A numeric value to segment low and medium transition
-risk products.}
+\item{low_threshold}{A numeric value to segment low and medium emission
+profile products.}
 
-\item{high_threshold}{A numeric value to segment medium and high transition
-risk products.}
+\item{high_threshold}{A numeric value to segment medium and high emission
+profile products.}
 }
 \value{
 A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
@@ -45,15 +45,18 @@ options(readr.show_col_types = FALSE)
 
 companies <- read_csv(toy_sector_profile_companies())
 scenarios <- read_csv(toy_sector_profile_any_scenarios())
+europages_companies <- read_csv(toy_europages_companies()) |> head(3)
+ecoinvent_activities <- read_csv(toy_ecoinvent_activities()) |> head(3)
+ecoinvent_europages <- read_csv(toy_ecoinvent_europages()) |> head(3)
+isic_name <- read_csv(toy_isic_name()) |> head(3)
 
 result <- profile_sector(
   companies,
   scenarios,
-  # TODO: Move to tiltToyData
-  europages_companies = ep_companies |> head(3),
-  ecoinvent_activities = ecoinvent_activities |> head(3),
-  ecoinvent_europages = matches_mapper |> head(3),
-  isic = isic_tilt_mapper |> head(3)
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_europages = ecoinvent_europages,
+  isic = isic_name
 )
 
 result |> unnest_product()
@@ -65,18 +68,21 @@ result |> unnest_company()
 companies <- read_csv(toy_sector_profile_upstream_companies())
 scenarios <- read_csv(toy_sector_profile_any_scenarios())
 inputs <- read_csv(toy_sector_profile_upstream_products())
-ecoinvent_inputs <- ecoinvent_inputs |> head(3)
+europages_companies <- read_csv(toy_europages_companies()) |> head(3)
+ecoinvent_activities <- read_csv(toy_ecoinvent_activities()) |> head(3)
+ecoinvent_inputs <- read_csv(toy_ecoinvent_inputs()) |> head(3)
+ecoinvent_europages <- read_csv(toy_ecoinvent_europages()) |> head(3)
+isic_name <- read_csv(toy_isic_name()) |> head(3)
 
 result <- profile_sector_upstream(
   companies,
   scenarios,
   inputs,
-  # TODO: Move to tiltToyData
-  europages_companies = ep_companies |> head(3),
-  ecoinvent_activities = ecoinvent_activities |> head(3),
-  ecoinvent_inputs = ecoinvent_inputs |> head(3),
-  ecoinvent_europages = matches_mapper |> head(3),
-  isic = isic_tilt_mapper |> head(3)
+  europages_companies = europages_companies,
+  ecoinvent_activities = ecoinvent_activities,
+  ecoinvent_inputs = ecoinvent_inputs,
+  ecoinvent_europages = ecoinvent_europages,
+  isic = isic_name
 )
 
 result |> unnest_product()
