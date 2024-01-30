@@ -14,3 +14,4 @@ test_that("informs the user", {
   withr::local_dir(withr::local_tempdir())
   expect_message(use_toy_input(), "[Ww]riting")
 })
+# check tests
