@@ -6,4 +6,5 @@
     * `use_workflow("profile_emissions_upstream.Rmd")`
     * `use_workflow("profile_sector.Rmd")`
     * `use_workflow("profile_sector_upstream.Rmd")`
+    * `use_workflow("score_transition_risk.Rmd")`
 

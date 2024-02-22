@@ -1,0 +1,5 @@
+## Data
+
+This example defaults to using toy datasets but you may [use the
+parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)
+of this file to instead use your own data.

@@ -1,7 +1,7 @@
 # yaml_path()
 
     Code
-      show(yaml_path("emissions"))
+      show(yaml_path("profile_emissions"))
     Output
       ---
       title: "{workflow}"
@@ -24,7 +24,7 @@
 ---
 
     Code
-      show(yaml_path("emissions_upstream"))
+      show(yaml_path("profile_emissions_upstream"))
     Output
       ---
       title: "{workflow}"
@@ -48,7 +48,7 @@
 ---
 
     Code
-      show(yaml_path("sector"))
+      show(yaml_path("profile_sector"))
     Output
       ---
       title: "{workflow}"
@@ -71,7 +71,7 @@
 ---
 
     Code
-      show(yaml_path("sector_upstream"))
+      show(yaml_path("profile_sector_upstream"))
     Output
       ---
       title: "{workflow}"
@@ -91,5 +91,24 @@
         sector_profile_any_scenarios: "sector_profile_any_scenarios.csv"
         sector_profile_upstream_products: "sector_profile_upstream_products.csv"
         ecoinvent_inputs: "ecoinvent_inputs.csv"
+      ---
+
+---
+
+    Code
+      show(yaml_path("score_transition_risk"))
+    Output
+      ---
+      title: "{workflow}"
+      output: github_document
+      params:
+        chunks: ""
+        order: "sample"
+        cache_dir: ""
+        input: "input"
+        output: "output"
+      
+        emissions_profile_at_product_level: "emissions_profile_at_product_level.csv"
+        sector_profile_at_product_level: "sector_profile_at_product_level.csv"
       ---
 

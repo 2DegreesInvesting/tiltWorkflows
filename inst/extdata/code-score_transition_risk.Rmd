@@ -1,0 +1,30 @@
+Data specific to this indicator.
+
+```{r}
+emissions_profile_at_product_level <- read_csv(path(params$input, params$emissions_profile_at_product_level))
+sector_profile_at_product_level <- read_csv(path(params$input, params$sector_profile_at_product_level))
+```
+
+## Transition Risk Score
+
+`r explain_indicator()`
+
+```{r}
+transition_risk_score <- score_transition_risk(emissions_profile_at_product_level, sector_profile_at_product_level)
+```
+
+## Results
+
+`r explain_results()`
+
+```{r}
+transition_risk_score |>
+  unnest_product() |>
+  print() |>
+  write_csv(path(params$output, "transition_risk_score_at_product_level.csv"))
+
+transition_risk_score |>
+  unnest_company() |>
+  print() |>
+  write_csv(path(params$output, "transition_risk_score_at_company_level.csv"))
+```

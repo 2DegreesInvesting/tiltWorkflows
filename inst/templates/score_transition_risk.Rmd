@@ -1,0 +1,158 @@
+---
+title: "score_transition_risk.Rmd"
+output: github_document
+params:
+  chunks: ""
+  order: "sample"
+  cache_dir: ""
+  input: "input"
+  output: "output"
+
+  emissions_profile_at_product_level: "emissions_profile_at_product_level.csv"
+  sector_profile_at_product_level: "sector_profile_at_product_level.csv"
+---
+
+<!-- This file is generated from inst/extdata. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This workflow runs in chunks of the `*companies` data and caches intermediate
+results. This saves memory, completes faster, and allows you to resume after
+interruptions.
+
+## Setup
+
+```{r global}
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(rappdirs)
+library(future)
+library(fs)
+
+# Masking `tiltIndicatorAfter::profile*()` to use `chunks`
+library(tiltWorkflows)
+```
+
+If the parameter `chunks` is `NULL` (default) your `*companies` dataset is
+automatically chunked to distribute its companies across available cores. This
+uses your computer resources efficiently but may not be enough. Consider
+adjusting the `chunks` parameter manually. Aim to balance memory-usage and
+speed. A small number of `chunks` makes each chunk bigger and may overwhelm your
+memory. A large number of `chunks` may take longer because of the overhead of
+caching each chunk.
+
+<details>
+<summary>Parameters</summary>
+
+```{r}
+params
+```
+
+</details>
+
+```{r}
+options(
+  # Determines the number of chunks
+  tiltWorkflows.chunks = params$chunks,
+  # Determines the order in which the chunks run
+  tiltWorkflows.order = params$order,
+  # Determines where to store the cache
+  tiltWorkflows.cache_dir = params$cache_dir,
+  # Read data quietly
+  readr.show_col_types = FALSE,
+  # Make printed output wider
+  width = 500
+)
+
+# Enable computing over multiple workers in parallel
+plan(multisession)
+
+# Ensure input/ and output/ directories
+if (!dir_exists(params$input)) use_toy_input()
+if (!dir_exists(params$output)) dir_create(params$output)
+```
+
+<details>
+<summary>Session information</summary>
+
+```{r}
+getwd()
+
+availableCores()
+
+dir_tree(params$input)
+
+dir_tree(params$output)
+
+sessioninfo::session_info()
+```
+
+</details>
+## Data
+
+This example defaults to using toy datasets but you may [use the
+parameters](https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html)
+of this file to instead use your own data.
+Data specific to this indicator.
+
+```{r}
+emissions_profile_at_product_level <- read_csv(path(params$input, params$emissions_profile_at_product_level))
+sector_profile_at_product_level <- read_csv(path(params$input, params$sector_profile_at_product_level))
+```
+
+## Transition Risk Score
+
+`r explain_indicator()`
+
+```{r}
+transition_risk_score <- score_transition_risk(emissions_profile_at_product_level, sector_profile_at_product_level)
+```
+
+## Results
+
+`r explain_results()`
+
+```{r}
+transition_risk_score |>
+  unnest_product() |>
+  print() |>
+  write_csv(path(params$output, "transition_risk_score_at_product_level.csv"))
+
+transition_risk_score |>
+  unnest_company() |>
+  print() |>
+  write_csv(path(params$output, "transition_risk_score_at_company_level.csv"))
+```
+The results at product and company level are now saved in the output/ directory.
+
+```{r}
+# NOTE: If other workflows run before this one, this shows the results of all
+params$output |> dir_tree()
+```
+## Cleanup
+
+Here is the cache that allows you to resume after interruptions. 
+
+* The number of files is determined by `params$chunks`.
+
+```{r eval=dir_exists(user_cache_dir("tiltWorkflows"))}
+# NOTE: If other workflows run before this one, this shows the cache of all
+cache_info()
+```
+
+If you want to recompute some result, you must first delete the relevant cache:
+
+```r
+library(fs)
+library(rappdirs)
+
+dir_delete(user_cache_dir("tiltWorkflows/PROFILE-DIRECTORY-YOU-WANT-TO-DELETE"))
+
+# DANGER: Or delete the entire default cache directory with
+cache_delete()
+```

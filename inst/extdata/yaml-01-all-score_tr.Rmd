@@ -1,0 +1,10 @@
+---
+title: "{workflow}"
+output: github_document
+params:
+  chunks: ""
+  order: "sample"
+  cache_dir: ""
+  input: "input"
+  output: "output"
+

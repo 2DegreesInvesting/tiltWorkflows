@@ -15,7 +15,7 @@ extdata_to_template <- function() {
 }
 
 profiles <- function() {
-  c("emissions", "emissions_upstream", "sector", "sector_upstream")
+  c("profile_emissions", "profile_emissions_upstream", "profile_sector", "profile_sector_upstream", "score_transition_risk")
 }
 
 extdata_to_template_impl <- function(profile = profiles()) {
@@ -26,12 +26,12 @@ extdata_to_template_impl <- function(profile = profiles()) {
     note = note_tempfile(),
     setup = extdata_path("setup.Rmd"),
     data = data_path(profile),
-    code = extdata_path(paste0("code-profile_", profile, ".Rmd")),
+    code = extdata_path(paste0("code-", profile, ".Rmd")),
     results = extdata_path("output.Rmd"),
     cleanup = extdata_path("cleanup.Rmd")
   )
 
-  file <- templates_path(paste0("profile_", profile, ".Rmd"))
+  file <- templates_path(paste0(profile, ".Rmd"))
   out <- sections |>
     lapply(readLines) |>
     unlist() |>
@@ -43,18 +43,26 @@ extdata_to_template_impl <- function(profile = profiles()) {
 
 data_path <- function(profile) {
   data <- extdata_path("data.Rmd")
-  if (!grepl("upstream", profile)) {
-    data
-  } else {
+  if (grepl("score", profile)) {
+    c(
+      extdata_path("data-score_transition_risk.Rmd")
+    )
+  } else if (grepl("upstream", profile)) {
     c(
       data,
       extdata_path("data-ecoinvent_inputs.Rmd")
     )
+  } else {
+    data
   }
 }
 
 yaml_path <- function(profile) {
-  all <- dir_ls(extdata_path(), regexp = "yaml-01-all[.]Rmd$")
+  if (grepl("score", profile)) {
+    all <- dir_ls(extdata_path(), regexp = "yaml-01-all-score_tr[.]Rmd$")
+  } else {
+    all <- dir_ls(extdata_path(), regexp = "yaml-01-all[.]Rmd$")
+  }
   this <- dir_ls(extdata_path(), regexp = glue("yaml-.*{profile}[.]Rmd"))
   maybe <- NULL
   if (grepl("upstream", profile)) {
