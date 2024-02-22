@@ -86,6 +86,7 @@ result |> unnest_company()
 }
 \seealso{
 Other top-level functions: 
-\code{\link[tiltIndicatorAfter]{profile_sector}()}
+\code{\link[tiltIndicatorAfter]{profile_sector}()},
+\code{\link[tiltIndicatorAfter]{score_transition_risk}()}
 }
 \keyword{internal}
