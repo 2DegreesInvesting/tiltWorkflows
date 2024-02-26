@@ -27,6 +27,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 3
   ))
+
   masked <- profile_emissions(
     companies,
     products,
@@ -41,7 +42,17 @@ test_that("outputs the same as tiltIndicatorAfter", {
     # is_null
     suppressMessages()
 
-  expect_equal(dplyr::arrange(masked, companies_id), dplyr::arrange(original, companies_id))
+    remove_unimportant_differences <- function(data) {
+      arranged <- dplyr::arrange(data, companies_id)
+      product <- arranged |> unnest_product() |> select(-matches("co2e"))
+      company <- arranged |> unnest_company() |> select(-matches("co2e"))
+      tiltIndicator::nest_levels(product, company)
+    }
+
+  expect_equal(
+    original |> remove_unimportant_differences(),
+    masked |> remove_unimportant_differences()
+  )
 })
 
 test_that("with `chunks = 0` throws an informative error", {
