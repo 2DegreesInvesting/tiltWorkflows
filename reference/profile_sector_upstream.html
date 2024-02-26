@@ -74,7 +74,8 @@ tiltIndicator."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
 <span>  <span class="va">ecoinvent_activities</span>,</span>
 <span>  <span class="va">ecoinvent_inputs</span>,</span>
 <span>  <span class="va">ecoinvent_europages</span>,</span>
-<span>  <span class="va">isic_tilt</span>,</span>
+<span>  <span class="va">isic</span>,</span>
+<span>  isic_tilt <span class="op">=</span> <span class="fu">lifecycle</span><span class="fu">::</span><span class="fu"><a href="https://lifecycle.r-lib.org/reference/deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  low_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span>,</span>
 <span>  high_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">$</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2030</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">9</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -100,6 +101,10 @@ tiltIndicator."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/l
 
 <dt>ecoinvent_europages</dt>
 <dd><p>Dataframe. Mapper between europages and ecoinvent.</p></dd>
+
+
+<dt>isic</dt>
+<dd><p>Dataframe. ISIC data.</p></dd>
 
 
 <dt>isic_tilt</dt>
