@@ -16,7 +16,7 @@ map_chunks <- function(data,
     future_pwalk(
       \(data, file) .f(data, ...) |> write_rds(file),
       .progress = TRUE,
-      .options =  furrr::furrr_options(seed = TRUE)
+      .options = furrr::furrr_options(seed = TRUE)
     )
 
   map_df(job$file, read_rds)
