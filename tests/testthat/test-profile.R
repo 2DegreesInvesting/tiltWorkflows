@@ -1,3 +1,25 @@
+test_that("has identical interface to tiltIndicatorAfter", {
+  expect_equal(
+    formalArgs(profile_emissions),
+    formalArgs(tiltIndicatorAfter::profile_emissions)
+  )
+
+  expect_equal(
+    formalArgs(profile_emissions_upstream),
+    formalArgs(tiltIndicatorAfter::profile_emissions_upstream)
+  )
+
+  expect_equal(
+    formalArgs(profile_sector),
+    formalArgs(tiltIndicatorAfter::profile_sector)
+  )
+
+  expect_equal(
+    formalArgs(profile_sector_upstream),
+    formalArgs(tiltIndicatorAfter::profile_sector_upstream)
+  )
+})
+
 test_that("outputs the same as tiltIndicatorAfter", {
   withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
