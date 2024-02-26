@@ -46,14 +46,14 @@ test_that("outputs the same as tiltIndicatorAfter", {
       # The order of rows is unimportant
       arranged <- dplyr::arrange(data, companies_id)
       # The specific value of randomly-generated columns are unimportant
-      product <- arranged |> unnest_product() |> select(-matches("co2e"))
-      company <- arranged |> unnest_company() |> select(-matches("co2e"))
+      product <- select(unnest_product(arranged), -matches("co2e"))
+      company <- select(unnest_company(arranged), -matches("co2e"))
       tiltIndicator::nest_levels(product, company)
     }
 
   expect_equal(
-    original |> remove_unimportant_differences(),
-    masked |> remove_unimportant_differences()
+    remove_unimportant_differences(original),
+    remove_unimportant_differences(masked)
   )
 })
 
