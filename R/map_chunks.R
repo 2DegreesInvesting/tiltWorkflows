@@ -13,7 +13,11 @@ map_chunks <- function(data,
     pick_undone() |>
     dchunkr::order_rows(.fun = order) |>
     select("data", "file") |>
-    future_pwalk(\(data, file) .f(data, ...) |> write_rds(file), .progress = TRUE)
+    future_pwalk(
+      \(data, file) .f(data, ...) |> write_rds(file),
+      .progress = TRUE,
+      .options =  furrr::furrr_options(seed = TRUE)
+    )
 
   map_df(job$file, read_rds)
 }

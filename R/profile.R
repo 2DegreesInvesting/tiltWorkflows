@@ -21,7 +21,7 @@ profile_emissions <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -37,7 +37,7 @@ profile_emissions <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -69,7 +69,7 @@ profile_emissions_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -86,7 +86,7 @@ profile_emissions_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -116,7 +116,7 @@ profile_sector <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -132,7 +132,7 @@ profile_sector <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -166,7 +166,7 @@ profile_sector_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -184,7 +184,7 @@ profile_sector_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic_tilt = isic_tilt,
+      isic = isic_tilt,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
