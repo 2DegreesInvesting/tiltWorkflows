@@ -276,4 +276,3 @@ test_that("with `order = 'rev'` the chunks work in reverse order", {
 
   expect_equal(actual, rev(as.character(1:3)))
 })
-
