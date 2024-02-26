@@ -6,9 +6,18 @@ profile_emissions <- function(companies,
                               europages_companies,
                               ecoinvent_activities,
                               ecoinvent_europages,
-                              isic_tilt,
+                              isic,
+                              isic_tilt = lifecycle::deprecated(),
                               low_threshold = 1 / 3,
                               high_threshold = 2 / 3) {
+  if (lifecycle::is_present(isic_tilt)) {
+    lifecycle::deprecate_warn(
+      "0.0.0.9017", "profile_emissions(isic_tilt)",
+      "profile_emissions(isic)"
+    )
+    isic <- isic_tilt
+  }
+
   op <- enlist_options()
   chunks <- op$chunks
   cache_dir <- op$cache_dir
@@ -21,7 +30,7 @@ profile_emissions <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -37,7 +46,7 @@ profile_emissions <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -53,9 +62,18 @@ profile_emissions_upstream <- function(companies,
                                        ecoinvent_activities,
                                        ecoinvent_inputs,
                                        ecoinvent_europages,
-                                       isic_tilt,
+                                       isic,
+                                       isic_tilt = lifecycle::deprecated(),
                                        low_threshold = 1 / 3,
                                        high_threshold = 2 / 3) {
+  if (lifecycle::is_present(isic_tilt)) {
+    lifecycle::deprecate_warn(
+      "0.0.0.9017", "profile_emissions_upstream(isic_tilt)",
+      "profile_emissions_upstream(isic)"
+    )
+    isic <- isic_tilt
+  }
+
   op <- enlist_options()
   chunks <- op$chunks
   cache_dir <- op$cache_dir
@@ -69,7 +87,7 @@ profile_emissions_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -86,7 +104,7 @@ profile_emissions_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -101,9 +119,18 @@ profile_sector <- function(companies,
                            europages_companies,
                            ecoinvent_activities,
                            ecoinvent_europages,
-                           isic_tilt,
+                           isic,
+                           isic_tilt = lifecycle::deprecated(),
                            low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                            high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  if (lifecycle::is_present(isic_tilt)) {
+    lifecycle::deprecate_warn(
+      "0.0.0.9017", "profile_sector(isic_tilt)",
+      "profile_sector(isic)"
+    )
+    isic <- isic_tilt
+  }
+
   op <- enlist_options()
   chunks <- op$chunks
   cache_dir <- op$cache_dir
@@ -116,7 +143,7 @@ profile_sector <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -132,7 +159,7 @@ profile_sector <- function(companies,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -149,9 +176,18 @@ profile_sector_upstream <- function(companies,
                                     ecoinvent_activities,
                                     ecoinvent_inputs,
                                     ecoinvent_europages,
-                                    isic_tilt,
+                                    isic,
+                                    isic_tilt = lifecycle::deprecated(),
                                     low_threshold = ifelse(scenarios$year == 2030, 1 / 9, 1 / 3),
                                     high_threshold = ifelse(scenarios$year == 2030, 2 / 9, 2 / 3)) {
+  if (lifecycle::is_present(isic_tilt)) {
+    lifecycle::deprecate_warn(
+      "0.0.0.9017", "profile_sector_upstream(isic_tilt)",
+      "profile_sector_upstream(isic)"
+    )
+    isic <- isic_tilt
+  }
+
   op <- enlist_options()
   chunks <- op$chunks
   cache_dir <- op$cache_dir
@@ -166,7 +202,7 @@ profile_sector_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
@@ -184,7 +220,7 @@ profile_sector_upstream <- function(companies,
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
-      isic = isic_tilt,
+      isic = isic,
       low_threshold = low_threshold,
       high_threshold = high_threshold
     )
