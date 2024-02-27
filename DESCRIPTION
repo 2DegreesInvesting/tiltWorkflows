@@ -1,6 +1,6 @@
 Package: tiltWorkflows
 Title: Makes it Easy to Run 'TILT' Workflows
-Version: 0.0.0.9029
+Version: 0.0.0.9030
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988")),
@@ -24,6 +24,7 @@ Imports:
     future,
     glue,
     knitr,
+    lifecycle,
     purrr,
     rappdirs,
     readr,
@@ -49,4 +50,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.1

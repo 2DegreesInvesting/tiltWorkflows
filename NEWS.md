@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9030 (2024-02-26)
+
+* The `profile*()` functions gain the argument `isic` and deprecate the argument
+`isic_tilt`, to catch up with changes introduced in tiltIndicatorAfter#112
+(#130).
+
 # tiltWorkflows 0.0.0.9029 (2024-01-17)
 
 * Change license to GPLv3 (#116).

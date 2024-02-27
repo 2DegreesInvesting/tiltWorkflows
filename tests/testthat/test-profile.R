@@ -1,3 +1,25 @@
+test_that("has identical interface to tiltIndicatorAfter", {
+  expect_equal(
+    formalArgs(profile_emissions),
+    formalArgs(tiltIndicatorAfter::profile_emissions)
+  )
+
+  expect_equal(
+    formalArgs(profile_emissions_upstream),
+    formalArgs(tiltIndicatorAfter::profile_emissions_upstream)
+  )
+
+  expect_equal(
+    formalArgs(profile_sector),
+    formalArgs(tiltIndicatorAfter::profile_sector)
+  )
+
+  expect_equal(
+    formalArgs(profile_sector_upstream),
+    formalArgs(tiltIndicatorAfter::profile_sector_upstream)
+  )
+})
+
 test_that("outputs the same as tiltIndicatorAfter", {
   withr::local_options(readr.show_col_types = FALSE)
   withr::local_options(list(
@@ -27,6 +49,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 3
   ))
+
   masked <- profile_emissions(
     companies,
     products,
@@ -41,7 +64,20 @@ test_that("outputs the same as tiltIndicatorAfter", {
     # is_null
     suppressMessages()
 
-  expect_equal(dplyr::arrange(masked, companies_id), dplyr::arrange(original, companies_id))
+  remove_unimportant_differences <- function(data) {
+    # The order of rows is unimportant
+    arranged <- dplyr::arrange(data, companies_id)
+    # The specific value of randomly-generated columns are unimportant
+    generated_randomly <- "co2e"
+    product <- select(unnest_product(arranged), -matches(generated_randomly))
+    company <- select(unnest_company(arranged), -matches(generated_randomly))
+    tiltIndicator::nest_levels(product, company)
+  }
+
+  expect_equal(
+    remove_unimportant_differences(original),
+    remove_unimportant_differences(masked)
+  )
 })
 
 test_that("with `chunks = 0` throws an informative error", {

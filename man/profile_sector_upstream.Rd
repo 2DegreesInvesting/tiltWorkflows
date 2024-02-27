@@ -12,7 +12,8 @@ profile_sector_upstream(
   ecoinvent_activities,
   ecoinvent_inputs,
   ecoinvent_europages,
-  isic_tilt,
+  isic,
+  isic_tilt = lifecycle::deprecated(),
   low_threshold = ifelse(scenarios$year == 2030, 1/9, 1/3),
   high_threshold = ifelse(scenarios$year == 2030, 2/9, 2/3)
 )
@@ -27,6 +28,8 @@ profile_sector_upstream(
 \item{ecoinvent_inputs}{Dataframe. Upstream products from ecoinvent.}
 
 \item{ecoinvent_europages}{Dataframe. Mapper between europages and ecoinvent.}
+
+\item{isic}{Dataframe. ISIC data.}
 
 \item{isic_tilt}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
 
