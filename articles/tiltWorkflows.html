@@ -125,7 +125,7 @@ computational documents</a>.</p>
 <p>You can share a link to the output “.md” file of each workflow by
 pasting its contents into a <a href="https://gist.github.com" class="external-link">new GitHub
 gist</a>, or from the terminal with the <a href="https://cli.github.com/" class="external-link"><code>gh</code> CLI</a>, e.g:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> gist create emissions_profile.md</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">gh</span> gist create emissions_profile.md</span></code></pre></div>
 <p>Also you may share input/ output/ and the cache/ directories by
 compressing them into a .zip file, uploading them to an online drive,
 then sharing the link.</p>
@@ -167,11 +167,11 @@ job in RStudio</a>:</p></li>
 <li>From multiple instances of the Terminal use <code>Rscript</code>
 with an R expression:</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Terminal 1</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"rmarkdown::render('profile_emissions.Rmd')"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Terminal 2</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"rmarkdown::render('profile_emissions.Rmd', params = list(order = 'rev'))"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Terminal 1</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"rmarkdown::render('profile_emissions.Rmd')"</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># Terminal 2</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"rmarkdown::render('profile_emissions.Rmd', params = list(order = 'rev'))"</span></span></code></pre></div>
 <p>For even faster results use the parameter
 <code>order = 'sample'</code> and run as many processes as you want.</p>
 </div>
