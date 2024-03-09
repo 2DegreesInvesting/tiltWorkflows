@@ -275,7 +275,7 @@ test_that("can optionally output `co2_*` columns", {
   ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
   isic_name <- read_csv(toy_isic_name())
 
-  out <- profile_emissions(
+  out <- tiltWorkflows::profile_emissions(
     companies,
     co2,
     europages_companies,

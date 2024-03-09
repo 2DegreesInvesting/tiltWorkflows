@@ -9,12 +9,19 @@ map_chunks <- function(data,
     nest_chunk(.by = .by, chunks = chunks) |>
     add_file(cache_path(parent, cache_dir = dir_create(cache_dir)))
 
+  op <- extract_options("tiltIndicatorAfter")
+
   job |>
     pick_undone() |>
     dchunkr::order_rows(.fun = order) |>
     select("data", "file") |>
     future_pwalk(
-      \(data, file) .f(data, ...) |> write_rds(file),
+      function(data, file) {
+        # Pass options https://github.com/HenrikBengtsson/future/issues/134
+        withr::local_options(op)
+        .f(data, ...) |>
+          write_rds(file)
+      },
       .progress = TRUE,
       .options = furrr::furrr_options(seed = TRUE)
     )
@@ -24,4 +31,8 @@ map_chunks <- function(data,
 
 rm_namespace <- function(x) {
   gsub("^.*::(.*)$", "\\1", x)
+}
+
+extract_options <- function(pattern) {
+  options()[grep(pattern, names(options()), value = TRUE)]
 }
