@@ -21,7 +21,7 @@ test_that("has identical interface to tiltIndicatorAfter", {
 })
 
 test_that("outputs the same as tiltIndicatorAfter", {
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 1
   ))
@@ -42,7 +42,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     isic = isic_name
   )
 
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 3
   ))
@@ -79,7 +79,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
 
 test_that("with `chunks = 0` throws an informative error", {
   invalid <- 0
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = invalid
   ))
@@ -102,7 +102,7 @@ test_that("with `chunks = 0` throws an informative error", {
 })
 
 test_that("with `chunks` passed as a character throws no error", {
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.chunks = as.character(3),
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
@@ -127,7 +127,7 @@ test_that("with `chunks` passed as a character throws no error", {
 })
 
 test_that("with `chunks = NULL` warns auto set chunks", {
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
@@ -152,7 +152,7 @@ test_that("with `chunks = NULL` warns auto set chunks", {
 })
 
 test_that("with `chunks = ''` warns auto set chunks", {
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.chunks = "",
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
@@ -178,7 +178,7 @@ test_that("with `chunks = ''` warns auto set chunks", {
 })
 
 test_that("with `cache_dir = NULL` throws no error", {
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.chunks = 3
   ))
 
@@ -202,7 +202,7 @@ test_that("with `cache_dir = NULL` throws no error", {
 })
 
 test_that("with `cache_dir = ''` throws no error", {
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.cache_dir = "",
     tiltWorkflows.chunks = 3
   ))
@@ -228,7 +228,7 @@ test_that("with `cache_dir = ''` throws no error", {
 
 test_that("with `order = 'rev'` the chunks work in reverse order", {
   tmp_cache <- local_tempfile()
-  withr::local_options(list(
+  local_options(list(
     tiltWorkflows.chunks = 3,
     tiltWorkflows.cache_dir = tmp_cache,
     tiltWorkflows.order = "rev"

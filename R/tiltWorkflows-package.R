@@ -33,6 +33,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tiltIndicatorAfter unnest_product
 #' @importFrom tiltToyData toy_files
+#' @importFrom withr local_options
 #' @importFrom withr local_tempfile
 ## usethis namespace: end
 NULL
