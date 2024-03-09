@@ -287,4 +287,3 @@ test_that("can optionally output `co2_*` columns", {
   expect_true(hasName(unnest_product(out), "co2_footprint"))
   expect_true(hasName(unnest_company(out), "co2_avg"))
 })
-
