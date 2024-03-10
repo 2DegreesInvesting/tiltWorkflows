@@ -3,13 +3,12 @@ map_chunks <- function(data,
                        .by,
                        chunks,
                        cache_dir,
-                       order = "identity") {
+                       order = "identity",
+                       op = extract_options("tiltIndicatorAfter")) {
   parent <- rm_namespace(deparse(substitute(.f)))
   job <- data |>
     nest_chunk(.by = .by, chunks = chunks) |>
     add_file(cache_path(parent, cache_dir = dir_create(cache_dir)))
-
-  op <- extract_options("tiltIndicatorAfter")
 
   job |>
     pick_undone() |>
