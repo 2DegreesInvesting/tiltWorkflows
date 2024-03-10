@@ -102,7 +102,8 @@ use_workflow_index <- function(index = 1) {
   use_workflow(wf[[index]])
 }
 
-# # DANGER
+# devtools::load_all()
+# # # DANGER
 # # cache_delete()
 # # system("rm output -rf")
 #
