@@ -4,7 +4,7 @@ map_chunks <- function(data,
                        chunks,
                        cache_dir,
                        order = "identity",
-                       op = extract_options("tiltIndicatorAfter")) {
+                       options = extract_options("tiltIndicatorAfter")) {
   parent <- rm_namespace(deparse(substitute(.f)))
   job <- data |>
     nest_chunk(.by = .by, chunks = chunks) |>
@@ -17,7 +17,7 @@ map_chunks <- function(data,
     future_pwalk(
       function(data, file) {
         # Pass options https://github.com/HenrikBengtsson/future/issues/134
-        withr::local_options(op)
+        withr::local_options(options)
         .f(data, ...) |>
           write_rds(file)
       },
