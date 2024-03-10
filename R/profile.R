@@ -1,4 +1,4 @@
-customized_with <- function(f, options) {
+customized <- function(f, options) {
   force(f)
   force(options)
 
@@ -51,8 +51,8 @@ profile_emissions <- function(companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
-      .f = tiltIndicatorAfter::profile_emissions |>
-        customized_with(tiltIndicatorAfter_options()),
+      options = tiltIndicatorAfter_options(),
+      .f = tiltIndicatorAfter::profile_emissions,
       co2 = co2,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
@@ -109,8 +109,8 @@ profile_emissions_upstream <- function(companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
-      .f = tiltIndicatorAfter::profile_emissions_upstream |>
-        customized_with(tiltIndicatorAfter_options()),
+      options = tiltIndicatorAfter_options(),
+      .f = tiltIndicatorAfter::profile_emissions_upstream,
       co2 = co2,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
@@ -166,8 +166,8 @@ profile_sector <- function(companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
-      .f = tiltIndicatorAfter::profile_sector |>
-        customized_with(tiltIndicatorAfter_options()),
+      options = tiltIndicatorAfter_options(),
+      .f = tiltIndicatorAfter::profile_sector,
       scenarios = scenarios,
       europages_companies = europages_companies,
       ecoinvent_activities = ecoinvent_activities,
@@ -226,8 +226,8 @@ profile_sector_upstream <- function(companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
-      .f = tiltIndicatorAfter::profile_sector_upstream |>
-        customized_with(tiltIndicatorAfter_options()),
+      options = tiltIndicatorAfter_options(),
+      .f = tiltIndicatorAfter::profile_sector_upstream,
       scenarios = scenarios,
       inputs = inputs,
       europages_companies = europages_companies,
