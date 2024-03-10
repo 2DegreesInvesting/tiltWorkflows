@@ -3,7 +3,8 @@ map_chunks <- function(data,
                        .by,
                        chunks,
                        cache_dir,
-                       order = "identity") {
+                       order = "identity",
+                       options = NULL) {
   parent <- rm_namespace(deparse(substitute(.f)))
   job <- data |>
     nest_chunk(.by = .by, chunks = chunks) |>
@@ -14,7 +15,12 @@ map_chunks <- function(data,
     dchunkr::order_rows(.fun = order) |>
     select("data", "file") |>
     future_pwalk(
-      \(data, file) .f(data, ...) |> write_rds(file),
+      function(data, file) {
+        # Pass options https://github.com/HenrikBengtsson/future/issues/134
+        withr::local_options(options)
+        .f(data, ...) |>
+          write_rds(file)
+      },
       .progress = TRUE,
       .options = furrr::furrr_options(seed = TRUE)
     )
