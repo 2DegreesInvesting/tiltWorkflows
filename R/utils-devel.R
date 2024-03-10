@@ -102,21 +102,19 @@ use_workflow_index <- function(index = 1) {
   use_workflow(wf[[index]])
 }
 
-#' @examples
-#' # DANGER
-#' # cache_delete()
-#' # system("rm output -rf")
-#'
-#' withr::local_options(list(tiltIndicatorAfter.output_co2_footprint = TRUE))
-#' run_workflow("profile_emissions.Rmd")
-#'
-#' readr::read_csv("output/emissions_profile_at_product_level.csv") |>
-#'   hasName("co2_footprint") |>
-#'   stopifnot()
-#' readr::read_csv("output/emissions_profile_at_company_level.csv") |>
-#'   hasName("co2_avg") |>
-#'   stopifnot()
-#' @noRd
+# # DANGER
+# # cache_delete()
+# # system("rm output -rf")
+#
+# withr::local_options(list(tiltIndicatorAfter.output_co2_footprint = TRUE))
+# run_workflow("profile_emissions.Rmd")
+#
+# readr::read_csv("output/emissions_profile_at_product_level.csv") |>
+#   hasName("co2_footprint") |>
+#   stopifnot()
+# readr::read_csv("output/emissions_profile_at_company_level.csv") |>
+#   hasName("co2_avg") |>
+#   stopifnot()
 run_workflow <- function(template) {
   use_workflow(template, open = FALSE)
   knitr::purl(template, documentation = 2L)
