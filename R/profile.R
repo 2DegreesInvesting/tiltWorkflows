@@ -1,3 +1,13 @@
+customized <- function(f, options) {
+  force(f)
+  force(options)
+
+  function(...) {
+    withr::local_options(options)
+    f(...)
+  }
+}
+
 #' @export
 #' @keywords internal
 #' @inherit tiltIndicatorAfter::profile_emissions
