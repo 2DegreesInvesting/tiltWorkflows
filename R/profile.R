@@ -35,11 +35,14 @@ profile_emissions <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    options <- extract_options("tiltIndicatorAfter")
+
     map_chunks(
       companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
+      options = tiltIndicatorAfter_options(),
       .by = "companies_id",
       .f = tiltIndicatorAfter::profile_emissions,
       co2 = co2,
@@ -92,12 +95,15 @@ profile_emissions_upstream <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    options <- extract_options("tiltIndicatorAfter")
+
     map_chunks(
       companies,
       .by = "companies_id",
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
+      options = tiltIndicatorAfter_options(),
       .f = tiltIndicatorAfter::profile_emissions_upstream,
       co2 = co2,
       europages_companies = europages_companies,
@@ -148,12 +154,15 @@ profile_sector <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    options <- extract_options("tiltIndicatorAfter")
+
     map_chunks(
       companies,
       .by = "companies_id",
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
+      options = tiltIndicatorAfter_options(),
       .f = tiltIndicatorAfter::profile_sector,
       scenarios = scenarios,
       europages_companies = europages_companies,
@@ -213,6 +222,7 @@ profile_sector_upstream <- function(companies,
       chunks = handle_chunks(companies),
       cache_dir = cache_dir,
       order = order,
+      options = tiltIndicatorAfter_options(),
       .f = tiltIndicatorAfter::profile_sector_upstream,
       scenarios = scenarios,
       inputs = inputs,

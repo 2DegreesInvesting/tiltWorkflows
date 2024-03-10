@@ -4,7 +4,7 @@ map_chunks <- function(data,
                        chunks,
                        cache_dir,
                        order = "identity",
-                       options = extract_options("tiltIndicatorAfter")) {
+                       options = NULL) {
   parent <- rm_namespace(deparse(substitute(.f)))
   job <- data |>
     nest_chunk(.by = .by, chunks = chunks) |>
@@ -30,17 +30,4 @@ map_chunks <- function(data,
 
 rm_namespace <- function(x) {
   gsub("^.*::(.*)$", "\\1", x)
-}
-
-extract_options <- function(pattern) {
-  out <- options()[grep(pattern, names(options()), value = TRUE)]
-  if (rlang::is_empty(out)) {
-    rlang::warn(c(
-      glue::glue("The pattern '{pattern}' matched no option."),
-      i = "Do you need to fix a typo?",
-      v = "Returning the original `options()`."
-    ))
-    return(options())
-  }
-  out
 }
