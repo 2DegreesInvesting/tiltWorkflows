@@ -34,5 +34,9 @@ rm_namespace <- function(x) {
 }
 
 extract_options <- function(pattern) {
-  options()[grep(pattern, names(options()), value = TRUE)]
+  out <- options()[grep(pattern, names(options()), value = TRUE)]
+  if (rlang::is_empty(out)) {
+    return(options())
+  }
+  out
 }
