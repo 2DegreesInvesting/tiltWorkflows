@@ -14,10 +14,7 @@ map_chunks <- function(data,
     dchunkr::order_rows(.fun = order) |>
     select("data", "file") |>
     future_pwalk(
-      function(data, file) {
-        .f(data, ...) |>
-          write_rds(file)
-      },
+      \(data, file) .f(data, ...) |> write_rds(file),
       .progress = TRUE,
       .options = furrr::furrr_options(seed = TRUE)
     )
