@@ -5,5 +5,3 @@ extract_options <- function(pattern) {
 tiltIndicatorAfter_options <- function() {
   extract_options("tiltIndicatorAfter")
 }
-
-
