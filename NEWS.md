@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9031 (2024-03-11)
+
+* `profile*()` are now sensitive to
+[`tiltIndicatorAfter_options`](https://2degreesinvesting.github.io/tiltIndicatorAfter/reference/tiltIndicatorAfter_options.html)
+(#135).
+
 # tiltWorkflows 0.0.0.9030 (2024-02-26)
 
 * The `profile*()` functions gain the argument `isic` and deprecate the argument
