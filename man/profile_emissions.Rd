@@ -37,6 +37,12 @@ profile products.}
 }
 \value{
 A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
+
+The columns \code{co2e_lower} and \code{co2e_upper} show the lowest and highest value
+of \code{co2_footprint} within the group to which the product was compared, plus
+some randomness. Therefore, every benchmark can have different \code{co2e_lower}
+and \code{co2e_upper}, because every benchmark can contain a different set of
+products.
 }
 \description{
 These functions wrap the output of the corresponding function in
@@ -44,12 +50,14 @@ These functions wrap the output of the corresponding function in
 }
 \examples{
 library(tiltToyData)
+library(withr)
 library(readr, warn.conflicts = FALSE)
 
-options(readr.show_col_types = FALSE)
+local_seed(1)
+local_options(readr.show_col_types = FALSE)
 
 companies <- read_csv(toy_emissions_profile_any_companies())
-products <- read_csv(toy_emissions_profile_products())
+products <- read_csv(toy_emissions_profile_products_ecoinvent())
 europages_companies <- read_csv(toy_europages_companies())
 ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
 ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
@@ -70,7 +78,7 @@ result |> unnest_company()
 
 
 
-inputs <- read_csv(toy_emissions_profile_upstream_products())
+inputs <- read_csv(toy_emissions_profile_upstream_products_ecoinvent())
 ecoinvent_inputs <- read_csv(toy_ecoinvent_inputs())
 
 result <- profile_emissions_upstream(
