@@ -21,9 +21,7 @@ test_that("has identical interface to tiltIndicatorAfter", {
 })
 
 test_that("outputs the same as tiltIndicatorAfter", {
-  withr::local_options(readr.show_col_types = FALSE)
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 1
   ))
@@ -44,8 +42,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     isic = isic_name
   )
 
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = 3
   ))
@@ -81,10 +78,8 @@ test_that("outputs the same as tiltIndicatorAfter", {
 })
 
 test_that("with `chunks = 0` throws an informative error", {
-  withr::local_options(readr.show_col_types = FALSE)
   invalid <- 0
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir(),
     tiltWorkflows.chunks = invalid
   ))
@@ -107,9 +102,7 @@ test_that("with `chunks = 0` throws an informative error", {
 })
 
 test_that("with `chunks` passed as a character throws no error", {
-  withr::local_options(readr.show_col_types = FALSE)
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.chunks = as.character(3),
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
@@ -134,9 +127,7 @@ test_that("with `chunks` passed as a character throws no error", {
 })
 
 test_that("with `chunks = NULL` warns auto set chunks", {
-  withr::local_options(readr.show_col_types = FALSE)
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
 
@@ -161,9 +152,7 @@ test_that("with `chunks = NULL` warns auto set chunks", {
 })
 
 test_that("with `chunks = ''` warns auto set chunks", {
-  withr::local_options(readr.show_col_types = FALSE)
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.chunks = "",
     tiltWorkflows.cache_dir = withr::local_tempdir()
   ))
@@ -189,9 +178,7 @@ test_that("with `chunks = ''` warns auto set chunks", {
 })
 
 test_that("with `cache_dir = NULL` throws no error", {
-  withr::local_options(readr.show_col_types = FALSE)
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.chunks = 3
   ))
 
@@ -215,9 +202,7 @@ test_that("with `cache_dir = NULL` throws no error", {
 })
 
 test_that("with `cache_dir = ''` throws no error", {
-  withr::local_options(readr.show_col_types = FALSE)
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.cache_dir = "",
     tiltWorkflows.chunks = 3
   ))
@@ -242,10 +227,8 @@ test_that("with `cache_dir = ''` throws no error", {
 })
 
 test_that("with `order = 'rev'` the chunks work in reverse order", {
-  withr::local_options(readr.show_col_types = FALSE)
   tmp_cache <- local_tempfile()
-  withr::local_options(list(
-    readr.show_col_types = FALSE,
+  local_options(list(
     tiltWorkflows.chunks = 3,
     tiltWorkflows.cache_dir = tmp_cache,
     tiltWorkflows.order = "rev"
@@ -326,3 +309,31 @@ test_that("with `order = 'rev'` the chunks work in reverse order", {
 #
 #   expect_equal(dplyr::arrange(masked, companies_id), dplyr::arrange(original, companies_id))
 # })
+
+test_that("can optionally output `co2_*` columns", {
+  tmp_cache <- local_tempfile()
+  local_options(list(
+    tiltIndicatorAfter.output_co2_footprint = TRUE,
+    tiltWorkflows.chunks = 3,
+    tiltWorkflows.cache_dir = tmp_cache
+  ))
+
+  companies <- read_csv(toy_emissions_profile_any_companies())
+  co2 <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
+
+  out <- tiltWorkflows::profile_emissions(
+    companies,
+    co2,
+    europages_companies,
+    ecoinvent_activities,
+    ecoinvent_europages,
+    isic_name
+  )
+
+  expect_true(hasName(unnest_product(out), "co2_footprint"))
+  expect_true(hasName(unnest_company(out), "co2_avg"))
+})
