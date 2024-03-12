@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9032 (2024-03-12)
+
+* Each workflow now uses default `*threshold`s (#141).
+
 # tiltWorkflows 0.0.0.9031 (2024-03-11)
 
 * `profile*()` are now sensitive to
