@@ -109,6 +109,7 @@ ecoinvent_activities <- read_csv(path(params$input, params$ecoinvent_activities)
 ecoinvent_europages <- read_csv(path(params$input, params$ecoinvent_europages))
 isic <- read_csv(path(params$input, params$isic))
 ```
+
 Data specific to this indicator.
 
 ```{r}

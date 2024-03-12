@@ -116,6 +116,7 @@ The "upstream" workflows also need this dataset.
 ```{r}
 ecoinvent_inputs <- read_csv(path(params$input, params$ecoinvent_inputs))
 ```
+
 Data specific to this indicator.
 
 ```{r}
