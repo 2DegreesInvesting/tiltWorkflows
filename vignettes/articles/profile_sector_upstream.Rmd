@@ -116,6 +116,7 @@ The "upstream" workflows also need this dataset.
 ```{r}
 ecoinvent_inputs <- read_csv(path(params$input, params$ecoinvent_inputs))
 ```
+
 Data specific to this indicator.
 
 ```{r}
@@ -137,9 +138,7 @@ sector_profile_upstream <- profile_sector_upstream(
   ecoinvent_activities = ecoinvent_activities,
   ecoinvent_inputs = ecoinvent_inputs,
   ecoinvent_europages = ecoinvent_europages,
-  isic = isic,
-  low_threshold = 1 / 3,
-  high_threshold = 2 / 3
+  isic = isic
 )
 ```
 
