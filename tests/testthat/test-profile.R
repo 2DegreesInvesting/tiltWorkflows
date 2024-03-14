@@ -260,56 +260,6 @@ test_that("with `order = 'rev'` the chunks work in reverse order", {
   expect_equal(actual, rev(as.character(1:3)))
 })
 
-# test_that("`score_transition_risk` outputs the same as tiltIndicatorAfter", {
-#   withr::local_options(readr.show_col_types = FALSE)
-#   withr::local_options(list(
-#     readr.show_col_types = FALSE,
-#     tiltWorkflows.cache_dir = withr::local_tempdir(),
-#     tiltWorkflows.chunks = 1
-#   ))
-#
-#   emissions_companies <- read_csv(toy_emissions_profile_any_companies())
-#   products <- read_csv(toy_emissions_profile_products_ecoinvent())
-#   europages_companies <- read_csv(toy_europages_companies())
-#   ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
-#   ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
-#   isic_name <- read_csv(toy_isic_name())
-#
-#   emissions_profile_at_product_level <- profile_emissions(
-#     companies = emissions_companies,
-#     co2 = products,
-#     europages_companies = europages_companies,
-#     ecoinvent_activities = ecoinvent_activities,
-#     ecoinvent_europages = ecoinvent_europages,
-#     isic = isic_name
-#   ) |> unnest_product()
-#
-#   sector_companies <- read_csv(toy_sector_profile_companies())
-#   scenarios <- read_csv(toy_sector_profile_any_scenarios())
-#
-#   sector_profile_at_product_level <- profile_sector(
-#     companies = sector_companies,
-#     scenarios = scenarios,
-#     europages_companies = europages_companies,
-#     ecoinvent_activities = ecoinvent_activities,
-#     ecoinvent_europages = ecoinvent_europages,
-#     isic = isic_name
-#   ) |> unnest_product()
-#
-#   original <- score_transition_risk(emissions_profile_at_product_level, sector_profile_at_product_level)
-#
-#   withr::local_options(list(
-#     readr.show_col_types = FALSE,
-#     tiltWorkflows.cache_dir = withr::local_tempdir(),
-#     tiltWorkflows.chunks = 3
-#   ))
-#
-#   masked <- score_transition_risk(emissions_profile_at_product_level, sector_profile_at_product_level) |>
-#     suppressMessages()
-#
-#   expect_equal(dplyr::arrange(masked, companies_id), dplyr::arrange(original, companies_id))
-# })
-
 test_that("can optionally output `co2_*` columns", {
   tmp_cache <- local_tempfile()
   local_options(list(
@@ -336,4 +286,41 @@ test_that("can optionally output `co2_*` columns", {
 
   expect_true(hasName(unnest_product(out), "co2_footprint"))
   expect_true(hasName(unnest_company(out), "co2_avg"))
+})
+
+test_that("`score_transition_risk` outputs the same as tiltIndicatorAfter", {
+  withr::local_options(readr.show_col_types = FALSE)
+
+  emissions_companies <- read_csv(toy_emissions_profile_any_companies())
+  products <- read_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_csv(toy_europages_companies())
+  ecoinvent_activities <- read_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_csv(toy_ecoinvent_europages())
+  isic_name <- read_csv(toy_isic_name())
+
+  emissions_profile_at_product_level <- tiltIndicatorAfter::profile_emissions(
+    companies = emissions_companies,
+    co2 = products,
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic_name
+  ) |> unnest_product()
+
+  sector_companies <- read_csv(toy_sector_profile_companies())
+  scenarios <- read_csv(toy_sector_profile_any_scenarios())
+
+  sector_profile_at_product_level <- tiltIndicatorAfter::profile_sector(
+    companies = sector_companies,
+    scenarios = scenarios,
+    europages_companies = europages_companies,
+    ecoinvent_activities = ecoinvent_activities,
+    ecoinvent_europages = ecoinvent_europages,
+    isic = isic_name
+  ) |> unnest_product()
+
+  original <- score_transition_risk(emissions_profile_at_product_level, sector_profile_at_product_level)
+  masked <- tiltIndicatorAfter::score_transition_risk(emissions_profile_at_product_level, sector_profile_at_product_level)
+
+  expect_equal(dplyr::arrange(masked, companies_id), dplyr::arrange(original, companies_id))
 })

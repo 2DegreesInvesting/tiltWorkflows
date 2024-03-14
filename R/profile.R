@@ -237,27 +237,10 @@ profile_sector_upstream <- function(companies,
 score_transition_risk <- function(emissions_profile_at_product_level,
                                   sector_profile_at_product_level
                                   ) {
-  op <- enlist_options()
-  chunks <- op$chunks
-  cache_dir <- op$cache_dir
-  order <- op$order
 
-  if (identical(chunks, 1)) {
-    tiltIndicatorAfter::score_transition_risk(
-      emissions_profile_at_product_level,
-      sector_profile_at_product_level
-    )
-  } else {
-    map_chunks(
-      emissions_profile_at_product_level,
-      chunks = handle_chunks(emissions_profile_at_product_level),
-      cache_dir = cache_dir,
-      order = order,
-      .by = "companies_id",
-      .f = tiltIndicatorAfter::score_transition_risk,
-      sector_profile_at_product_level = sector_profile_at_product_level
-    )
-  }
+  tiltIndicatorAfter::score_transition_risk(
+    emissions_profile_at_product_level,
+    sector_profile_at_product_level)
 }
 
 abort_zero_chunks <- function(x) {
