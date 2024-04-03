@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# tiltWorkflows 0.0.0.9033 (2024-04-03)
+
+* All `profile*()` functions now when using threshold arguments (@Tilmon #146). This is to
+remind users that the default thresholds are usually the best, and avoid changes
+by mistake.
+
 # tiltWorkflows 0.0.0.9032 (2024-03-12)
 
 * Each workflow now uses default `*threshold`s (#141).
