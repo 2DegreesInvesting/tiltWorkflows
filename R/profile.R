@@ -18,6 +18,8 @@ profile_emissions <- function(companies,
     isic <- isic_tilt
   }
 
+  if (!missing(low_threshold) || !missing(high_threshold)) warn_thresholds()
+
   op <- enlist_options()
   chunks <- op$chunks
   cache_dir <- op$cache_dir
@@ -74,6 +76,8 @@ profile_emissions_upstream <- function(companies,
     )
     isic <- isic_tilt
   }
+
+  if (!missing(low_threshold) || !missing(high_threshold)) warn_thresholds()
 
   op <- enlist_options()
   chunks <- op$chunks
@@ -133,6 +137,8 @@ profile_sector <- function(companies,
     isic <- isic_tilt
   }
 
+  if (!missing(low_threshold) || !missing(high_threshold)) warn_thresholds()
+
   op <- enlist_options()
   chunks <- op$chunks
   cache_dir <- op$cache_dir
@@ -190,6 +196,8 @@ profile_sector_upstream <- function(companies,
     )
     isic <- isic_tilt
   }
+
+  if (!missing(low_threshold) || !missing(high_threshold)) warn_thresholds()
 
   op <- enlist_options()
   chunks <- op$chunks
