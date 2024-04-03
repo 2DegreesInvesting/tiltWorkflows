@@ -294,12 +294,12 @@ test_that("warns if using `*threshold`", {
     tiltWorkflows.chunks = 1
   ))
 
-  companies <- read_csv(toy_emissions_profile_any_companies()) |> head(1)
-  products <- read_csv(toy_emissions_profile_products_ecoinvent()) |> head(1)
-  europages_companies <- read_csv(toy_europages_companies()) |> head(1)
-  ecoinvent_activities <- read_csv(toy_ecoinvent_activities()) |> head(1)
-  ecoinvent_europages <- read_csv(toy_ecoinvent_europages()) |> head(1)
-  isic_name <- read_csv(toy_isic_name()) |> head(1)
+  companies <- read_test_csv(toy_emissions_profile_any_companies())
+  products <- read_test_csv(toy_emissions_profile_products_ecoinvent())
+  europages_companies <- read_test_csv(toy_europages_companies())
+  ecoinvent_activities <- read_test_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_test_csv(toy_ecoinvent_europages())
+  isic_name <- read_test_csv(toy_isic_name())
 
   expect_no_warning(
     profile_emissions(
@@ -325,8 +325,8 @@ test_that("warns if using `*threshold`", {
     "threshold.*adjust"
   )
 
-  inputs <- read_csv(toy_emissions_profile_upstream_products_ecoinvent()) |> head(1)
-  ecoinvent_inputs <- read_csv(toy_ecoinvent_inputs()) |> head(1)
+  inputs <- read_test_csv(toy_emissions_profile_upstream_products_ecoinvent())
+  ecoinvent_inputs <- read_test_csv(toy_ecoinvent_inputs())
   expect_warning(
     profile_emissions_upstream(
       companies,
@@ -341,12 +341,12 @@ test_that("warns if using `*threshold`", {
     "threshold.*adjust"
   )
 
-  companies <- read_csv(toy_sector_profile_companies()) |> head(1)
-  scenarios <- read_csv(toy_sector_profile_any_scenarios()) |> head(1)
-  europages_companies <- read_csv(toy_europages_companies()) |> head(1)
-  ecoinvent_activities <- read_csv(toy_ecoinvent_activities()) |> head(1)
-  ecoinvent_europages <- read_csv(toy_ecoinvent_europages()) |> head(1)
-  isic_name <- read_csv(toy_isic_name()) |> head(1)
+  companies <- read_test_csv(toy_sector_profile_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  europages_companies <- read_test_csv(toy_europages_companies())
+  ecoinvent_activities <- read_test_csv(toy_ecoinvent_activities())
+  ecoinvent_europages <- read_test_csv(toy_ecoinvent_europages())
+  isic_name <- read_test_csv(toy_isic_name())
   expect_warning(
     profile_sector(
       companies,
@@ -360,14 +360,14 @@ test_that("warns if using `*threshold`", {
     "threshold.*adjust"
   )
 
-  companies <- read_csv(toy_sector_profile_upstream_companies()) |> head(1)
-  scenarios <- read_csv(toy_sector_profile_any_scenarios()) |> head(1)
-  inputs <- read_csv(toy_sector_profile_upstream_products()) |> head(1)
-  europages_companies <- read_csv(toy_europages_companies()) |> head(1)
-  ecoinvent_activities <- read_csv(toy_ecoinvent_activities()) |> head(1)
-  ecoinvent_inputs <- read_csv(toy_ecoinvent_inputs()) |> head(1)
-  ecoinvent_europages <- read_csv(toy_ecoinvent_europages()) |> head(1)
-  isic_name <- read_csv(toy_isic_name()) |> head(1)
+  companies <- read_test_csv(toy_sector_profile_upstream_companies())
+  scenarios <- read_test_csv(toy_sector_profile_any_scenarios())
+  inputs <- read_test_csv(toy_sector_profile_upstream_products())
+  europages_companies <- read_test_csv(toy_europages_companies())
+  ecoinvent_activities <- read_test_csv(toy_ecoinvent_activities())
+  ecoinvent_inputs <- read_test_csv(toy_ecoinvent_inputs())
+  ecoinvent_europages <- read_test_csv(toy_ecoinvent_europages())
+  isic_name <- read_test_csv(toy_isic_name())
   expect_warning(
     profile_sector_upstream(
       companies,
