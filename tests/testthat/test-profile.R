@@ -320,7 +320,7 @@ test_that("warns if using `*threshold`", {
       ecoinvent_activities = ecoinvent_activities,
       ecoinvent_europages = ecoinvent_europages,
       isic = isic_name,
-      low_threshold = 1/4
+      low_threshold = 1 / 4
     ),
     "threshold.*adjust"
   )
@@ -336,7 +336,7 @@ test_that("warns if using `*threshold`", {
       ecoinvent_inputs = ecoinvent_inputs,
       ecoinvent_europages = ecoinvent_europages,
       isic = isic_name,
-      low_threshold = 1/4
+      low_threshold = 1 / 4
     ),
     "threshold.*adjust"
   )
