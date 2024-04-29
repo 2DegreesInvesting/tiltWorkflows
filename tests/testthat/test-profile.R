@@ -68,7 +68,7 @@ test_that("outputs the same as tiltIndicatorAfter", {
     generated_randomly <- "co2e"
     product <- select(unnest_product(arranged), -matches(generated_randomly))
     company <- select(unnest_company(arranged), -matches(generated_randomly))
-    tiltIndicator::nest_levels(product, company)
+    tiltIndicator::nest_levels(distinct(product), distinct(company))
   }
 
   expect_equal(
