@@ -37,13 +37,16 @@ profile_emissions <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    .chunks <- handle_chunks(companies)
+    .options <- tiltIndicatorAfter_options()
+
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = handle_chunks(companies),
+      chunks = .chunks,
       cache_dir = cache_dir,
       order = order,
-      options = tiltIndicatorAfter_options(),
+      options = .options,
       .f = tiltIndicatorAfter::profile_emissions,
       co2 = co2,
       europages_companies = europages_companies,
@@ -97,13 +100,16 @@ profile_emissions_upstream <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    .chunks <- handle_chunks(companies)
+    .options <- tiltIndicatorAfter_options()
+
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = handle_chunks(companies),
+      chunks = .chunks,
       cache_dir = cache_dir,
       order = order,
-      options = tiltIndicatorAfter_options(),
+      options = .options,
       .f = tiltIndicatorAfter::profile_emissions_upstream,
       co2 = co2,
       europages_companies = europages_companies,
@@ -156,13 +162,16 @@ profile_sector <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    .chunks <- handle_chunks(companies)
+    .options <- tiltIndicatorAfter_options()
+
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = handle_chunks(companies),
+      chunks = .chunks,
       cache_dir = cache_dir,
       order = order,
-      options = tiltIndicatorAfter_options(),
+      options = .options,
       .f = tiltIndicatorAfter::profile_sector,
       scenarios = scenarios,
       europages_companies = europages_companies,
@@ -218,13 +227,16 @@ profile_sector_upstream <- function(companies,
       high_threshold = high_threshold
     )
   } else {
+    .chunks <- handle_chunks(companies)
+    .options <- tiltIndicatorAfter_options()
+
     map_chunks(
       companies,
       .by = "companies_id",
-      chunks = handle_chunks(companies),
+      chunks = .chunks,
       cache_dir = cache_dir,
       order = order,
-      options = tiltIndicatorAfter_options(),
+      options = .options,
       .f = tiltIndicatorAfter::profile_sector_upstream,
       scenarios = scenarios,
       inputs = inputs,
