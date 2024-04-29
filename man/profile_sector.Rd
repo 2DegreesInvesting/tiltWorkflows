@@ -34,7 +34,7 @@ profile products.}
 profile products.}
 }
 \value{
-A data frame with the column \code{companies_id}, and the nested columns\code{product} and \code{company} holding the outputs at product and company level. Unnesting \code{product} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}. Unnesting \code{company} yields a data frame with at least columns \code{companies_id}, \code{grouped_by}, \code{risk_category}, \code{value}.
+A data frame with the column \code{companies_id}, and the list columns \code{product} and \code{company} holding the outputs at product and company level.
 }
 \description{
 These functions wrap the output of the corresponding function in
@@ -44,7 +44,7 @@ These functions wrap the output of the corresponding function in
 library(tiltToyData)
 library(readr, warn.conflicts = FALSE)
 
-options(readr.show_col_types = FALSE)
+restore <- options(readr.show_col_types = FALSE)
 
 companies <- read_csv(toy_sector_profile_companies())
 scenarios <- read_csv(toy_sector_profile_any_scenarios())
@@ -91,10 +91,17 @@ result <- profile_sector_upstream(
 result |> unnest_product()
 
 result |> unnest_company()
+
+# Cleanup
+options(restore)
 }
 \seealso{
 Other top-level functions: 
 \code{\link[tiltIndicatorAfter]{profile_emissions}()},
 \code{\link[tiltIndicatorAfter]{score_transition_risk}()}
+
+Other profile functions: 
+\code{\link[tiltIndicatorAfter]{profile_emissions}()},
+\code{\link[tiltIndicatorAfter]{profile_emissions_impl}()}
 }
 \keyword{internal}
