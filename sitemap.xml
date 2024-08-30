@@ -1,72 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/404.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions_upstream.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_sector.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_sector_upstream.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/cache.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/cleanup.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/explain.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_emissions.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_emissions_upstream.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_sector.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_sector_upstream.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/tiltWorkflows-package.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/use_toy_input.html</loc>
-  </url>
-  <url>
-    <loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/404.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/LICENSE.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_emissions_upstream.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_sector.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/profile_sector_upstream.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/articles/tiltWorkflows.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/authors.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/news/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/cache.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/cleanup.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/explain.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/index.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_emissions.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_emissions_upstream.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_sector.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/profile_sector_upstream.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/reexports.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/tiltWorkflows-package.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/use_toy_input.html</loc></url>
+<url><loc>https://2degreesinvesting.github.io/tiltWorkflows/reference/use_workflow.html</loc></url>
 </urlset>
+

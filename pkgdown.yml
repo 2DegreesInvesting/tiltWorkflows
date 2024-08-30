@@ -1,14 +1,13 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
-  profile_emissions_upstream: profile_emissions_upstream.html
-  profile_emissions: profile_emissions.html
-  profile_sector_upstream: profile_sector_upstream.html
-  profile_sector: profile_sector.html
-  tiltWorkflows: tiltWorkflows.html
-last_built: 2024-04-29T19:09Z
+  articles/profile_emissions_upstream: profile_emissions_upstream.html
+  articles/profile_emissions: profile_emissions.html
+  articles/profile_sector_upstream: profile_sector_upstream.html
+  articles/profile_sector: profile_sector.html
+  articles/tiltWorkflows: tiltWorkflows.html
+last_built: 2024-08-30T23:08Z
 urls:
   reference: https://2degreesinvesting.github.io/tiltWorkflows/reference
   article: https://2degreesinvesting.github.io/tiltWorkflows/articles
-
