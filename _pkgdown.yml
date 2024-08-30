@@ -27,3 +27,7 @@ navbar:
       href: articles/profile_sector.html
     - text: profile_sector_upstream.Rmd
       href: articles/profile_sector_upstream.html
+
+authors:
+  Mauro Lepore:
+    href: https://github.com/maurolepore
