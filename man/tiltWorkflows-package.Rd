@@ -22,6 +22,8 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Anne Schoenauer \email{anne.schoenauer@2degrees-investing.org} (\href{https://orcid.org/0000-0002-4576-8799}{ORCID})
+  \item Tilman Trompke \email{tilman@2degrees-investing.org} (\href{https://orcid.org/0009-0003-3351-5131}{ORCID})
   \item Kalash Singhal \email{kalash@2degrees-investing.org}
 }
 
