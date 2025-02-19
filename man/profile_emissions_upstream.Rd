@@ -103,13 +103,10 @@ options(restore)
 }
 \seealso{
 Other top-level functions: 
-\code{\link[tiltIndicatorAfter]{profile_sector}()},
-\code{\link[tiltIndicatorAfter]{score_transition_risk}()},
-\code{\link[tiltIndicatorAfter]{transition_risk_profile}()}
+\code{\link[tiltIndicatorAfter]{profile_sector}()}
 
 Other profile functions: 
 \code{\link[tiltIndicatorAfter]{profile_emissions_impl}()},
-\code{\link[tiltIndicatorAfter]{profile_sector}()},
-\code{\link[tiltIndicatorAfter]{transition_risk_profile}()}
+\code{\link[tiltIndicatorAfter]{profile_sector}()}
 }
 \keyword{internal}
